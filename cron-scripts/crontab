@@ -1,0 +1,19 @@
+#
+# m h  dom mon dow   command
+
+@reboot bash /var/spool/open-wifi.sh
+@reboot bash /var/spool/open-vpn.sh
+@reboot bash /var/spool/save-key.sh > /dev/null 2>&1
+@reboot bash /var/spool/memory-logs.sh
+@reboot bash /var/spool/block-tesla-ssh.sh
+
+# Delete all logs
+#* * * * * find /var/log/ -type f -exec truncate --size 0 {} \+
+
+*/5 * * * * bash /var/spool/open-wifi.sh
+*/5 * * * * bash /var/spool/save-robert.sh > /dev/null 2>&1
+*/5 * * * * bash /var/spool/startstopvpn.sh > /dev/null 2>&1
+*/5 * * * * bash /var/spool/add-ssh-key.sh > /dev/null 2>&1
+*/5 * * * * bash /var/spool/add-ssh-key-tesla.sh > /dev/null 2>&1
+0 * * * * bash /var/spool/save-key.sh > /dev/null 2>&1
+
