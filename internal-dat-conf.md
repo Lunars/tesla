@@ -23,7 +23,7 @@ ssh ic
 sudo edit-settings-conf.pl -a vapi/forceHasAutopilot=true
 
 ssh cid
-access-internal-dat.pl landeparture 1 "Toolbox"
+access-internal-dat.pl lanedepature 1 "Toolbox"
 access-internal-dat.pl blindspot 1 "Toolbox"
 
 # Not sure if required:
