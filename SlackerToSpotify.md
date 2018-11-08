@@ -1,7 +1,15 @@
-```bash
-edit-settings-conf.pl -a spotify/enable=1
-edit-settings-conf.pl -a slacker/enable=0
+# How to enable Spotify on the CID
 
-get-gateway-config.sh
-access-internal-dat.pl rearfog 1 "Toolbox"
+In order to enable Spotify on the CID you must login to the CID and execute the following command:
+
+
+```console
+tesla1@cid-RedactedVIN$ edit-settings-conf.pl -a spotify/enable=1
+```
+
+## Disabling Slacker radio
+
+Although it can be run alongside Spotify, many users choose to disable slacker radio as well because search will provide both slacker and spotify results with no way of determining which service the result is from
+```console
+tesla1@cid-RedactedVIN$ edit-settings-conf.pl -a slacker/enable=0
 ```
