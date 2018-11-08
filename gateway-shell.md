@@ -26,7 +26,7 @@ Use the password `1q3e5t7u` for authentication. All gateways use the same static
 
 ```console
 tesla1@cid-RedactedVIN$ printf "\x12\x01" |socat - udp:gw:3500
-tesla1@cid-RedactedVIN$ nc gw 23
+tesla1@cid-RedactedVIN$ nc gw 23
 ? 1q3e5t7u
 gw> 
 ```
