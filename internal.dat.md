@@ -4,14 +4,14 @@
 
 ### Listing all options for internal.dat:
 
-# Retrieving current internal.dat settings
+##### Retrieving current internal.dat settings
 
 You can run the get-gateway-config.sh script to save the current gateway configuration to the file `var/etc/gateway.cfg`  
 ```console
 tesla1@cid-RedactedVIN$ sudo get-gateway-config.sh;  cat /var/etc/gateway.cfg
 ```
 
-## Sample output
+##### Sample output
 
 Sample internal.dat:
 
