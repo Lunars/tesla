@@ -77,128 +77,154 @@ packconfig 41
 
 ## List of settings available on the gateway
 
-```
-airbagCutoffInstalled
-airSuspensionInstalled
-ambientLightsInstalled
-audioType
-autopilot
-autopilotTrial
-auxHvacType
-badging
-boardRevision
-bodyControlsType
-brakeHwType
-chargerType
-chargeState
-chassisType
-compressorType
-cornerInstalled
-country
-curveLightingType
-dasHw
-dimmableRvMirror
-drlInstalled
-efficiencyPackage
-epasType
-espInterface
-euVehicle
-exteriorColorCode
-falconStrutType
-fastChargeAllowed
-fastChargeInstalled
-foldingMirrorsInstalled
-forwardRadarHw
-fourWheelDrive
-freeSlaveCharger
-frontCornerRadarHw
-frontDoorActuationType
-frontDoorLatchType
-frontDriveUnitType
-frontFogInstalled
-frontSeatVentilationType
-gpsType
-headLampType
-headlightLevelerInstalled
-homelinkInstalled
-HVJB16APerPhaseOK
-intakeAirFilterType
-intrusionTiltInstalled
-ionizerType
-isEbuck
-lightPipeInstalled
-mapRegion
-memoryMirrorsInstalled
-memorySeatsInstalled
-navigationAllowed
-noKeylessEntry
-noPack
-noPushToUnlock
-noSpeedPulse
-noVehicleSleep
-nozzleHeatInstalled
-numberHVILNodes
-ocsInstalled
-offboardUpdateState
-offboardUpdateStatus
-otherFastChargeAllowed
-packConfig
-parkAssistInstalled
-parkSensorGeometryType
-performanceAddOn
-performanceConfig
-performanceLock
-powerLiftGate
-pwsSpeakerType
-radarPosition
-rearCornerRadarHw
-rearDriveUnitType
-rearFacingSeats
-rearFogInstalled
-rearSeatControllerMask
-rearSeatHeatersInstalled
-rearSeatType
-restraintControlsType
-restraintsHardwareType
-rhd
-roofColor
-screenAdhesiveType
-seatHeatersInstalled
-seatType
-shutterType
-sideMarkerInstalled
-simulatedS1
-softPackConfig
-spoilerInstalled
-standbySupplyRequired
-steeringColumnType
-steeringHeat
-steeringWheel
-sunroofInstalled
-thBusInstalled
-thirdRowSeatHeatType
-thirdRowSeatType
-topSpeedEnum
-towPackage
-tpmsType
-tractionControlType
-twelveVBatteryType
-w025_easMia
-w027_epbMia
-w037_espMia
-w044_tpmsMia
-w104_ocsMia
-w105_rcmMia
-w170_parkAssistMia
-w181_parkAssistSystemDTC
-w206_parkAssistVersMismatch
-w265_ibstMia
-w268_ibstFailure
-w277_iBoosterReduced
-wakeupReason
-wheelType
-willBeGoingToSleep
-wiperHeatInstalled
-wouldSleep
-xmAntInstalled
-```
+#### airbagCutoffInstalled
+- Description: Boolean toggle to inform the car if there is an air bag cut-off switch installed on the car. This is usually used to turn on/off the driver / passenger airbags when passengers are in positions which the airbag can cause more damage than it would stop.
+- Values:
+  - 0: Not Installed
+  - 1: Installed
+
+#### airSuspensionInstalled
+- Description: Boolean toggle to inform the car if air bag suspension is installed on the car.
+- Values:
+  - 0: Not Installed
+  - 1: Installed
+#### ambientLightsInstalled
+- Description: Boolean toggle to inform the car if cars have additional ambient lighting installed in the footwell and doors.
+- Values:
+  - 0: Not Installed
+  - 1: Installed
+#### audioType
+- Description: Boolean toggle to inform the car which audio package is installed on the car.
+- Values:
+  - standard: standard audio package
+  - premium: premium auto package
+#### autopilot
+- Description: Boolean toggle to inform the car if the owner has purchased the autopilot package. Note (there is no toggle for FSD at this time).
+- Values:
+  - 0: Not purchased
+  - 1: Purchased
+#### autopilotTrial
+- Description: Boolean toggle to inform the car if the owner has activated an autopilot trial.
+- Values:
+  - 0: Trial is not active
+  - 1: Trial is active
+  
+#### auxHvacType
+#### badging
+#### boardRevision
+#### bodyControlsType
+#### brakeHwType
+#### chargerType
+#### chargeState
+#### chassisType
+#### compressorType
+#### cornerInstalled
+#### country
+#### curveLightingType
+#### dasHw
+#### dimmableRvMirror
+#### drlInstalled
+#### efficiencyPackage
+#### epasType
+#### espInterface
+#### euVehicle
+#### exteriorColorCode
+#### falconStrutType
+#### fastChargeAllowed
+#### fastChargeInstalled
+#### foldingMirrorsInstalled
+#### forwardRadarHw
+#### fourWheelDrive
+#### freeSlaveCharger
+#### frontCornerRadarHw
+#### frontDoorActuationType
+#### frontDoorLatchType
+#### frontDriveUnitType
+#### frontFogInstalled
+#### frontSeatVentilationType
+#### gpsType
+#### headLampType
+#### headlightLevelerInstalled
+#### homelinkInstalled
+#### HVJB16APerPhaseOK
+#### intakeAirFilterType
+#### intrusionTiltInstalled
+#### ionizerType
+#### isEbuck
+#### lightPipeInstalled
+#### mapRegion
+#### memoryMirrorsInstalled
+#### memorySeatsInstalled
+#### navigationAllowed
+#### noKeylessEntry
+#### noPack
+#### noPushToUnlock
+#### noSpeedPulse
+#### noVehicleSleep
+#### nozzleHeatInstalled
+#### numberHVILNodes
+#### ocs
+#### ocsInstalled
+#### offboardUpdateState
+#### offboardUpdateStatus
+#### otherFastChargeAllowed
+#### packConfig
+#### parkAssistInstalled
+#### parkSensorGeometryType
+#### performanceAddOn
+#### performanceConfig
+#### performanceLock
+#### powerLiftGate
+#### pwsSpeakerType
+#### radarPosition
+#### rearCornerRadarHw
+#### rearDriveUnitType
+#### rearFacingSeats
+#### rearFogInstalled
+#### rearSeatControllerMask
+#### rearSeatHeatersInstalled
+#### rearSeatType
+#### restraintControlsType
+#### restraintsHardwareType
+#### rhd
+#### roofColor
+#### screenAdhesiveType
+#### seatHeatersInstalled
+#### seatType
+#### shutterType
+#### sideMarkerInstalled
+#### simulatedS1
+#### softPackConfig
+#### spoilerInstalled
+#### standbySupplyRequired
+#### steeringColumnType
+#### steeringHeat
+#### steeringWheel
+#### sunroofInstalled
+#### thBusInstalled
+#### thirdRowSeatHeatType
+#### thirdRowSeatType
+#### topSpeedEnum
+#### towPackage
+#### tpmsType
+#### tractionControlType
+#### twelveVBatteryType
+#### w025_easMia
+#### w027_epbMia
+#### w037_espMia
+#### w044_tpmsMia
+#### w104_ocsMia
+#### w105_rcmMia
+#### w170_parkAssistMia
+#### w181_parkAssistSystemDTC
+#### w206_parkAssistVersMismatch
+#### w265_ibstMia
+#### w268_ibstFailure
+#### w277_iBoosterReduced
+#### wakeupReason
+#### wheelType
+#### willBeGoingToSleep
+#### wiperHeatInstalled
+#### wouldSleep
+#### xmAntInstalled
+
