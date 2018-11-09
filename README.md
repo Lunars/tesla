@@ -1,4 +1,4 @@
-# Welcome to the Tesla Root Info Dump
+# Welcome to the Tesla root information dump
 
 We're just getting started filling this out, so feel free to jump in and help document things that need to be here. We're focused on documenting helpful tools, scripts, and information about what you can do with root access. 
 
