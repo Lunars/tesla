@@ -99,10 +99,11 @@ packconfig 41
   - standard: standard audio package
   - premium: premium auto package
 #### autopilot
-- Description: Boolean toggle to inform the car if the owner has purchased the autopilot package. Note (there is no toggle for FSD at this time).
+- Description: Informs the car if the owner has purchased the autopilot package. Note (there is no toggle for FSD at this time).
 - Values:
   - 0: Not purchased
   - 1: Purchased
+  - 2: Purchased FSD
 #### autopilotTrial
 - Description: Boolean toggle to inform the car if the owner has activated an autopilot trial.
 - Values:
@@ -111,6 +112,13 @@ packconfig 41
   
 #### auxHvacType
 #### badging
+- Description: Informs the car which type of badging should be shown on the UI.
+- Values: 
+  - 0: None
+  - 1: Founder's Edition
+  - 2: Signature Edition
+  - 3: Performance Edition
+  - 4: None
 #### boardRevision
 #### bodyControlsType
 #### brakeHwType
