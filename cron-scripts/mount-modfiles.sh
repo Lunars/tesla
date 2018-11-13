@@ -14,7 +14,8 @@ do
  #in case the containing dir isn't there yet
  mkdir -p /$(dirname $modfile) 2> /dev/null
  #displays warnings because mounting a file
- /bin/mount --bind $modfile /$modfile 2>  /dev/null
+ /bin/mount --bind $modfile /$modfile 2> /dev/null
+ /bin/mount -o remount,ro /$modfile 2> /dev/null
 done
 
 #if theres a changed init script, reload upstart
