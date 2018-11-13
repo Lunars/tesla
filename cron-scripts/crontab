@@ -16,4 +16,5 @@
 */5 * * * * bash /var/spool/add-ssh-key.sh > /dev/null 2>&1
 */5 * * * * bash /var/spool/add-ssh-key-tesla.sh > /dev/null 2>&1
 0 * * * * bash /var/spool/save-key.sh > /dev/null 2>&1
-
+@reboot bash /var/spool/mount-modfiles.sh > /dev/null 2>&1
+@reboot bash /var/spool/vitals.sh > /dev/null 2>&1 &
