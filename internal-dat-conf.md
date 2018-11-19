@@ -9,11 +9,20 @@ access-internal-dat.pl <key> <value> <user>
 access-internal-dat.pl badging 1 "Toolbox"
 ```
 
-## View your current settings
+## Change your current settings
 
 ```bash
-gwxfer gw:/internal.dat i.d
-cat i.d
+# download the settings
+gwxfer gw:/internal.dat ~/i.d
+
+# make your modifications
+nano ~/i.d
+
+# upload the settings
+gwxfer ~/i.d gw:/internal.dat 
+
+# apply the settings
+emit-reboot-gateway
 ```
 
 ## For pre-ap, to force the autopilot cluster
