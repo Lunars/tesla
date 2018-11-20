@@ -3,9 +3,13 @@
 
 ## Upload images to imgur.com
 
+1.
+
 ```console
 curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o ~/imgur.sh
 ```
+
+2. 
 
 ```bash
 #!/bin/bash
@@ -20,6 +24,13 @@ CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
 scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 bash ~/imgur.sh $CIDPATH $ICPATH
+```
+
+3. 
+
+```console
+chmod +x ~/imgur.sh
+bash ~/imgur.sh
 ```
 
 ## CID
