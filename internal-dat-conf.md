@@ -44,6 +44,7 @@ sudo edit-settings-conf.pl -a vapi/forceHasLaneDepartureWarning=true
 sudo edit-settings-conf.pl -a vapi/forceHasAutoHiBeam=true
 
 ssh cid
+access-internal-dat.pl autopilot 2 "Toolbox"
 access-internal-dat.pl lanedepature 1 "Toolbox"
 access-internal-dat.pl blindspot 1 "Toolbox"
 
