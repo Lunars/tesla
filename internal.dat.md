@@ -162,7 +162,7 @@ packconfig 41
 #### gpsType
  - Description: GPS mapping type
  - Values:
-  - ublox (only known value(
+  - ublox (only known value)
 #### headLampType
 #### headlightLevelerInstalled
 #### homelinkInstalled
