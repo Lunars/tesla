@@ -3,13 +3,13 @@
 
 ## Upload images to imgur.com
 
-1.
+1. Save imgur.sh
 
 ```console
 curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o ~/imgur.sh
 ```
 
-2. 
+2. Save uploadImage.sh
 
 ```bash
 #!/bin/bash
@@ -26,11 +26,12 @@ scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 bash ~/imgur.sh $CIDPATH $ICPATH
 ```
 
-3. 
+3. Run
 
 ```console
+chmod +x ~/uploadImage.sh
 chmod +x ~/imgur.sh
-bash ~/imgur.sh
+bash ~/uploadImage.sh
 ```
 
 ## CID
