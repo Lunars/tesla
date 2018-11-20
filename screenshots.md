@@ -7,7 +7,7 @@
 curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o ~/imgur.sh
 ```
 
-```console
+```bash
 #!/bin/bash
 
 get_path_from_screenshot() {
