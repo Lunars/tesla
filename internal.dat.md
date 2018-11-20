@@ -130,6 +130,15 @@ packconfig 41
 #### country
 #### curveLightingType
 #### dasHw
+- Description: Informs the car of what kind of driving assist hardware is installed. /var/etc/dashw doesn't exist on Model 3
+- Values:
+  - empty: is pre-DAS
+  - 0: DAS0 (harnessed for DAS2.0, but no DAS ECU installed)
+  - 1: DAS1
+  - 2: DAS2.0
+  - 3: DAS2.5
+  - 4: DAS3.0
+ 
 #### dimmableRvMirror
 #### drlInstalled
 #### efficiencyPackage
@@ -151,6 +160,9 @@ packconfig 41
 #### frontFogInstalled
 #### frontSeatVentilationType
 #### gpsType
+ - Description: GPS mapping type
+ - Values:
+  - ublox (only known value(
 #### headLampType
 #### headlightLevelerInstalled
 #### homelinkInstalled
