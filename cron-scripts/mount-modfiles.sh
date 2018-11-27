@@ -1,4 +1,8 @@
 #!/bin/bash -x
+
+# Usage: Save path to /var/added/modfiles/.../.../...
+# Where ... is the path you want on the root of CID 
+
 #if an argument is provided multiple directories are allowed
 
 #first umount
