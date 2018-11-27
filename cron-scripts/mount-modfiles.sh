@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 # Usage: Save path to /var/added/modfiles/.../.../...
-# Where ... is the path you want on the root of CID 
+# Where ... is the path you want on the root of CID or IC
 
 #if an argument is provided multiple directories are allowed
 
