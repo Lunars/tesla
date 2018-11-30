@@ -67,6 +67,8 @@ tesla1@cid-RedactedVIN$ sudo get-gateway-config.sh;  cat /var/etc/gateway.cfg
 
 ##### Sample output
 
+Taken from a fully loaded P85+, no rear seats
+
 ```
 vin ***
 birthday ***
