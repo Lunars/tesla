@@ -552,7 +552,7 @@ FEATURE_trafficMapTilesEnabled,true
 FEATURE_tvoiceDisabled,true
 FEATURE_vectorMapTilesEnabled,true
 FILESYNC_status,{"nav_us":{"state":"idle","pct":0,"rsync_exit_code":-2,"current_version":"NA-180906-1605","target_version":"NA-180906-1605"}}
-FILESYNC_toolboxTrigger,
+FILESYNC_toolboxTrigger,null-added-manually-by-lunars-tesla---no-value
 GMAP_cachedLoadCounter,0
 GMAP_networkLoadCounter,0
 GTW_chargeState,Disconnected
