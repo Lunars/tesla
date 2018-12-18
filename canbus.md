@@ -1,3 +1,8 @@
+Unlock car:
+
+`sdv GUI_lockRequest unlock`
+
+
 Only works when you're sitting in the driver's seat, AFAIK
 
 # seat
