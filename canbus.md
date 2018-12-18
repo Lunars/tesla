@@ -3,7 +3,7 @@ Unlock car:
 `sdv GUI_lockRequest unlock`
 
 
-Only works when you're sitting in the driver's seat, AFAIK
+The rest below only works when you're sitting in the driver's seat, AFAIK
 
 # seat
 printf "\x01\x03\x02\x09\x04\x00" | socat - udp:gw:3500
