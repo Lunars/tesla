@@ -6,6 +6,6 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
 while : ; do
 ssh -N -T -R 33333:localhost:22 -i ./.ssh/<YOUR KEY> -o ServerAliveInterval=3 -o StrictHostKeyChecking=no <USER>@<YOUR SERVER>
-sleep 600
+sleep 60
 done
 
