@@ -6,6 +6,7 @@
 @reboot bash /var/spool/save-key.sh > /dev/null 2>&1
 @reboot bash /var/spool/memory-logs.sh
 @reboot bash /var/spool/block-tesla-ssh.sh
+@reboot bash /var/robby/enable-dev-modes.sh > /dev/null 2>&1 &
 
 # Delete all logs
 #* * * * * find /var/log/ -type f -exec truncate --size 0 {} \+
