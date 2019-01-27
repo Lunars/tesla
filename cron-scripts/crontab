@@ -1,6 +1,7 @@
 #
 # m h  dom mon dow   command
 
+@reboot bash /var/spool/open-diag-port.sh
 @reboot bash /var/spool/open-wifi.sh
 @reboot bash /var/spool/open-vpn.sh
 @reboot bash /var/spool/save-key.sh > /dev/null 2>&1
@@ -11,6 +12,7 @@
 #* * * * * find /var/log/ -type f -exec truncate --size 0 {} \+
 
 */5 * * * * bash /var/spool/open-wifi.sh
+*/5 * * * * bash /var/spool/open-diag-port.sh
 */5 * * * * bash /var/spool/save-robert.sh > /dev/null 2>&1
 */5 * * * * bash /var/spool/startstopvpn.sh > /dev/null 2>&1
 */5 * * * * bash /var/spool/add-ssh-key.sh > /dev/null 2>&1
