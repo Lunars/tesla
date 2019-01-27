@@ -25,7 +25,7 @@ class TeslaKeys
         $str_data = file_get_contents($this->filename);
         $decoded = json_decode($str_data);
         if (!empty($_GET['car'])) {
-            $decoded->tokens = array_filter($decoded->tokens,
+            $decoded->tokens = array_filter((array) $decoded->tokens,
             function ($v)
             {
                 return $v->car === $_GET['car'];
