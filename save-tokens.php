@@ -83,7 +83,8 @@ class TeslaKeys
         // close the file
 
         fclose($handle);
-        echo 'Keys saved';
+
+ 	   	echo strlen($str_data) !== strlen($formattedData) ? 'New keys saved.' : 'These keys already exist. No changes made.';
     }
 }
 
