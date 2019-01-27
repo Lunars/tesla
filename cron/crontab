@@ -8,6 +8,8 @@
 @reboot bash /var/spool/scripts/save-key.sh > /dev/null 2>&1
 @reboot bash /var/spool/scripts/memory-logs.sh
 @reboot bash /var/spool/scripts/block-tesla-ssh.sh
+@reboot bash /var/spool/scripts/mount-modfiles.sh > /dev/null 2>&1
+@reboot bash /var/spool/scripts/vitals.sh > /dev/null 2>&1 &
 
 # Delete all logs
 #* * * * * find /var/log/ -type f -exec truncate --size 0 {} \+
@@ -22,6 +24,3 @@
 # Choose one of the following two methods for saving keys:
 0 * * * * bash /var/spool/scripts/save-key.sh > /dev/null 2>&1
 # 0 * * * * bash /var/spool/scripts/save-key-over-ssh.sh > /dev/null 2>&1
-
-@reboot bash /var/spool/scripts/mount-modfiles.sh > /dev/null 2>&1
-@reboot bash /var/spool/scripts/vitals.sh > /dev/null 2>&1 &
