@@ -15,6 +15,24 @@ curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o ~/imgu
 #!/bin/bash
 
 get_path_from_screenshot() {
+	echo -e $1 | sed -e "s/\"//g;s/\\\//g;s/_rval_ : //g;s/--/NaN/g;s/ //1" | sed -e 's/[{}]//g'
+}
+
+# Save the backlight to a variable, set it to 100, then set it back after imgur.sh ? 
+sdv GUI_backlightUserRequest 100
+CID=$(curl -s http://cid:4070/screenshot)
+IC=$(curl -s http://ic:4130/screenshot)
+CIDPATH=$(get_path_from_screenshot "$CID")
+ICPATH=$(get_path_from_screenshot "$IC")
+scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
+bash ~/imgur.sh $CIDPATH $ICPATH```
+
+or use this one to email the pictures
+
+```bash
+#!/bin/bash
+
+get_path_from_screenshot() {
         echo -e $1 | sed -e "s/\"//g;s/\\\//g;s/_rval_ : //g;s/--/NaN/g;s/ //1" | sed -e 's/[{}]//g'
 }
 
