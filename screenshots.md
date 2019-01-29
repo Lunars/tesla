@@ -25,7 +25,9 @@ IC=$(curl -s http://ic:4130/screenshot)
 CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
 scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
-bash ~/imgur.sh $CIDPATH $ICPATH```
+bash ~/imgur.sh $CIDPATH $ICPATH
+
+```
 
 or use this one to email the pictures
 
