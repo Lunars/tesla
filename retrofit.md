@@ -4,8 +4,15 @@
 
 1053570- 1 00-D - HD/LP ASY, SAE UP-LEVEL, LH
 
+# TPMS
+
+internal.dat: `tpmstype 3`
+
+https://static.nhtsa.gov/odi/tsbs/2016/SB-10081828-5448.pdf
 
 # PuP
+
+internal.dat: `ambientlightsinstalled 1`
 
 Interior door lighting
 ```
@@ -28,6 +35,8 @@ https://www.abstractocean.com/foot-well-light-brackets-for-model-s-one-pair-tesl
 
 ## Heated steering wheel, 2015+ only
 
+internal.dat: `steeringHeat 1`
+
 Wiring exists in the steering column for all vehicles built after Dec 8 2014
 
 $250 - 1036774-00-D - Wheel with heated component
@@ -35,6 +44,8 @@ $250 - 1036774-00-D - Wheel with heated component
 $140 - Steering heater ecu and wiring harness - https://i.imgur.com/gTzLSNQ.png
 
 ## Washer nozzles
+
+internal.dat: `nozzleHeatInstalled 1`
 
 Just the washer nozzles that can be heated: 
 
