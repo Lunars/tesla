@@ -8,3 +8,25 @@ P/N 1002977-00-F LH Front Door ($54.48)
 P/N 1007988-00-F LH Rear Door ($45.98)
 ```
 Or buy an LED strip on Amazon for $7
+
+https://www.abstractocean.com/foot-well-light-brackets-for-model-s-one-pair-tesla-part-1016677-00-a/#product-additional-info
+
+# Subzero
+
+## Heated steering wheel, 2015+ only
+
+Wiring exists in the steering column for all vehicles built after Dec 8 2014
+
+$250 - 1036774-00-D - Wheel with heated component
+
+$140 - Steering heater ecu and wiring harness - https://i.imgur.com/gTzLSNQ.png
+
+## Washer nozzles
+
+Just the washer nozzles that can be heated: 
+
+$25 - 1005404-01-E - Heated washer nozzle assembly - 2x
+
+May not be needed, but it includes a harness and wiring. It could be the same as the one currently installed in the car
+
+$60 - 1025202-00-C - Windshield washer nozzles with harness and hose 
