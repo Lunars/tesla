@@ -319,6 +319,11 @@ Use with `exterior` option
 #### w277_iBoosterReduced
 #### wakeupReason
 #### wheelType
+
+After 9, add 6 for your steering wheel number
+
+Eg, 13: arachnid 21 black = `wheelType 19`
+
 ```
 0: BASE_19
 1: SILVER_21
