@@ -16,6 +16,12 @@ P/N 1007988-00-F LH Rear Door ($45.98)
 ```
 Or buy an LED strip on Amazon for $7
 
+https://www.amazon.com/gp/product/B005GL5R56/
+
+https://www.amazon.com/gp/product/B079C6T6HJ/
+
+https://www.amazon.com/gp/product/B00VDOD9AA
+
 https://www.abstractocean.com/foot-well-light-brackets-for-model-s-one-pair-tesla-part-1016677-00-a/#product-additional-info
 
 # Subzero
