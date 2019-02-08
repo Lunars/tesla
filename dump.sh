@@ -53,3 +53,6 @@ if [[ "$@" != "raw" ]]; then
 fi
 
 cat ${internalDatFileName} | socat - tcp:termbin.com:9999
+
+rm -rf ${dataValuesFileName}
+rm -rf ${internalDatFileName}
