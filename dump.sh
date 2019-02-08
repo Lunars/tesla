@@ -46,7 +46,7 @@ cat ${dataValuesFileName} | socat - tcp:termbin.com:9999
 
 access-internal-dat.pl --get ${internalDatFileName}
 
-if [[ "$@" == "raw" ]]; then
+if [[ "$@" != "raw" ]]; then
 	sed -i '/^vin/ d' ${internalDatFileName}
 	sed -i '/^birthday/ d' ${internalDatFileName}
 	sed -i '/^#/ d' ${internalDatFileName}
