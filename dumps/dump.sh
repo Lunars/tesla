@@ -8,7 +8,7 @@
 dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"
 
-curl -s "http://localhost:4035/get_data_values?format=csv&show_invalid=true" >> ${dataValuesFileName}
+curl -s "http://localhost:4035/get_data_values?format=csv&show_invalid=false" >> ${dataValuesFileName}
 
 if [[ "$@" != "raw" ]]; then
 	sed -i '/^BLUETOOTH_pairedDeviceInfo/ d' ${dataValuesFileName}
@@ -19,11 +19,18 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^CONN_cellPhoneNumber/ d' ${dataValuesFileName}
 	sed -i '/^CONN_cellSimNumber/ d' ${dataValuesFileName}
 	sed -i '/^CONN_vpnInterfaceIP/ d' ${dataValuesFileName}
+	sed -i '/^GUI_navLocalizedCurrentStreetName/ d' ${dataValuesFileName}
+	sed -i '/^GUI_odometer/ d' ${dataValuesFileName}
 	sed -i '/^GUI_PINToDrivePassword/ d' ${dataValuesFileName}
+	sed -i '/^GUI_valetModePassword/ d' ${dataValuesFileName}
 	sed -i '/^LINK_wifiAvailableNetworks/ d' ${dataValuesFileName}
 	sed -i '/^LINK_wifiKnownNetworks/ d' ${dataValuesFileName}
 	sed -i '/^LINK_wifiSsid/ d' ${dataValuesFileName}
+	sed -i '/^LOC_correctedLat/ d' ${dataValuesFileName}
+	sed -i '/^LOC_correctedLng/ d' ${dataValuesFileName}
 	sed -i '/^LOC_estimatedLat/ d' ${dataValuesFileName}
+	sed -i '/^LOC_estimatedLngNative/ d' ${dataValuesFileName}
+	sed -i '/^LOC_estimatedLngWGS/ d' ${dataValuesFileName}
 	sed -i '/^LOC_estimatedLocation/ d' ${dataValuesFileName}
 	sed -i '/^LOC_estimatedLon/ d' ${dataValuesFileName}
 	sed -i '/^LOC_geoLat/ d' ${dataValuesFileName}
@@ -37,10 +44,19 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^MEDIA_spotifyTeslaPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyTeslaUsername/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyUsername/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_teslaPassword/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_teslaUsername/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_tuneInPassword/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_tuneInUsername/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleCity/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleLatitude/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleLocation/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleLongitude/ d' ${dataValuesFileName}
+	sed -i '/^TEL_deviceId/ d' ${dataValuesFileName}
+	sed -i '/^TEL_tripId/ d' ${dataValuesFileName}
+	sed -i '/^VAPI_hiResOdometer/ d' ${dataValuesFileName}
+	sed -i '/^VAPI_odometer/ d' ${dataValuesFileName}
+	sed -i '/^WIFI_macAddress/ d' ${dataValuesFileName}
 	sed -i '/^WIFI_network/ d' ${dataValuesFileName}
 fi
 
