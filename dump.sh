@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
-# Usage: ./dump.sh, ./dump.sh raw
+# Usage: bash ./dump.sh
+# Usage: bash ./dump.sh raw
+
 # Returns two URLs for your car's config
 
-dataValuesFileName="~/export.dump"
-internalDatFileName="~/internaldat.dump"
+dataValuesFileName="./export.dump"
+internalDatFileName="./internaldat.dump"
 
 curl -s "http://localhost:4035/get_data_values?format=csv&show_invalid=true" >> ${dataValuesFileName}
 
