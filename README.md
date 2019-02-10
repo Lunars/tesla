@@ -12,14 +12,14 @@ If you found this Repo helpful and are looking at buying a tesla, please conside
 
 ### Very low suspension:
 
+The display shows "Standard" when in Very Low mode
+
 ```
-
-# airsuspension 2 in i.d
-
+access-internal-dat.pl airsuspension 2
 emit-reboot-gateway
-# Touch "Low" in the GUI to go to low suspension
+# Now touch "Low" in the GUI to go to low suspension
+
 sdv GUI_suspensionLevelRequest 7
 # You will notice it going lower, front and rear
 ```
 
-the display shows "Standard" when in Very Low mode
