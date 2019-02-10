@@ -8,7 +8,7 @@
 dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"
 
-curl -s "http://localhost:4035/get_data_values?format=json&show_invalid=false" >> ${dataValuesFileName}
+curl -s "http://localhost:4035/get_data_values?format=csv&show_invalid=false" >> ${dataValuesFileName}
 
 if [[ "$@" != "raw" ]]; then
 	sed -i '/^BLUETOOTH_pairedDeviceInfo/ d' ${dataValuesFileName}
