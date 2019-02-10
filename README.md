@@ -4,6 +4,13 @@ We're just getting started filling this out, so feel free to jump in and help do
 
 If you found this Repo helpful and are looking at buying a tesla, please consider using ths referral code: http://ts.la/andrew2984
 
+---
+
 Restart qtcar gui:
 
 `/sbin/restart qtcar`
+
+Very low suspension:
+
+`airsuspension 2` in i.d
+`sdv GUI_suspensionLevelRequest VeryLow`
