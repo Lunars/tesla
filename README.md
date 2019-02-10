@@ -6,11 +6,11 @@ If you found this Repo helpful and are looking at buying a tesla, please conside
 
 ---
 
-Restart qtcar gui:
+### Restart qtcar gui:
 
 `/sbin/restart qtcar`
 
-Very low suspension:
+### Very low suspension:
 
 `airsuspension 2` in i.d
 
