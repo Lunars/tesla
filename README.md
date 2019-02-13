@@ -12,8 +12,6 @@ If you found this Repo helpful and are looking at buying a tesla, please conside
 
 ### Very low suspension:
 
-The display shows "Standard" when in Very Low mode
-
 ```
 access-internal-dat.pl airsuspension 2
 emit-reboot-gateway
@@ -22,4 +20,18 @@ emit-reboot-gateway
 sdv GUI_suspensionLevelRequest 7
 # You will notice it going lower, front and rear
 ```
+The display shows "Standard" when in Very Low mode
 
+Or, 
+
+You may be able to enable it in the GUI:
+
+```
+access-internal-dat.pl airsuspension 2
+sdv VAPI_carType ModelX
+# or sdv VAPI_carType 1
+# lv VAPI_carType to confirm it changed
+/sbin/restart qtcar
+```
+
+![](https://www.teslarati.com/wp-content/uploads/2015/09/Model-X-Firmware-7-Suspension.jpg)
