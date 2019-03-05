@@ -19,6 +19,7 @@ get_path_from_screenshot() {
 }
 
 # Save the backlight to a variable, set it to 100, then set it back after imgur.sh ? 
+bklght=$(lv GUI_backlightUserRequest)
 sdv GUI_backlightUserRequest 100
 CID=$(curl -s http://cid:4070/screenshot)
 IC=$(curl -s http://ic:4130/screenshot)
@@ -26,7 +27,8 @@ CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
 scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 bash ~/imgur.sh $CIDPATH $ICPATH
-
+sleep 3
+sdv GUI_backlightUserRequest $bklght
 ```
 
 or use this one to email the pictures
