@@ -7,7 +7,10 @@ nano ~/dashfootage/conv.sh
 chmod +x ~/dashfootage/conv.sh
 gwxfer gw:/DAS ~/dashfootage/
 gwxfer gw:/EDR/DAS ~/dashfootage/
-bash ~/dashfootage/conv.sh
+cd ~/dashfootage/
+bash conv.sh
+find . -type f ! -iregex '.*\.\(gif\|sh\)$' -delete
+find . -type d -empty -delete
 ```
 
 conv.sh
