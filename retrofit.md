@@ -4,6 +4,13 @@
 
 1053570- 1 00-D - HD/LP ASY, SAE UP-LEVEL, LH
 
+gateway:
+
+```
+headlamp led
+turnsignal led
+```
+
 # TPMS
 
 internal.dat: `tpmstype 3`
