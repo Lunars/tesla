@@ -52,8 +52,11 @@ $250 - 1036774-00-D - Wheel with heated component
 
 $140 - Steering heater ecu and wiring harness - https://i.imgur.com/gTzLSNQ.png
 Get the one for your car
+
+```
 1043892-00-A STEERING COLUMN CONTROL MODULE - ADAPTIVE CRUISE CONTROL, GENERATION 2 STEERING, AND HEATER 
 1057356-00-B STEERING COLUMN CONTROL MODULE - ADAPTIVE CRUISE CONTROL, ?GENERATION 2 STEERING, AND HEATER 
+```
 
 ## Washer nozzles
 
