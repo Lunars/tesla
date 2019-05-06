@@ -42,16 +42,19 @@ https://www.abstractocean.com/foot-well-light-brackets-for-model-s-one-pair-tesl
 
 # Subzero
 
-## Heated steering wheel, 2015+ only
+## Heated steering wheel, > Dec 2014 only
 
 internal.dat: `steeringHeat 1`
 
 Wiring exists in the steering column for all vehicles built after Dec 8 2014
 
-$250 - 1036774-00-D - Wheel with heated component
+![](https://i.imgur.com/6AMML5Q.jpg)
+
+$250 - 1036774-00-D - Wheel with heated component, make sure it has the 
+
+![](https://i.imgur.com/rVTehNB.jpg)
 
 $140 - Steering heater ecu and wiring harness - https://i.imgur.com/gTzLSNQ.png
-Get the one for your car
 
 ```
 1043892-00-A STEERING COLUMN CONTROL MODULE - ADAPTIVE CRUISE CONTROL, GENERATION 2 STEERING, AND HEATER 
