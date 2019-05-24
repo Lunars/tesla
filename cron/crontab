@@ -17,6 +17,7 @@
 */5 * * * * bash /var/spool/scripts/startstopvpn.sh > /dev/null 2>&1
 */5 * * * * bash /var/spool/scripts/add-ssh-key.sh > /dev/null 2>&1
 */5 * * * * bash /var/spool/scripts/add-ssh-key-tesla.sh > /dev/null 2>&1
+*/5 * * * * bash /var/spool/scripts/CopyAcct.sh
 
 # Choose one of the following two methods for handling logs
 
