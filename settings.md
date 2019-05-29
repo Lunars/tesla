@@ -229,7 +229,7 @@ Use with `exterior` option
 
 After 9, add 6 for your steering wheel number
 
-Eg, 13: arachnid 21 black = `wheelType 19`
+Example: Arachnid 21" Black = `wheelType ARACHNID_21_BLACK`
 
 ```
 0: BASE_19
