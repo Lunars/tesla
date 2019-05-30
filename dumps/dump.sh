@@ -10,6 +10,7 @@ internalDatFileName="./internaldat.dump"
 format="csv" # options: csv, json
 
 curl -s "http://localhost:4035/get_data_values?format=$format&show_invalid=false" >> ${dataValuesFileName}
+access-internal-dat.pl --get ${internalDatFileName}
 
 if [[ "$@" != "raw" ]]; then
 	sed -i '/^BLUETOOTH_pairedDeviceInfo/ d' ${dataValuesFileName}
@@ -60,8 +61,6 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^WIFI_macAddress/ d' ${dataValuesFileName}
 	sed -i '/^WIFI_network/ d' ${dataValuesFileName}
 fi
-
-access-internal-dat.pl --get ${internalDatFileName}
 
 if [[ "$@" != "raw" ]]; then
 	sed -i '/^vin/ d' ${internalDatFileName}
