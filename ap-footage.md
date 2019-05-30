@@ -3,8 +3,8 @@ You can retrieve the footage AP auto generates when it thinks there's a crash im
 ```console
 ssh tesla1@cid
 mkdir ~/dashfootage
-gwxfer gw:/DAS ~/dashfootage/
-gwxfer gw:/EDR/DAS ~/dashfootage/
+gwxfer gw:/DAS/ ~/dashfootage/
+gwxfer gw:/EDR/DAS/ ~/dashfootage/
 exit
 
 sudo apt-get install imagemagick
@@ -12,7 +12,8 @@ mkdir ~/dashfootage
 nano ~/dashfootage/conv.sh
 chmod +x ~/dashfootage/conv.sh
 
-scp -r tesla1@10.8.0.3:~/dashfootage ~/dashfootage
+scp -r tesla1@cid:~/dashfootage ~/dashfootage
+# scp -P 33333 -r root@localhost:~/dashfootage ~/dashfootage
 
 cd ~/dashfootage/
 bash conv.sh
