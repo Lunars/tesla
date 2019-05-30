@@ -4,10 +4,6 @@ In order to enable Spotify on the CID you must login to the CID and execute the 
 
 ```console
 tesla1@cid$ edit-settings-conf.pl -a spotify/enable=1
-
-OR
-
-tesla1@cid$ sdv GUI_spotifyEnableOverride 1
 ```
 
 ## Disabling Slacker radio

@@ -1,24 +1,23 @@
 
 # Local Screenshots
 
-## Upload images to imgur.com
+## A) Upload images to imgur.com
 
-1. Save imgur.sh
-
-```console
-curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o ~/imgur.sh
-```
-
-2. Save uploadImage.sh
+Save uploadImage.sh
 
 ```bash
 #!/bin/bash
+
+imgurAPI="/var/spool/imgur.sh"
+if [ ! -f "$imgurAPI" ]; then
+    echo "Downloading imgur library"
+    curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o $imgurAPI
+fi
 
 get_path_from_screenshot() {
 	echo -e $1 | sed -e "s/\"//g;s/\\\//g;s/_rval_ : //g;s/--/NaN/g;s/ //1" | sed -e 's/[{}]//g'
 }
 
-# Save the backlight to a variable, set it to 100, then set it back after imgur.sh ? 
 bklght=$(lv GUI_backlightUserRequest)
 sdv GUI_backlightUserRequest 100
 CID=$(curl -s http://cid:4070/screenshot)
@@ -26,12 +25,11 @@ IC=$(curl -s http://ic:4130/screenshot)
 CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
 scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
-bash ~/imgur.sh $CIDPATH $ICPATH
-sleep 3
 sdv GUI_backlightUserRequest $bklght
+bash $imgurAPI $CIDPATH $ICPATH
 ```
 
-or use this one to email the pictures
+## B) Email as attachment
 
 ```bash
 #!/bin/bash
@@ -42,12 +40,12 @@ get_path_from_screenshot() {
 
 #SMTP for sending email
 server="smtps://smtp.somwhere.com:465"
-m_file="/tmp/imgmail.html"
-m_data="/tmp/imgmail.txt"
 m_from="yoursender@somwhere.com"
 m_to="yourdestination@somwhereelse.com"
 m_usr="yoursender"
 m_pwd="yoursender_password"
+m_file="/tmp/imgmail.html"
+m_data="/tmp/imgmail.txt"
 
 # Save the backlight to a variable, set it to 100, then set it back after imgur.sh ?
 bklght=$(lv GUI_backlightUserRequest)

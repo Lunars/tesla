@@ -1,15 +1,22 @@
 # How to 
 
-## Update internal.dat
+## Automatic: update internal.dat
+
+The easy method
 
 ```bash
 access-internal-dat.pl <key> <value> <user>
 
 # Example
-access-internal-dat.pl badging 1 "Toolbox"
+access-internal-dat.pl badging 1 "comment this change"
+
+# apply the settings
+emit-reboot-gateway
 ```
 
-## Change your current settings
+## Manual: change your current settings
+
+The manual longer method
 
 ```bash
 # download the settings
