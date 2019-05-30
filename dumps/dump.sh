@@ -7,8 +7,9 @@
 
 dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"
+format="csv" # options: csv, json
 
-curl -s "http://localhost:4035/get_data_values?format=csv&show_invalid=false" >> ${dataValuesFileName}
+curl -s "http://localhost:4035/get_data_values?format=$format&show_invalid=false" >> ${dataValuesFileName}
 
 if [[ "$@" != "raw" ]]; then
 	sed -i '/^BLUETOOTH_pairedDeviceInfo/ d' ${dataValuesFileName}
@@ -60,8 +61,6 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^WIFI_network/ d' ${dataValuesFileName}
 fi
 
-cat ${dataValuesFileName} | socat - tcp:termbin.com:9999
-
 access-internal-dat.pl --get ${internalDatFileName}
 
 if [[ "$@" != "raw" ]]; then
@@ -70,7 +69,11 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^#/ d' ${internalDatFileName}
 fi
 
-cat ${internalDatFileName} | socat - tcp:termbin.com:9999
+internalDatURL=$(cat ${internalDatFileName} | socat - tcp:termbin.com:9999)
+dataValuesURL=$(cat ${dataValuesFileName} | socat - tcp:termbin.com:9999)
 
 rm -rf ${dataValuesFileName}
 rm -rf ${internalDatFileName}
+
+echo "internal.dat $internalDatURL"
+echo "export.$format $dataValuesURL"
