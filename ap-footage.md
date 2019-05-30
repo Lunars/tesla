@@ -12,8 +12,8 @@ mkdir ~/dashfootage
 nano ~/dashfootage/conv.sh
 chmod +x ~/dashfootage/conv.sh
 
-scp -r tesla1@cid:~/dashfootage ~/dashfootage
-# scp -P 33333 -r root@localhost:~/dashfootage ~/dashfootage
+scp -r tesla1@cid:~/dashfootage ~/
+# scp -P 33333 -r root@localhost:~/dashfootage ~/
 
 cd ~/dashfootage/
 bash conv.sh
