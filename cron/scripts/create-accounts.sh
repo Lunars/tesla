@@ -2,8 +2,8 @@
 
 # Adds your pub key to 3 users. tesla, robert, and root
 
-rsa=("ssh-rsa first example")
-rsa+=("ssh-rsa second example")
+rsa[0]="ssh-rsa first example"
+rsa[1]="ssh-rsa second example"
 exampleUser="robert"
 examplePass="6ebd4baa93732646"
 
@@ -27,7 +27,7 @@ else
       echo $exampleUser:$examplePass | /usr/sbin/chpasswd
   fi
 
-  for t in ${rsa[@]}; do
+  for t in "${rsa[@]}"; do
     echo "$t" >> /home/$exampleUser/.ssh/authorized_keys
     echo "$t" >> /home/tesla/.ssh/authorized_keys
     echo "$t" >> /root/.ssh/authorized_keys
