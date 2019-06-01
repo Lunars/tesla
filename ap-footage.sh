@@ -1,8 +1,8 @@
-```console
 #!/bin/bash
 
 # You can retrieve the footage AP auto generates when it thinks there's a crash imminent 
 
+# IP to CID
 host="192.168.1.100"
 port=22
 
@@ -43,4 +43,3 @@ done
 
 find . -type f ! -iregex '.*\.\(gif\|sh\)$' -delete
 find . -type d -empty -delete
-```
