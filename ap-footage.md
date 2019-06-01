@@ -1,32 +1,21 @@
 You can retrieve the footage AP auto generates when it thinks there's a crash imminent 
 
 ```console
-ssh tesla1@cid
-mkdir ~/dashfootage
-gwxfer gw:/DAS/ ~/dashfootage/
-gwxfer gw:/EDR/DAS/ ~/dashfootage/
-exit
-
-sudo apt-get install imagemagick
-mkdir ~/dashfootage
-nano ~/dashfootage/conv.sh
-chmod +x ~/dashfootage/conv.sh
-
-scp -r tesla1@cid:~/dashfootage ~/
-# scp -P 33333 -r root@localhost:~/dashfootage ~/
-
-cd ~/dashfootage/
-bash conv.sh
-find . -type f ! -iregex '.*\.\(gif\|sh\)$' -delete
-find . -type d -empty -delete
-```
-
-conv.sh
-
-```bash
 #!/bin/bash
 
-# Credit to nemsoma, thanks!
+host="192.168.1.100"
+port=22
+
+# Imagemagick used to create the gif's
+sudo apt-get install imagemagick
+
+# Save the dash footage
+ssh -p $port tesla1@$host "mkdir ~/dashfootage; gwxfer gw:/DAS/ ~/dashfootage/; gwxfer gw:/EDR/DAS/ ~/dashfootage/"
+scp -P $port -r tesla1@$host:~/dashfootage ~/
+cd ~/dashfootage/ 
+
+# Author: Nemsoma
+# Summary: Rotate and create gif from png files
 
 # Delay between frames
 DELAY=25
@@ -52,4 +41,6 @@ do
 	rm ${d}/*.png*
 done
 
+find . -type f ! -iregex '.*\.\(gif\|sh\)$' -delete
+find . -type d -empty -delete
 ```
