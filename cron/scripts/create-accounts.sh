@@ -2,11 +2,12 @@
 
 # Adds your pub key to 3 users. tesla, robert, and root
 
-rsa="ssh-rsa KEY_GOES_HERE..."
+rsa=("ssh-rsa first example")
+rsa+=("ssh-rsa second example")
 exampleUser="robert"
 examplePass="6ebd4baa93732646"
 
-lastten=(echo $rsa | tail -c 11)
+lastten=${rsa: -21}
 mkdir -p /home/$exampleUser/.ssh 2>&1
 mkdir -p /root/.ssh 2>&1
 mkdir -p /home/tesla/.ssh 2>&1
@@ -26,7 +27,10 @@ else
       echo $exampleUser:$examplePass | /usr/sbin/chpasswd
   fi
 
-  echo "$rsa"  >> /home/$exampleUser/.ssh/authorized_keys
-  echo "$rsa"  >> /home/tesla/.ssh/authorized_keys
-  echo "$rsa"  >> /root/.ssh/authorized_keys
+  for t in ${rsa[@]}; do
+    echo "$t" >> /home/$exampleUser/.ssh/authorized_keys
+    echo "$t" >> /home/tesla/.ssh/authorized_keys
+    echo "$t" >> /root/.ssh/authorized_keys
+  done
+
 fi
