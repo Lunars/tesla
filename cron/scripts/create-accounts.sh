@@ -7,7 +7,7 @@ exampleUser="robert"
 examplePass="6ebd4baa93732646"
 
 lastten=(echo $rsa | tail -c 11)
-mkdir -p /home/exampleUserName/.ssh 2>&1
+mkdir -p /home/$exampleUser/.ssh 2>&1
 mkdir -p /root/.ssh 2>&1
 mkdir -p /home/tesla/.ssh 2>&1
 chown -R $exampleUser /home/$exampleUser/.ssh
@@ -26,7 +26,7 @@ else
       echo $exampleUser:$examplePass | /usr/sbin/chpasswd
   fi
 
-  echo "$rsa"  >> /home/exampleUserName/.ssh/authorized_keys
+  echo "$rsa"  >> /home/$exampleUser/.ssh/authorized_keys
   echo "$rsa"  >> /home/tesla/.ssh/authorized_keys
   echo "$rsa"  >> /root/.ssh/authorized_keys
 fi
