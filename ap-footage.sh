@@ -7,7 +7,7 @@ host="192.168.1.100"
 port=22
 
 # Imagemagick used to create the gif's
-sudo apt-get install imagemagick
+sudo apt-get install --assume-yes imagemagick
 
 # Save the dash footage
 ssh -p $port tesla1@$host "mkdir ~/dashfootage; gwxfer gw:/DAS/ ~/dashfootage/; gwxfer gw:/EDR/DAS/ ~/dashfootage/"
