@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# This can generate an unlock token if you ever need one
+# This script is typically useless once you're rooted
+# Use open-diag-port.sh instead
+
 SALT="pr8d+VGYxcuRex3cg3MmrO8Sk6MHxQoBlVbd"
 VIN=$(< /var/etc/vin)
 TOKEN=$(< /var/etc/saccess/tesla1)
