@@ -4,7 +4,9 @@
 
 Wiring exists in the steering column for all vehicles built after Dec 8 2014
 
-internal.dat: `steeringHeat 1`
+```bash
+access-internal-dat.pl steeringHeat 1
+```
 
 $200 - 1036774-00-D - Wheel with heated component, make sure it has the wire hanging out
 
@@ -26,7 +28,9 @@ $40 - 2498689 - Steering airbag wiring harness, with 5 pins in brown connector (
 
 ## Washer nozzles
 
-internal.dat: `nozzleHeatInstalled 1`
+```bash
+access-internal-dat.pl nozzleHeatInstalled 1
+```
 
 Just the washer nozzles that can be heated: 
 
@@ -38,7 +42,9 @@ $60 - 1025202-00-C - Windshield washer nozzles with harness and hose
 
 ### Heated Rear Seats
 
-internal.dat: `rearSeatHeatersInstalled 1`
+```bash
+access-internal-dat.pl rearSeatHeatersInstalled 1
+```
 
 1030459-00-A REAR CENTER HEATER MODULE  
 *1030460-00-A REAR HEATER PATCH HARNESS Not sure if we need this
@@ -47,4 +53,8 @@ And you will need some heated pads, 3 sets of upper and lower
 
 #### Heated Wipers
 
-internal.dat: `wiperheatinstalled 1`
+```bash
+access-internal-dat.pl wiperheatinstalled 1
+```
+
+You need a whole new windshield for this install. Typically, when you get a chip / crack in your windshield and Tesla replaces it for you, they give you a windshield with HWA (heated wiper area) already installed at the bottom of the shield. When that's done, you can either ask them to enable the config, or enable it yourself after verifying the connections are plugged in. It's the right side A pillar 
