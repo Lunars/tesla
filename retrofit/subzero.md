@@ -26,7 +26,7 @@ $40 - 2498689 - Steering airbag wiring harness, with 5 pins in brown connector (
 
 ![](https://i.imgur.com/KF0iur4.jpg)
 
-## Washer nozzles
+## Heated washer nozzles
 
 ```bash
 access-internal-dat.pl nozzleHeatInstalled 1
