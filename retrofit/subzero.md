@@ -2,7 +2,7 @@
 
 ## Heated steering wheel, > Dec 2014 only
 
-Wiring exists in the steering column for all vehicles built after Dec 8 2014
+Wiring exists coming from dash to behind the steering column for all vehicles built after Dec 8 2014. For vehicles before this, there are no easy instructions...The MCU sends LIN + PWR to SCCM for heated steering wheel (? accuracy not confirmed)
 
 ```bash
 access-internal-dat.pl steeringHeat 1
