@@ -1,8 +1,17 @@
 # Heated Wiper Area
 
+## Config
+
 ```bash
 access-internal-dat.pl wiperheatinstalled 1
 ```
+
+## Parts
+
+* 1021634-01-C - Pre-ap - WINDSHIELD - LHD - HEATED WIPER AREA	
+* 1061565-01-C - AP1 - WSHLD ASSY MONO-CAM HWA LHD MS2
+
+## Install
 
 You need a whole new windshield for this install. 
 
