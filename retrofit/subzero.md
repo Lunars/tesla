@@ -5,7 +5,7 @@
 Wiring exists coming from dash to behind the steering column for all vehicles built after Dec 8 2014. For vehicles before this, there are no easy instructions...The MCU sends LIN + PWR to SCCM for heated steering wheel (? accuracy not confirmed)
 
 ```bash
-access-internal-dat.pl steeringHeat 1
+access-internal-dat.pl steeringheat 1
 ```
 
 $200 - 1036774-00-D - Wheel with heated component, make sure it has the wire hanging out
@@ -29,7 +29,11 @@ $40 - 2498689 - Steering airbag wiring harness, with 5 pins in brown connector (
 ## Heated washer nozzles
 
 ```bash
+# May not be an internal.dat option
 access-internal-dat.pl nozzleHeatInstalled 1
+
+# May just be VAPI
+sdv VAPI_hasNozzleHeater 1
 ```
 
 Just the washer nozzles that can be heated: 
@@ -53,7 +57,7 @@ Non heated nozzles will only have hose, no wiring
 ## Heated Rear Seats
 
 ```bash
-access-internal-dat.pl rearSeatHeatersInstalled 1
+access-internal-dat.pl rearseatheatersinstalled 1
 ```
 
 1030459-00-A REAR CENTER HEATER MODULE  
