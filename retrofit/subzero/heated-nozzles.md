@@ -12,18 +12,13 @@ sdv VAPI_hasNozzleHeater 1
 
 ## Parts
 
-* $25 - 1005404-01-E - Heated washer nozzle assembly - 2x
 * $60 - 1025202-00-C - Windshield washer nozzles with harness and hose 
 
+If you have wiring conduit running alongside the water hose, you have heated nozzle capability and only need the following:
+
+* $25 - 1005404-01-E - Heated washer nozzle assembly - 2x
+
 ## Install
-
-Just the washer nozzles that can be heated: 
-
-$25 - 1005404-01-E - Heated washer nozzle assembly - 2x
-
-The following may not be needed, but it includes a harness and wiring. It could be the same as the one currently installed in the car. If you have wiring conduit running alongside the water hose, you have heated nozzle capability. 
-
-$60 - 1025202-00-C - Windshield washer nozzles with harness and hose 
 
 In this photo you can see the conduit + the hose. Conduit has a connector going into the washer nozzles. So check if your car has it. 
 
