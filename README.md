@@ -22,7 +22,6 @@ Or,
 You may be able to enable it in the GUI:
 
 ```
-access-internal-dat.pl airsuspension 2
 sdv VAPI_carType ModelX
 # or sdv VAPI_carType 1
 # lv VAPI_carType to confirm it changed
