@@ -3,6 +3,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
 # Mode 1 shows the battery temperature level on the IC display, as a purple indicator on the same menu as the energy graph
 # Mode 2 does what 1 does, in addition to showing drive unit statistics on the left IC menu
+# From IC this command can be issued via curl -s "http://cid:4070/_data_set_value_request_?name=GUI_eggWotMode&value=$MODE"
 
 STATE=$(/usr/local/bin/lv GUI_eggWotMode | cut -d "\"" -f2)
 WANTSTATE="Preparing"
