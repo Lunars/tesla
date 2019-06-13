@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 # Usage: bash ./dump.sh
 # Usage: bash ./dump.sh raw
