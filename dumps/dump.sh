@@ -17,6 +17,7 @@ curl -s "http://localhost:4035/get_data_values?format=$format&show_invalid=false
 access-internal-dat.pl --get ${internalDatFileName}
 
 if [[ "$@" != "raw" ]]; then
+	sed -i '/^BLUETOOTH_address/ d' ${dataValuesFileName}
 	sed -i '/^BLUETOOTH_pairedDeviceInfo/ d' ${dataValuesFileName}
 	sed -i '/^BLUETOOTH_pairedDeviceInfoString/ d' ${dataValuesFileName}
 	sed -i '/^CONN_cellIMEI/ d' ${dataValuesFileName}
@@ -26,12 +27,13 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^CONN_cellSimNumber/ d' ${dataValuesFileName}
 	sed -i '/^CONN_vpnInterfaceIP/ d' ${dataValuesFileName}
 	sed -i '/^GUI_homeAddressJson/ d' ${dataValuesFileName}
-	sed -i '/^GUI_workLocation/ d' ${dataValuesFileName}
 	sed -i '/^GUI_homeLocation/ d' ${dataValuesFileName}
 	sed -i '/^GUI_navLocalizedCurrentStreetName/ d' ${dataValuesFileName}
 	sed -i '/^GUI_odometer/ d' ${dataValuesFileName}
 	sed -i '/^GUI_PINToDrivePassword/ d' ${dataValuesFileName}
 	sed -i '/^GUI_valetModePassword/ d' ${dataValuesFileName}
+	sed -i '/^GUI_vehicleName/ d' ${dataValuesFileName}
+	sed -i '/^GUI_workLocation/ d' ${dataValuesFileName}
 	sed -i '/^LINK_wifiAvailableNetworks/ d' ${dataValuesFileName}
 	sed -i '/^LINK_wifiKnownNetworks/ d' ${dataValuesFileName}
 	sed -i '/^LINK_wifiSsid/ d' ${dataValuesFileName}
@@ -61,6 +63,7 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^NAV_vehicleLatitude/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleLocation/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleLongitude/ d' ${dataValuesFileName}
+	sed -i '/^NAV_vehicleState/ d' ${dataValuesFileName}
 	sed -i '/^RADIO_TextXMRadioIDCode/ d' ${dataValuesFileName}
 	sed -i '/^TEL_deviceId/ d' ${dataValuesFileName}
 	sed -i '/^TEL_tripId/ d' ${dataValuesFileName}
