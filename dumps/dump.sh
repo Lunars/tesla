@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Usage:
+# curl -o dump.sh https://raw.githubusercontent.com/Lunars/tesla/master/dumps/dump.sh && bash dump.sh
+
 # Usage: bash ./dump.sh
 # Usage: bash ./dump.sh raw
 
