@@ -9,6 +9,7 @@ dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"
 format="csv" # options: csv, json
 
+# TODO: Use lvs instead of curl 
 curl -s "http://localhost:4035/get_data_values?format=$format&show_invalid=false" >> ${dataValuesFileName}
 access-internal-dat.pl --get ${internalDatFileName}
 
