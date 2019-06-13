@@ -61,6 +61,7 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^NAV_vehicleLatitude/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleLocation/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleLongitude/ d' ${dataValuesFileName}
+	sed -i '/^RADIO_TextXMRadioIDCode/ d' ${dataValuesFileName}
 	sed -i '/^TEL_deviceId/ d' ${dataValuesFileName}
 	sed -i '/^TEL_tripId/ d' ${dataValuesFileName}
 	sed -i '/^VAPI_hiResOdometer/ d' ${dataValuesFileName}
