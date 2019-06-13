@@ -20,9 +20,7 @@ access-internal-dat.pl steeringheat 1
 
 ![](https://i.imgur.com/rVTehNB.jpg)
 
-* $115 - 1057354-00-B - SCCM with 12 pins in back, 5 pins on left front 
-
-![](https://i.imgur.com/n6wOOFd.png)
+* $115 - 1057354-00-B - SCCM with 5 pins on left front. Do not buy one with 3 pins in the front left connector (brown connector)!
 
 * $40 - 2498689 - Steering airbag wiring harness, with 5 pins in brown connector (blue and brown for heated wheel, typically)
 
