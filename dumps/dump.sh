@@ -25,6 +25,9 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^CONN_cellPhoneNumber/ d' ${dataValuesFileName}
 	sed -i '/^CONN_cellSimNumber/ d' ${dataValuesFileName}
 	sed -i '/^CONN_vpnInterfaceIP/ d' ${dataValuesFileName}
+	sed -i '/^GUI_homeAddressJson/ d' ${dataValuesFileName}
+	sed -i '/^GUI_workLocation/ d' ${dataValuesFileName}
+	sed -i '/^GUI_homeLocation/ d' ${dataValuesFileName}
 	sed -i '/^GUI_navLocalizedCurrentStreetName/ d' ${dataValuesFileName}
 	sed -i '/^GUI_odometer/ d' ${dataValuesFileName}
 	sed -i '/^GUI_PINToDrivePassword/ d' ${dataValuesFileName}
