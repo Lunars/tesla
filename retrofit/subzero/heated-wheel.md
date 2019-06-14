@@ -14,7 +14,7 @@ access-internal-dat.pl steeringheat 1
 
 ![](https://i.imgur.com/6AMML5Q.jpg)
 
-* $115 - Steering heater ecu and connected harness
+* $115 - Steering heater ecu and connected harness. You really only need the ecu, the wires going to and from it, and the ecu bracket that snaps onto the plate and holds the ecu + side connectors in place. You don't need this whole black plate 
 
 "HEATED FUNCTION STEERING WHEEL CONTACT PLATE MODULE"
 
