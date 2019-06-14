@@ -24,7 +24,7 @@ access-internal-dat.pl steeringheat 1
 
 ![](https://i.imgur.com/oG38xw6.png)
 
-* $40 - 2498689 - Steering airbag wiring harness, with 5 pins in brown connector (blue and brown for heated wheel, typically)
+* $40 - 2498689 - Steering airbag wiring harness, with 5 pins in brown connector (blue and brown for heated wheel, typically). You need the white connector going into right voice switch, it has more pins than a non-heated switch connector. You also need the two black connectors that go into the ecu. You do not need the yellow connector (airbag)
 
 ![](https://i.imgur.com/KF0iur4.jpg)
 
