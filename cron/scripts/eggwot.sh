@@ -6,7 +6,8 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 # Can also be used to control other sdv commands such as GUI_developerMode (values= true and false for $MODE)
 # From IC this command can be issued via curl -s "http://cid:4070/_data_set_value_request_?name=GUI_eggWotMode&value=$MODE"
 
-STATE=$(/usr/local/bin/lv GUI_eggWotMode | cut -d "\"" -f2)
+KEY="GUI_eggWotMode"
+STATE=$(/usr/local/bin/lv $KEY | cut -d "\"" -f2)
 WANTSTATE="Preparing"
 MODE=1
 
@@ -14,8 +15,8 @@ echo "state is" $STATE
 echo "state wanted is" $WANTSTATE
 
 if ! [ "$STATE" = "$WANTSTATE" ] ; then
-   /usr/local/bin/sdv GUI_eggWotMode $MODE
-   echo "Enabling GUI_eggWotMode $MODE"
+   /usr/local/bin/sdv $KEY $MODE
+   echo "Enabling $KEY $MODE"
 else
    echo "Already Enabled"
 fi
