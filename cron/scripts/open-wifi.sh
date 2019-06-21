@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# When on a wifi network, this script will allow you to ssh to the local ip 
+# You have to be on the same wifi network as the car 
+# Uses port 229 for ssh
+# Useful if you're on the road and you open a hotspot on your phone, then connect car to phone's wifi hotspot. Now you can ssh to the car 
+
+# ssh -p 229 tesla1@192.168.1.154 
+
 if (( $(cat /proc/uptime | cut -d. -f1) < 60 )); then sleep 15; fi
 
 /sbin/iptables -D INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
