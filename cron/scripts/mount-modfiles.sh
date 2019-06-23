@@ -7,6 +7,8 @@
 
 #first umount
 
+mkdir -p /var/added/modfiles/usr/local/bin/
+
 for bindmount in $(mount | grep bind | awk '{ print $1 }')
 do
  /bin/umount $bindmount
