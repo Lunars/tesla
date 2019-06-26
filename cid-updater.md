@@ -1,3 +1,10 @@
+First:
+
+```bash
+ssh tesla1@cid
+nc cid 25956
+```
+
 Command list:
 
 ```
