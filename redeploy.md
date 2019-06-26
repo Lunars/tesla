@@ -1,7 +1,7 @@
 # Redeploy
 ## Skip components to speed up 
 ```
-service-redeploy “modules_to_skip”:“ic,gtw,sierra,ape,tuner”
+service-redeploy "modules_to_skip":"ic,gtw,sierra,ape,tuner"
 ```
 ## Options
 ```
