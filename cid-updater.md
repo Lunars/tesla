@@ -7,6 +7,8 @@ nc cid 25956
 
 # Redeploy
 
+This command will clear any pending / staged update and install whatever version your car currently has (not staged version)
+
 ## Skip components to speed up 
 
 ```bash
