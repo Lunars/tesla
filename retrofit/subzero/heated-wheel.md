@@ -30,4 +30,6 @@ access-internal-dat.pl steeringheat 1
 
 ## Install
 
-...
+Everything is plug and play. Remove steering wheel, remove SCCM. Add new SCCM, add new steering wheel.
+
+Insert the heated contact plate into the new steering wheel (before install would help). All the wires will make sense when you go to install
