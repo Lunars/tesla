@@ -20,6 +20,16 @@ If you have wiring conduit running alongside the water hose, you have heated noz
 
 ## Install
 
+Install is simple, remove the existing washer nozzles (clips off at the bottom, then pull the hose out of the connection to remove). And replace with your new harness & hose.
+
+The new harness will plug into your left front wheel well, where the washer fluid reservoir is. You will find a connector not going anywhere near there. This is what your new electronic hose connects to. Mine had a dummy connector plugged into it, you can remove that and plug in the new hose instead.
+
+Dummy connector: https://photos.app.goo.gl/wCh1JgcX7GPhbTDQ9
+
+Part of the new harness will run up behind the front hood
+
+![](https://i.imgur.com/mHpsFIE.png)
+
 In this photo you can see the conduit + the hose. Conduit has a connector going into the washer nozzles. So check if your car has it. 
 
 ![](https://i.imgur.com/SZDE3TW.png)
