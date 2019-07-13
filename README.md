@@ -1,31 +1,24 @@
 # Welcome to the Tesla root information dump
 
-We're just getting started filling this out, so feel free to jump in and help document things that need to be here. We're focused on documenting helpful tools, scripts, and information about what you can do with root access. 
-
-If you found this Repo helpful and are looking at buying a tesla, please consider using ths referral code: http://ts.la/andrew2984
+We're focused on documenting helpful tools, scripts, and information about what you can do with root access. 
 
 ---
 
-### Restart qtcar gui:
+## How to 
 
-`/sbin/restart qtcar`
+1. Save scripts to CID
 
-### Very low suspension:
-
-```
-sdv GUI_suspensionLevelRequest 7
-# You will notice it going lower, front and rear
-```
-
-Or, 
-
-You may be able to enable it in the GUI:
-
-```
-sdv VAPI_carType ModelX
-# or sdv VAPI_carType 1
-# lv VAPI_carType to confirm it changed
-/sbin/restart qtcar
+```bash
+mkdir -p /var/root/lunars
+curl -SL https://github.com/Lunars/tesla/tarball/master -o lunars.zip
+tar xvf ./lunars.zip -C /var/root/lunars/
+rm ./lunars.zip
 ```
 
-![](https://www.teslarati.com/wp-content/uploads/2015/09/Model-X-Firmware-7-Suspension.jpg)
+2. Install crontab
+
+```bash
+ssh tesla1@cid
+crontab -e
+# Add your changes to crontab from https://github.com/Lunars/tesla/blob/master/cron/crontab
+```
