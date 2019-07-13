@@ -15,6 +15,8 @@ mkdir -p /var/root/lunars
 curl -SL https://github.com/Lunars/tesla/tarball/master -o lunars.zip
 tar xvf ./lunars.zip -C /var/root/lunars/
 rm ./lunars.zip
+mv /var/root/lunars/*/* /var/root/lunars/
+rm -rf /var/root/lunars/Lunars-tesla*
 ```
 
 2. Install crontab
