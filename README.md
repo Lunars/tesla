@@ -19,11 +19,10 @@ mv /var/root/lunars/*/* /var/root/lunars/
 rm -rf /var/root/lunars/Lunars-tesla*
 ```
 
-2. Install crontab
+2. Install crontab, [examples found here](https://github.com/Lunars/tesla/blob/master/cron/crontab)
 
 ```bash
 ssh tesla1@cid
 sudo su
 crontab -e
-# Add your changes to crontab from https://github.com/Lunars/tesla/blob/master/cron/crontab
 ```
