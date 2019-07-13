@@ -1,23 +1,23 @@
-# sudo su -
-# crontab -e
-# Save whatever scripts you want from the following
+# See readme.md for instructions
 
-@reboot bash /var/spool/scripts/open-diag-port.sh
-@reboot bash /var/spool/scripts/open-wifi.sh
-@reboot bash /var/spool/scripts/open-vpn.sh
-@reboot bash /var/spool/scripts/save-key.sh > /dev/null 2>&1
-@reboot bash /var/spool/scripts/memory-logs.sh
-@reboot bash /var/spool/scripts/block-tesla-ssh.sh
-@reboot bash /var/spool/scripts/mount-modfiles.sh > /dev/null 2>&1
-@reboot bash /var/spool/scripts/vitals.sh > /dev/null 2>&1 &
+# Choose the scripts you want from the following, or add your own line
 
-*/5 * * * * bash /var/spool/scripts/open-wifi.sh
-*/5 * * * * bash /var/spool/scripts/open-diag-port.sh
-*/5 * * * * bash /var/spool/scripts/save-robert.sh > /dev/null 2>&1
-*/5 * * * * bash /var/spool/scripts/startstopvpn.sh > /dev/null 2>&1
-*/5 * * * * bash /var/spool/scripts/add-ssh-key.sh > /dev/null 2>&1
-*/5 * * * * bash /var/spool/scripts/add-ssh-key-tesla.sh > /dev/null 2>&1
-*/5 * * * * bash /var/spool/scripts/CopyAcct.sh
+@reboot /bin/bash /var/root/lunars/cron/scripts/open-diag-port.sh
+@reboot /bin/bash /var/root/lunars/cron/scripts/open-wifi.sh
+@reboot /bin/bash /var/root/lunars/cron/scripts/open-vpn.sh
+@reboot /bin/bash /var/root/lunars/cron/scripts/save-key.sh > /dev/null 2>&1
+@reboot /bin/bash /var/root/lunars/cron/scripts/memory-logs.sh
+@reboot /bin/bash /var/root/lunars/cron/scripts/block-tesla-ssh.sh
+@reboot /bin/bash /var/root/lunars/cron/scripts/mount-modfiles.sh > /dev/null 2>&1
+@reboot /bin/bash /var/root/lunars/cron/scripts/vitals.sh > /dev/null 2>&1 &
+
+*/5 * * * * /bin/bash /var/root/lunars/cron/scripts/open-wifi.sh
+*/5 * * * * /bin/bash /var/root/lunars/cron/scripts/open-diag-port.sh
+*/5 * * * * /bin/bash /var/root/lunars/cron/scripts/save-robert.sh > /dev/null 2>&1
+*/5 * * * * /bin/bash /var/root/lunars/cron/scripts/startstopvpn.sh > /dev/null 2>&1
+*/5 * * * * /bin/bash /var/root/lunars/cron/scripts/add-ssh-key.sh > /dev/null 2>&1
+*/5 * * * * /bin/bash /var/root/lunars/cron/scripts/add-ssh-key-tesla.sh > /dev/null 2>&1
+*/5 * * * * /bin/bash /var/root/lunars/cron/scripts/CopyAcct.sh
 
 # Choose one of the following two methods for handling logs
 
@@ -27,5 +27,5 @@
 # @reboot service rsyslog stop >/dev/null 2>&1
 
 # Choose one of the following two methods for saving keys:
-0 * * * * bash /var/spool/scripts/save-key.sh > /dev/null 2>&1
-# 0 * * * * bash /var/spool/scripts/save-key-over-ssh.sh > /dev/null 2>&1
+0 * * * * /bin/bash /var/root/lunars/cron/scripts/save-key.sh > /dev/null 2>&1
+# 0 * * * * /bin/bash /var/root/lunars/cron/scripts/save-key-over-ssh.sh > /dev/null 2>&1
