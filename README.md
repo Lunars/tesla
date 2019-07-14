@@ -2,6 +2,10 @@
 
 We're focused on documenting helpful tools, scripts, and information about what you can do with root access. 
 
+You can find more information in our Wiki 
+
+https://github.com/Lunars/tesla/wiki
+
 ---
 
 ## How to 
