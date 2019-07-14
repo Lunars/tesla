@@ -1,35 +1,44 @@
-Premium Upgrades Package
+# Premium Upgrades Package
 
-# Adaptive headlights
+## Adaptive headlights
 
-1053571- 1 00-D - HD/LP ASY, SAE UP-LEVEL, RH
-
-1053570- 1 00-D - HD/LP ASY, SAE UP-LEVEL, LH
-
-gateway:
+### Config
 
 ```
-headlamp led
-turnsignal led
+access-internal-dat.pl headlamp led
+access-internal-dat.pl turnsignal led
 ```
 
-# Ambient lighting
+### Parts
 
-internal.dat: `ambientlightsinstalled 1`
+* 1053571- 1 00-D - HD/LP ASY, SAE UP-LEVEL, RH
+* 1053570- 1 00-D - HD/LP ASY, SAE UP-LEVEL, LH
+
+## Ambient lighting
 
 Interior door lighting
+
+### Config
+
 ```
-P/N 1007955-00-F RH Front Door ($54.48)
-P/N 1008121-00-F RH Rear Door ($45.98)
-P/N 1002977-00-F LH Front Door ($54.48)
-P/N 1007988-00-F LH Rear Door ($45.98)
+access-internal-dat.pl ambientlightsinstalled 1
 ```
-Or buy an LED strip on Amazon for $7
 
-https://www.amazon.com/gp/product/B005GL5R56/
+### Parts
 
-https://www.amazon.com/gp/product/B079C6T6HJ/
+Official parts for Tesla door ambient lighting
 
-https://www.amazon.com/gp/product/B00VDOD9AA
+* P/N 1007955-00-F RH Front Door ($54.48)
+* P/N 1008121-00-F RH Rear Door ($45.98)
+* P/N 1002977-00-F LH Front Door ($54.48)
+* P/N 1007988-00-F LH Rear Door ($45.98)
 
-https://www.abstractocean.com/foot-well-light-brackets-for-model-s-one-pair-tesla-part-1016677-00-a/#product-additional-info
+Or, you can connect your own LED strips to the doors
+
+* [Led strip](https://www.amazon.com/gp/product/B005GL5R56/)
+
+Puddle lights & seat lights
+
+* [Lighting under seats & rear door puddles](https://www.amazon.com/gp/product/B079C6T6HJ/)
+* [To mount the lights under the front seats, shining towards the rear](https://www.abstractocean.com/foot-well-light-brackets-for-model-s-one-pair-tesla-part-1016677-00-a/#product-additional-info)
+* [Optional cables that plug into stock harness.](https://www.amazon.com/gp/product/B00VDOD9AA)
