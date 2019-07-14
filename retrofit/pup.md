@@ -1,22 +1,10 @@
 # Premium Upgrades Package
 
-## Adaptive headlights
-
-### Config
-
-```
-access-internal-dat.pl headlamp led
-access-internal-dat.pl turnsignal led
-```
-
-### Parts
-
-* 1053571- 1 00-D - HD/LP ASY, SAE UP-LEVEL, RH
-* 1053570- 1 00-D - HD/LP ASY, SAE UP-LEVEL, LH
-
 ## Ambient lighting
 
-Interior door lighting
+https://www.teslarati.com/tesla-model-s-premium-lighting-package-review/
+
+![](https://i.imgur.com/4N57Vyk.jpg)
 
 ### Config
 
@@ -42,3 +30,18 @@ Puddle lights & seat lights
 * [Lighting under seats & rear door puddles](https://www.amazon.com/gp/product/B079C6T6HJ/)
 * [To mount the lights under the front seats, shining towards the rear](https://www.abstractocean.com/foot-well-light-brackets-for-model-s-one-pair-tesla-part-1016677-00-a/#product-additional-info)
 * [Optional cables that plug into stock harness.](https://www.amazon.com/gp/product/B00VDOD9AA)
+
+
+## Adaptive headlights
+
+### Config
+
+```
+access-internal-dat.pl headlamp led
+access-internal-dat.pl turnsignal led
+```
+
+### Parts
+
+* 1053571- 1 00-D - HD/LP ASY, SAE UP-LEVEL, RH
+* 1053570- 1 00-D - HD/LP ASY, SAE UP-LEVEL, LH
