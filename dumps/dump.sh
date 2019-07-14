@@ -81,8 +81,8 @@ fi
 internalDatURL=$(cat ${internalDatFileName} | socat - tcp:termbin.com:9999)
 dataValuesURL=$(cat ${dataValuesFileName} | socat - tcp:termbin.com:9999)
 
-rm -rf ${dataValuesFileName}
-rm -rf ${internalDatFileName}
-
 echo "internal.dat $internalDatURL"
 echo "export.$format $dataValuesURL"
+
+rm -rf ${internalDatFileName}
+rm -rf ${dataValuesFileName}
