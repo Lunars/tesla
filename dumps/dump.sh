@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Usage:
-# curl -o dump.sh https://raw.githubusercontent.com/Lunars/tesla/master/dumps/dump.sh && bash dump.sh
-
-# Usage: bash ./dump.sh
-# Usage: bash ./dump.sh raw
-
 # Returns two URLs for your car's config
+# Optional `raw` argument leaves all sensitive information in the dump
+
+# bash ./dump.sh raw
 
 dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"
