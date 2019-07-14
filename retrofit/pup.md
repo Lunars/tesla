@@ -4,6 +4,8 @@
 
 https://www.teslarati.com/tesla-model-s-premium-lighting-package-review/
 
+![](https://i.imgur.com/efw7xfS.jpg)
+
 ![](https://i.imgur.com/4N57Vyk.jpg)
 
 ### Config
