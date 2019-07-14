@@ -10,7 +10,6 @@
 
 dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"
-format="csv" # options: csv, json
 
 lvs >> ${dataValuesFileName}
 access-internal-dat.pl --get ${internalDatFileName}
@@ -82,7 +81,7 @@ internalDatURL=$(cat ${internalDatFileName} | socat - tcp:termbin.com:9999)
 dataValuesURL=$(cat ${dataValuesFileName} | socat - tcp:termbin.com:9999)
 
 echo "internal.dat $internalDatURL"
-echo "export.$format $dataValuesURL"
+echo "export.csv $dataValuesURL"
 
 rm -rf ${internalDatFileName}
 rm -rf ${dataValuesFileName}
