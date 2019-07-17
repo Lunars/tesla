@@ -35,6 +35,7 @@ crontab -e
 👤 **Matt**
 
 * Github: [@geczy](https://github.com/geczy)
+* Discord: coder#6681
 
 ## 🤝 Contributing
 
