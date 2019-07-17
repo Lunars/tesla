@@ -10,6 +10,16 @@ rsa[1]="ssh-rsa second example"
 exampleUser="yourUsername"
 examplePass="myCarIsRooted"
 
+if [ "$examplePass" == "myCarIsRooted" ]; then
+  echo "Script not yet setup, quitting"
+  exit 1
+fi
+
+if [ "${rsa}" == "ssh-rsa first example" ]; then
+  echo "Script not yet setup, quitting"
+  exit 1
+fi
+
 lastten=${rsa: -21}
 mkdir -p /home/$exampleUser/.ssh 2>&1
 mkdir -p /root/.ssh 2>&1

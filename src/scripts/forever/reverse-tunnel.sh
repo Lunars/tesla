@@ -8,6 +8,11 @@ port=$(cut -c 13-17 < /var/etc/vin)
 localHost="localhost"
 localPort=33333
 
+if [ "$server" == "tesla@yourserver.com" ]; then
+  echo "Script not yet setup, quitting"
+  exit 1
+fi
+
 while true; do
   RET=`ps ax | grep "ssh -N -T -R $localPort:$localHost:22" | grep -v "grep"`
   if [ "$RET" = "" ];then

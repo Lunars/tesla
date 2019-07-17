@@ -15,4 +15,9 @@ REMOTE_SSH_LOCAL_KEYFILE=/home/user_on_tesla_cid/.ssh/id_rsa
 REMOTE_SSH_FQDN=your.domain.or.ip
 REMOTE_KEYS_FILE=tesla-keys.txt
 
+if [ "$REMOTE_SSH_FQDN" == "your.domain.or.ip" ]; then
+  echo "Script not yet setup, quitting"
+  exit 1
+fi
+
 ssh -T -i $REMOTE_SSH_LOCAL_KEYFILE -o StrictHostKeyChecking=no -p $REMOTE_SSH_PORT $REMOTE_SSH_USER@$REMOTE_SSH_FQDN "echo 'Time: $TIME | VIN: $VIN | Key 1: $KEY1 | Key 2: $KEY2' >> $REMOTE_KEYS_FILE"
