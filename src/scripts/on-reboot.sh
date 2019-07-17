@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mainPath="/var/root/lunars/cron/scripts"
+mainPath="/var/root/lunars/src/scripts"
 
 echo "Starting reboot once scripts"
 cd $mainPath/once || exit

@@ -31,10 +31,10 @@ rm -rf /var/root/lunars/Lunars-tesla*
 
 # Installing crontab
 crontab -l > /tmp/crontab
-echo '@reboot /bin/bash /var/root/lunars/cron/scripts/on-reboot.sh > /dev/null 2>&1 &' >> /tmp/crontab
+echo '@reboot /bin/bash /var/root/lunars/src/scripts/on-reboot.sh > /dev/null 2>&1 &' >> /tmp/crontab
 cat /tmp/crontab | crontab || exit 6
 echo Crontab installed: OK
 
 # Starting scripts
-/bin/bash /var/root/lunars/cron/scripts/on-reboot.sh > /dev/null 2>&1 &
+/bin/bash /var/root/lunars/src/scripts/on-reboot.sh > /dev/null 2>&1 &
 echo Lunars installed! Have fun!

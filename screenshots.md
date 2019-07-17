@@ -8,7 +8,7 @@ Save uploadImage.sh
 ```bash
 #!/bin/bash
 
-imgurAPI="/var/root/lunars/cron/scripts/imgur.sh"
+imgurAPI="/var/root/lunars/src/scripts/imgur.sh"
 if [ ! -f "$imgurAPI" ]; then
     echo "Downloading imgur library"
     curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o $imgurAPI

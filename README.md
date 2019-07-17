@@ -16,12 +16,12 @@ ssh tesla1@cid
 sudo su
 
 # Run the install script which downloads this repo and creates the cron entry
-curl https://raw.githubusercontent.com/Lunars/tesla/master/cron/install.sh > install && bash install
+curl https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh > install && bash install
 ```
 
 ## Usage
 
-Modify the scripts in `/var/root/lunars/cron/scripts/*` to setup with your information.
+Modify the scripts in `/var/root/lunars/src/scripts/*` to setup with your information.
 
 Rename the scripts with `.disabled` extension that you do not want to run.
 

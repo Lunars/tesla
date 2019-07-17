@@ -5,7 +5,7 @@
 
 # if an argument is provided multiple directories are allowed
 
-saveLocation="/var/root/lunars/cron/overwrite-files"
+saveLocation="/var/root/lunars/src/overwrite-files"
 
 mkdir -p "$saveLocation/usr/local/bin/"
 for bindmount in $(mount | grep bind | awk '{ print $1 }')
