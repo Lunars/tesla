@@ -42,3 +42,7 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+This project is licensed under the [GNU General Public License v3.0](https://github.com/Lunars/tesla/blob/master/LICENSE).
