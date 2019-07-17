@@ -11,24 +11,19 @@
 ## Install
 
 ```sh
+# Connect to your Tesla CID
 ssh tesla1@cid
 sudo su
-mkdir -p /var/root/lunars
-curl -SL https://github.com/Lunars/tesla/tarball/master -o lunars.zip
-tar xvf ./lunars.zip -C /var/root/lunars/
-rm ./lunars.zip
-mv /var/root/lunars/*/* /var/root/lunars/
-rm -rf /var/root/lunars/Lunars-tesla*
-/bin/bash /var/root/lunars/cron/install.sh
+
+# Run the install script which downloads this repo and creates the cron entry
+curl https://raw.githubusercontent.com/Lunars/tesla/master/cron/install.sh > install && bash install
 ```
 
 ## Usage
 
-```sh
-ssh tesla1@cid
-sudo su
-crontab -e
-```
+Modify the scripts in `/var/root/lunars/cron/scripts/*` to setup with your information.
+
+Rename the scripts with `.disabled` extension that you do not want to run.
 
 ## Author
 
