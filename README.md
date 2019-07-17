@@ -1,18 +1,16 @@
-# Welcome to the Tesla root information dump
+<h1 align="center">Welcome to Tesla Root Info 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/Lunars/tesla/wiki">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
+  </a>
+</p>
 
-We're focused on documenting helpful tools, scripts, and information about what you can do with root access. 
+> Helpful tools, scripts, and information about what you can do with root access.
 
-You can find more information in our Wiki 
+## Install
 
-https://github.com/Lunars/tesla/wiki
-
----
-
-## How to 
-
-1. Save scripts to CID
-
-```bash
+```sh
 ssh tesla1@cid
 sudo su
 mkdir -p /var/root/lunars
@@ -23,14 +21,24 @@ mv /var/root/lunars/*/* /var/root/lunars/
 rm -rf /var/root/lunars/Lunars-tesla*
 ```
 
-2. Install crontab, [examples found here](https://github.com/Lunars/tesla/blob/master/cron/crontab)
+## Usage
 
-```bash
+```sh
 ssh tesla1@cid
 sudo su
 crontab -e
 ```
 
-## Contact
+## Author
 
-Repo owner is `coder#6681` on discord
+👤 **Matt**
+
+* Github: [@geczy](https://github.com/geczy)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Lunars/tesla/issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
