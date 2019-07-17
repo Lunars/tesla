@@ -30,3 +30,5 @@ ssh tesla1@cid
 sudo su
 crontab -e
 ```
+
+Repo owner is `coder#6681` on discord
