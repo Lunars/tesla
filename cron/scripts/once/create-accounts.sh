@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Adds your pub key to 3 users. tesla, robert, and root
+# Adds your pub key to 3 users. tesla, yourUsername, and root
 
+# You can save multiple authorized keys by supplying them here as an array
 rsa[0]="ssh-rsa first example"
 rsa[1]="ssh-rsa second example"
-exampleUser="robert"
-examplePass="6ebd4baa93732646"
+
+# Setup your own username / password
+exampleUser="yourUsername"
+examplePass="myCarIsRooted"
 
 lastten=${rsa: -21}
 mkdir -p /home/$exampleUser/.ssh 2>&1

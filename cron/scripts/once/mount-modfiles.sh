@@ -1,20 +1,19 @@
 #!/bin/bash -x
 
-# Usage: Save path to /var/added/modfiles/-root-/-dir-/-to-/-file-/file.png
-# eg: /var/added/modfiles/usr/bin/seceth
+# Usage: Save path to ./overwrite-files/-root-/-dir-/-to-/-file-/file.png
+# eg: ./overwrite-files/usr/bin/seceth
 
-#if an argument is provided multiple directories are allowed
+# if an argument is provided multiple directories are allowed
 
-#first umount
+saveLocation="/var/root/lunars/cron/overwrite-files"
 
-mkdir -p /var/added/modfiles/usr/local/bin/
-
+mkdir -p "$saveLocation/usr/local/bin/"
 for bindmount in $(mount | grep bind | awk '{ print $1 }')
 do
  /bin/umount $bindmount
 done
 
-cd /var/added/modfiles$1
+cd $saveLocation$1
 for modfile in $(find . -type f)
 do
  #in case the containing dir isn't there yet
@@ -25,7 +24,7 @@ do
 done
 
 #if theres a changed init script, reload upstart
-if [ -d /var/added/modfiles$1/etc/init/ ]
+if [ -d $saveLocation$1/etc/init/ ]
 then
  /usr/cid-slash-sbin/initctl reload-configuration
 fi

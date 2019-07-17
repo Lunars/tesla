@@ -19,6 +19,7 @@ tar xvf ./lunars.zip -C /var/root/lunars/
 rm ./lunars.zip
 mv /var/root/lunars/*/* /var/root/lunars/
 rm -rf /var/root/lunars/Lunars-tesla*
+/bin/bash /var/root/lunars/cron/install.sh
 ```
 
 ## Usage
