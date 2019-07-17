@@ -31,4 +31,6 @@ sudo su
 crontab -e
 ```
 
+## Contact
+
 Repo owner is `coder#6681` on discord
