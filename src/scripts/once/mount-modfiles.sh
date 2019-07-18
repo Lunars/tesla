@@ -7,6 +7,13 @@
 
 saveLocation="/var/root/lunars/src/overwrite-files"
 
+ENABLE=true
+
+if [ "$ENABLE" == "false" ]; then
+    echo "Script not enabled, quitting"
+    exit 1
+fi
+
 mkdir -p "$saveLocation/usr/local/bin/"
 for bindmount in $(mount | grep bind | awk '{ print $1 }')
 do
