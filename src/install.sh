@@ -13,7 +13,7 @@ echo [OK] Not running chrooted
 
 onRebootFile="/var/root/lunars/src/scripts/on-reboot.sh"
 if [[ -f "$onRebootFile" ]]; then
-    echo [SKIP] Lunars source download
+    echo [SKIP] Lunars source already downloaded
 else
     # Downloading repo to CID
     mkdir -p /var/root/lunars
@@ -24,13 +24,13 @@ else
     # Only syncs over new files, does not overwrite newer files
     rsync -raz --update --remove-source-files /var/root/lunars/Lunars-tesla*/ /var/root/lunars/
     rm -rf /var/root/lunars/Lunars-tesla*
-    echo [OK] Lunars source download
+    echo [OK] Lunars source downloaded
 fi
 
 # Installing crontab
 alreadyinstalled=$(crontab -l | grep /var/root/lunars)
 if [[ "$alreadyinstalled" != "" ]]; then
-    echo [SKIP] Lunars cron install
+    echo [SKIP] Lunars cron already installed
     exit 3
 else
     # Just in case this file already exists
@@ -39,10 +39,15 @@ else
     echo "@reboot /bin/bash $onRebootFile > /dev/null 2>&1 &" >>/tmp/crontab
     cat /tmp/crontab | crontab || exit 6
     rm /tmp/crontab
-    echo [OK] Lunars cron install
+    echo [OK] Lunars cron installed
 fi
 
-/bin/bash /var/root/lunars/src/scripts/on-reboot.sh >/dev/null 2>&1 &
-echo [OK] Lunars on-reboot.sh background
+# check if already running
+if ps ax | grep $onRebootFile | grep -v $$ | grep bash | grep -v grep; then
+    echo "[SKIP] The script [$onRebootFile] is already running."
+else
+    /bin/bash $onRebootFile >/dev/null 2>&1 &
+    echo [OK] Lunars on-reboot.sh backgrounded
+fi
 
 echo [DONE] Lunars is now installed, have fun!
