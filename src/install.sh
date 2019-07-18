@@ -23,7 +23,7 @@ echo Not yet installed: OK
 
 # Downloading repo to CID
 mkdir -p /var/root/lunars
-curl -SL https://github.com/Lunars/tesla/tarball/master -o lunars.zip
+curl -sL https://github.com/Lunars/tesla/tarball/master -o lunars.zip || exit 5
 tar xvf ./lunars.zip -C /var/root/lunars/
 rm ./lunars.zip
 mv /var/root/lunars/Lunars-tesla*/* /var/root/lunars/
