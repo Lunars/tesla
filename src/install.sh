@@ -17,7 +17,7 @@ if [[ -f "$onRebootFile" ]]; then
 else
     # Downloading repo to CID
     mkdir -p /var/root/lunars
-    curl -sL https://github.com/Lunars/tesla/tarball/master -o lunars.zip || exit 5
+    curl -sL https://github.com/Lunars/tesla/tarball/master -o ./lunars.zip || exit 5
     tar xf ./lunars.zip -C /var/root/lunars/
     rm ./lunars.zip
 
