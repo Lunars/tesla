@@ -44,7 +44,7 @@ fi
 
 # check if already running
 if ps ax | grep $onRebootFile | grep -v $$ | grep bash | grep -v grep; then
-    echo "[SKIP] The script [$onRebootFile] is already running."
+    echo "[SKIP] Lunars on-reboot.sh is already running"
 else
     /bin/bash $onRebootFile >/dev/null 2>&1 &
     echo [OK] Lunars on-reboot.sh backgrounded
