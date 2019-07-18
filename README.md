@@ -16,7 +16,7 @@ ssh tesla1@cid
 sudo su
 
 # Run the install script which downloads this repo and creates the cron entry
-curl https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh > install && bash install
+curl -sL https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh > install && bash install
 ```
 
 ## Usage
