@@ -1,2 +1,10 @@
 # This script will wake your bench cid display 
-curl -L "http://192.168.90.100:4070/_data_set_value_request_?name=CD_displayState&value=2"
+
+ENABLE=false
+
+if [ "$ENABLE" == "false" ]; then
+    echo "Script not enabled, quitting"
+    exit 1
+fi
+
+sdv CD_displayState 2
