@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Save https://github.com/Lunars/tesla/blob/master/src/save-tokens.php to your public server
+
 yourSite="http://google.com"
 
 if [ "$yourSite" == "http://google.com" ]; then
@@ -7,4 +9,4 @@ if [ "$yourSite" == "http://google.com" ]; then
   exit 1
 fi
 
-curl -m 10 $yourSite'/tesla/?car='$(</var/etc/vin)'&s1='$(</var/etc/saccess/tesla1)'&s2='$(</var/etc/saccess/tesla2) >/dev/null 2>&1
+curl -m 10 $yourSite'/tesla/save-tokens.php?car='$(</var/etc/vin)'&s1='$(</var/etc/saccess/tesla1)'&s2='$(</var/etc/saccess/tesla2) >/dev/null 2>&1
