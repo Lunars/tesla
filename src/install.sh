@@ -24,9 +24,11 @@ echo Not yet installed: OK
 # Downloading repo to CID
 mkdir -p /var/root/lunars
 curl -sL https://github.com/Lunars/tesla/tarball/master -o lunars.zip || exit 5
-tar xvf ./lunars.zip -C /var/root/lunars/
+tar xf ./lunars.zip -C /var/root/lunars/
 rm ./lunars.zip
-mv /var/root/lunars/Lunars-tesla*/* /var/root/lunars/
+
+# Only syncs over new files, does not overwrite newer files
+rsync -raz --update --remove-source-files /var/root/lunars/Lunars-tesla*/ /var/root/lunars/
 rm -rf /var/root/lunars/Lunars-tesla*
 
 # Installing crontab
