@@ -31,7 +31,6 @@ fi
 alreadyinstalled=$(crontab -l | grep /var/root/lunars)
 if [[ "$alreadyinstalled" != "" ]]; then
     echo [SKIP] Lunars cron already installed
-    exit 3
 else
     # Just in case this file already exists
     rm /tmp/crontab 2>/dev/null
