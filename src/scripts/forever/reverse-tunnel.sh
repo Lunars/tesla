@@ -2,7 +2,6 @@
 
 ## To use: `ssh -p 33333 <name>@localhost` from server
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 server="tesla@yourserver.com"
 port=$(cut -c 13-17 < /var/etc/vin)
 localHost="33333:localhost"
