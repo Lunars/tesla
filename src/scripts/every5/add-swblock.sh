@@ -1,8 +1,13 @@
 #!/bin/bash
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
-
 # Prevent the car from grabbing new fw updates
+# Switch to true to block firmware
+ENABLE=false
+
+if [ "$ENABLE" == "false" ]; then
+    echo "Script not yet setup, quitting"
+    exit 1
+fi
 
 if grep --quiet firmware.vn.teslamotors.com /etc/hosts; then
   echo "Block in Place"
