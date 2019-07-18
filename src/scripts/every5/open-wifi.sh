@@ -7,6 +7,13 @@
 
 # ssh -p $WIFIPORT tesla1@192.168.1.154
 
+ENABLE=false
+
+if [ "$ENABLE" == "false" ]; then
+    echo "Script not enabled, quitting"
+    exit 1
+fi
+
 if (($(cat /proc/uptime | cut -d. -f1) < 60)); then sleep 15; fi
 
 WIFIPORT=229
