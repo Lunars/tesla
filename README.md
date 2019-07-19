@@ -22,9 +22,7 @@ curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh?$
 
 ## Usage
 
-Modify the scripts in `/var/root/lunars/src/scripts/*` to setup with your information.
-
-Rename the scripts with `.disabled` extension that you do not want to run.
+Modify the scripts in `/var/root/lunars/src/scripts/*` to setup with your information and whether to enable a particular script. 
 
 ## Author
 
