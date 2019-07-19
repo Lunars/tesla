@@ -17,7 +17,9 @@ tesla1@cid-RedactedVIN$ curl -s http://ic:4130/screenshot
 tesla1@cid-RedactedVIN$ scp -rp root@ic:/home/tesla/.Tesla/data/screenshots/ /home/tesla/.Tesla/data/
 ```
 
-### A) Upload images to imgur.com
+# Save and view screenshots
+
+## Option A) Upload images to imgur.com
 
 Save upload-image.sh
 
@@ -46,7 +48,7 @@ bash $imgurAPI $CIDPATH $ICPATH
 
 ```
 
-### B) Email as attachment
+## Option B) Email as attachment
 
 ```bash
 #!/bin/bash
