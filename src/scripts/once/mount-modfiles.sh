@@ -15,8 +15,8 @@ if [ "$ENABLE" == "false" ]; then
 fi
 
 mkdir -p "$saveLocation/usr/local/bin/"
-for bindmount in $(mount | grep bind | awk '{ print $1 }'); do
-  chmod +x $bindmount
+for bindmount in $(mount | grep -e bind -e lunars | awk '{ print $1 }'); do
+  chmod +x $bindmount 2>/dev/null
   /bin/umount $bindmount
 done
 
@@ -26,6 +26,7 @@ for modfile in $(find . -type f); do
   mkdir -p /$(dirname $modfile) 2>/dev/null
   #displays warnings because mounting a file
   /bin/mount --bind $modfile /$modfile 2>/dev/null
+  chmod +x $modfile 2>/dev/null
   /bin/mount -o remount,ro /$modfile 2>/dev/null
 done
 
