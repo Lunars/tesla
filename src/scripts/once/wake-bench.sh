@@ -7,4 +7,4 @@ if [ "$ENABLE" == "false" ]; then
     exit 1
 fi
 
-sdv CD_displayState 2
+curl -sL "http://192.168.90.100:4070/_data_set_value_request_?name=CD_displayState&value=2"
