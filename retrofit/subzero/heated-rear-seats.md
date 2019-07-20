@@ -26,4 +26,8 @@ You should also look for dangling wires under your rear seats, on the driver sid
 
 ## Install
 
-TBC
+1. https://github.com/Lunars/tesla/blob/master/retrofit/subzero/Seat%20Cushion%20-%20Lower%20-%202nd%20Row%20(Remove%20and%20Install).pdf
+
+2. https://github.com/Lunars/tesla/blob/master/retrofit/subzero/Bolster%20-%20Side%20-%20Seat%20-%202nd%20Row%20-%20LH%20(Remove%20and%20Replace).pdf
+
+3. https://github.com/Lunars/tesla/blob/master/retrofit/subzero/Back%20Rest%20Assembly%20-%20Seat%20-%202nd%20Row%20-%20LH%20(Remove%20and%20Install).pdf
