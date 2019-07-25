@@ -26,6 +26,7 @@ Official parts for Tesla door ambient lighting
 Or, you can connect your own LED strips to the doors
 
 * [Led strip](https://www.amazon.com/gp/product/B005GL5R56/)
+Make sure to get your interior nice and hot for a few hours to help the adhisve really stick.  Also give it a good rub once it's hot.  If you dont do this you may find them falling off every few hours like I did.
 
 Puddle lights & seat lights
 
