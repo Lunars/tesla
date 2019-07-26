@@ -38,6 +38,10 @@
        res=$(/bin/bash $mainPath/emailImage.sh
        show_res=1
      ;;
+     " vlow")
+       res=$(/usr/local/bin/sdv GUI_suspensionLevelRequest 7)
+       show_res=1
+     ;;
      " test")
        res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='Test message!')
      ;;
