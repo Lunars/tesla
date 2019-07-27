@@ -26,12 +26,15 @@
      "NoNe")
        echo "Got NoNe"
      ;;
-     " ludi")
+     " egg2")
         /usr/local/bin/sdv GUI_eggWotMode 1
         /bin/sleep 3
         /usr/local/bin/sdv GUI_eggWotMode 2
      ;; 
-     " ludioff")
+     " egg1")
+        /usr/local/bin/sdv GUI_eggWotMode 1
+     ;;
+     " egg0")
         /usr/local/bin/sdv GUI_eggWotMode 0
      ;;
      " ss")
@@ -44,6 +47,9 @@
      ;;
      " test")
        res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='Test message!')
+     ;;
+     " help")
+       res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='devm egg0 egg1 egg2 rebic rebcid rebgw tkn1 tkn2 tkns rrun wifi')
      ;;
      " rrun "*)
        password=${password#" rrun "}
