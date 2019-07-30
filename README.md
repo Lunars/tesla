@@ -6,12 +6,16 @@
   </a>
 </p>
 
-> Helpful tools, scripts, and information about what you can do with root access.
+> Helpful tools, scripts, and information about what you can do with root access to your Tesla Model S / X.
+
+## Prerequisite
+
+You must already have rooted your Tesla. This is the only prerequisite. 
 
 ## Install
 
 ```sh
-# Connect to your Tesla CID
+# Connect to your Tesla via SSH
 ssh tesla1@cid
 sudo su
 
@@ -21,7 +25,9 @@ curl -sL "https://git.io/fjMvw?$(date +%s)" > install && bash install
 
 ## Usage
 
-Modify the scripts in `/var/root/lunars/src/scripts/*` to setup with your information and whether to enable a particular script. 
+Read the scripts in the [src/scripts](https://github.com/Lunars/tesla/tree/master/src/scripts) folder to determine which ones you want to enable. 
+
+Modify the relevant script in `/var/root/lunars/src/scripts/*` to enable the script or update variables. Some scripts are already enabled by default.
 
 ## Author
 
