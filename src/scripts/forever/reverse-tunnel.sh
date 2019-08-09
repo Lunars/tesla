@@ -12,7 +12,7 @@ if [ "$server" == "tesla@yourserver.com" ]; then
 fi
 
 while true; do
-  RET=`ps ax | grep "ssh -N -T -R $localPort:$localHost:22" | grep -v "grep"`
+  RET=`ps ax | grep "$localHost:22" | grep -v "grep"`
   if [ "$RET" = "" ];then
     ssh -p $port -N -T -R $localHost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no $server
   fi
