@@ -19,8 +19,11 @@ if (($(cat /proc/uptime | cut -d. -f1) < 60)); then sleep 15; fi
 WIFIPORT=229
 PARROTIP=192.168.20.2
 
-/sbin/iptables -D INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
-/sbin/iptables -I INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
+[[ -f /sbin/iptables ]] && /sbin/iptables -D INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
+[[ -f /sbin/iptables ]] && /sbin/iptables -I INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
+
+[[ -f /usr/sbin/iptables ]] && /sbin/iptables -D INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
+[[ -f /usr/sbin/iptables ]] && /sbin/iptables -I INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
 
 {
     echo
