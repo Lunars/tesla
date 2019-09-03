@@ -9,9 +9,9 @@ if [ "$ENABLE" == "false" ]; then
     exit 1
 fi
 
-ISTMPFS=`/bin/mount | /bin/grep -c "/var/log type tmpfs"`
+ISTMPFS=$(/bin/mount | /bin/grep -c "/var/log type tmpfs")
 
-if [ $ISTMPFS == 0 ]; then
+if [ "$ISTMPFS" == 0 ]; then
   /bin/mount -t tmpfs -o size=100M tmpfs /var/log; /sbin/initctl restart rsyslog
   echo SYSLOG now on TMPFS
 else
