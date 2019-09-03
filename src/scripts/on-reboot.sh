@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+
 mainPath="/var/root/lunars/src/scripts"
 
 echo "Starting reboot once scripts"
