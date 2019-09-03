@@ -33,13 +33,13 @@ else
   if getent passwd $exampleUser  > /dev/null 2>&1; then
       echo "$exampleUser already exists"
   else
-      /usr/sbin/useradd -c "Car OWNER account DO NOT REMOVE" -s /bin/bash -u 10369 -G tesla -G root $exampleUser
+      useradd -c "Car OWNER account DO NOT REMOVE" -s /bin/bash -u 10369 -G tesla -G root $exampleUser
       # Make this user sudo
-      /usr/sbin/usermod -a -G admin,sudo,log $exampleUser
+      usermod -a -G admin,sudo,log $exampleUser
       mkdir /home/$exampleUser 2>&1
       chown $exampleUser:$exampleUser /home/$exampleUser
-      /usr/sbin/usermod -aG sudo $exampleUser
-      echo $exampleUser:$examplePass | /usr/sbin/chpasswd
+      usermod -aG sudo $exampleUser
+      echo $exampleUser:$examplePass | chpasswd
   fi
 
   # Add the ssh keys to each user

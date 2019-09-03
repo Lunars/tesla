@@ -2,7 +2,6 @@
 
 # Saves keys over an ssh connection by writing them to a text file on the remote
 # server. Does not require any web server be running on the server, only sshd.
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
 TIME=$(date "+%Y-%m-%d %k:%M:%S")
 VIN=$(</var/etc/vin)

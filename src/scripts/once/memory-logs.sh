@@ -1,4 +1,5 @@
-#! bin/bash
+#!/bin/bash
+
 # mount /var/log on tmpfs to not wear down the eMMC flash chip
 
 ENABLE=true

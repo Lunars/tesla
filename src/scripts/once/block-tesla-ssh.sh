@@ -1,4 +1,5 @@
-#! bin/bash
+#!/bin/bash
+
 # Block Tesla from SSHing to car
 
 ENABLE=false

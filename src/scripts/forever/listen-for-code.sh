@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
  # Credit to BogGyver for script
  
@@ -27,22 +27,22 @@
        echo "Got NoNe"
      ;;
      " egg2")
-        /usr/local/bin/sdv GUI_eggWotMode 1
+        sdv GUI_eggWotMode 1
         /bin/sleep 3
-        /usr/local/bin/sdv GUI_eggWotMode 2
+        sdv GUI_eggWotMode 2
      ;; 
      " egg1")
-        /usr/local/bin/sdv GUI_eggWotMode 1
+        sdv GUI_eggWotMode 1
      ;;
      " egg0")
-        /usr/local/bin/sdv GUI_eggWotMode 0
+        sdv GUI_eggWotMode 0
      ;;
      " ss")
-       res=$(/bin/bash $mainPath/emailImage.sh
+       res=$(/bin/bash $mainPath/emailImage.sh)
        show_res=1
      ;;
      " vlow")
-       res=$(/usr/local/bin/sdv GUI_suspensionLevelRequest 7)
+       res=$(sdv GUI_suspensionLevelRequest 7)
        show_res=1
      ;;
      " test")
@@ -73,7 +73,7 @@
        show_res=1
      ;;
      " devm")
-       res=$(/usr/local/bin/sdv GUI_developerMode true)
+       res=$(sdv GUI_developerMode true)
        show_res=1
      ;;
      " rebic")
