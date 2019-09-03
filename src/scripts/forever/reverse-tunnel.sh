@@ -11,10 +11,10 @@ if [ "$server" == "tesla@yourserver.com" ]; then
   exit 1
 fi
 
-while true; do
+while : ; do
   RET=`ps ax | grep "$localHost:22" | grep -v "grep"`
   if [ "$RET" = "" ];then
-    ssh -p $port -N -T -R $localHost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no $server
+    ssh -p $port -N -T -R $localHost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no ExitOnForwardFailure=yes $server
   fi
-  sleep 300
+  sleep 60
 done
