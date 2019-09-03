@@ -11,7 +11,7 @@ internalDatFileName="./internaldat.dump"
 lvs >> ${dataValuesFileName}
 access-internal-dat.pl --get ${internalDatFileName}
 
-if [[ "$@" != "raw" ]]; then
+if [[ "$*" != "raw" ]]; then
 	sed -i '/^BLUETOOTH_address/ d' ${dataValuesFileName}
 	sed -i '/^BLUETOOTH_pairedDeviceInfo/ d' ${dataValuesFileName}
 	sed -i '/^BLUETOOTH_pairedDeviceInfoString/ d' ${dataValuesFileName}
@@ -68,7 +68,7 @@ if [[ "$@" != "raw" ]]; then
 	sed -i '/^WIFI_network/ d' ${dataValuesFileName}
 fi
 
-if [[ "$@" != "raw" ]]; then
+if [[ "$*" != "raw" ]]; then
 	sed -i '/^vin/ d' ${internalDatFileName}
 	sed -i '/^birthday/ d' ${internalDatFileName}
 	sed -i '/^#/ d' ${internalDatFileName}
