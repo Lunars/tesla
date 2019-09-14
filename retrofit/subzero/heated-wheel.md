@@ -1,6 +1,6 @@
 # Heated steering wheel, > Dec 2014 needs physical harness modification
 
-Wiring exists coming from dash to behind the steering column for all vehicles built after Dec 8 2014. For vehicles before this, there are no easy instructions...The MCU sends LIN + PWR to SCCM for heated steering wheel (? accuracy not confirmed)
+Wiring exists coming from dash to behind the steering column for all vehicles built after Dec 8 2014. For vehicles before this, there are no easy instructions...The MCU sends CAN + PWR to SCCM for heated steering wheel (? accuracy not confirmed)
 
 ## Config
 
