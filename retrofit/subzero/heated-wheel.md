@@ -33,3 +33,12 @@ access-internal-dat.pl steeringheat 1
 Everything is plug and play. Remove steering wheel, remove SCCM. Add new SCCM, add new steering wheel.
 
 Insert the heated contact plate into the new steering wheel (before install would help). All the wires will make sense when you go to install
+
+Pre Dec 2014 cars need additional modification since the harness plugging into SCCM does not have power and ground for the heater.
+
+For the modification you will need to remove the green Pin 6 on the yellow SCCM connector. After you remove that replace it with a new wire connected to constant 12V.
+
+Create a ground wire like above and place it in pin 7 of the SCCM connector.
+
+
+Link with pictures https://teslamotorsclub.com/tmc/threads/pre-dec-2014-s-heated-steering-wheel-retrofit.165374/#post-4002253
