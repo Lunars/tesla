@@ -41,4 +41,4 @@ For the modification you will need to remove the green Pin 6 on the yellow SCCM 
 Create a ground wire like above and place it in pin 7 of the SCCM connector.
 
 
-Link with pictures https://teslamotorsclub.com/tmc/threads/pre-dec-2014-s-heated-steering-wheel-retrofit.165374/#post-4002253
+Link with pictures https://teslamotorsclub.com/tmc/posts/3993410/
