@@ -14,7 +14,7 @@ fi
 while : ; do
   RET=`ps ax | grep "$localHost:22" | grep -v "grep"`
   if [ "$RET" = "" ];then
-    ssh -p $port -N -T -R $localHost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no ExitOnForwardFailure=yes $server
+    ssh -p $port -N -T -R $localHost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes $server
   fi
   sleep 60
 done
