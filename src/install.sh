@@ -11,24 +11,24 @@ fi
 
 echo [OK] Not running chrooted
 
-onRebootFile="/var/root/lunars/src/scripts/on-reboot.sh"
+onRebootFile="/home/lunars/src/scripts/on-reboot.sh"
 if [[ -f "$onRebootFile" ]]; then
     echo [SKIP] Lunars source already downloaded
 else
     # Downloading repo to CID
-    mkdir -p /var/root/lunars
+    mkdir -p /home/lunars
     curl -sL https://github.com/Lunars/tesla/tarball/master -o ./lunars.zip || exit 5
-    tar xf ./lunars.zip -C /var/root/lunars/
+    tar xf ./lunars.zip -C /home/lunars/
     rm ./lunars.zip
 
     # Only syncs over new files, does not overwrite newer files
-    rsync -raz --update --remove-source-files /var/root/lunars/Lunars-tesla*/ /var/root/lunars/
-    rm -rf /var/root/lunars/Lunars-tesla*
+    rsync -raz --update --remove-source-files /home/lunars/Lunars-tesla*/ /home/lunars/
+    rm -rf /home/lunars/Lunars-tesla*
     echo [OK] Lunars source downloaded
 fi
 
 # Installing crontab
-alreadyinstalled=$(crontab -l | grep /var/root/lunars)
+alreadyinstalled=$(crontab -l | grep /home/lunars)
 if [[ "$alreadyinstalled" != "" ]]; then
     echo [SKIP] Lunars cron already installed
 else

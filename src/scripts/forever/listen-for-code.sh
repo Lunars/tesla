@@ -2,7 +2,7 @@
 
  # Credit to BogGyver for script
  
- mainPath="/var/root/lunars/src/scripts"
+ mainPath="/home/lunars/src/scripts"
  pattern=AccessPopup
  last_command="NoNe"
  if ps ax | grep $0 | grep -v $$ | grep bash | grep -v grep

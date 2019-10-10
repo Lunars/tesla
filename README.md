@@ -27,7 +27,7 @@ curl -sL "https://git.io/fjMvw?$(date +%s)" > install && bash install
 
 Read the scripts in the [src/scripts](https://github.com/Lunars/tesla/tree/master/src/scripts) folder to determine which ones you want to enable. 
 
-Modify the relevant script in `/var/root/lunars/src/scripts/*` to enable the script or update variables. Some scripts are already enabled by default.
+Modify the relevant script in `/home/lunars/src/scripts/*` to enable the script or update variables. Some scripts are already enabled by default.
 
 ## Author
 

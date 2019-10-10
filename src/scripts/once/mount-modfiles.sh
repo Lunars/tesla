@@ -5,7 +5,7 @@
 
 # if an argument is provided multiple directories are allowed
 
-saveLocation="/var/root/lunars/src/overwrite-files"
+saveLocation="/home/lunars/src/overwrite-files"
 
 ENABLE=true
 
