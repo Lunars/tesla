@@ -12,9 +12,15 @@ fi
 ISTMPFS=$(/bin/mount | /bin/grep -c "/var/log type tmpfs")
 
 if [ "$ISTMPFS" == 0 ]; then
-  /bin/mount -t tmpfs -o size=100M tmpfs /var/log; /sbin/initctl restart rsyslog
-  kill $(cat /etc/sv/*/log/supervise/pid)
-  echo SYSLOG now on TMPFS
+    mount -t tmpfs -o size=100M tmpfs /var/log
+    
+    #if we mount while the programs are still active and they keep their logfiles open, they keep on writing to the
+    #(now hidden) location on the eMMC, so we need to restart or send the HUP signal (if it's properly impemented)    
+    mkdir /var/log/ntpstats /var/log/mgetty
+    service ntp restart
+    pkill -HUP valhalla_server
+    restart rsyslog
+    echo SYSLOG now on TMPFS
 else
-  echo SYSLOG already on TMPFS
+    echo SYSLOG already on TMPFS
 fi
