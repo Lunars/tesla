@@ -21,7 +21,7 @@ if [ "$ISTMPFS" == 0 ]; then
     pkill -HUP valhalla_server
     restart rsyslog
     
-    ssh ic mount -t tmpfs -o size=1500k,nr_inodes=200 tmpfs /var/log
+    ssh ic mount -t tmpfs -o size=100M tmpfs /var/log
     ssh ic mkdir /var/log/ntpstats /var/log/mgetty
     ssh ic service ntp restart 
     ssh ic restart rsyslog     
