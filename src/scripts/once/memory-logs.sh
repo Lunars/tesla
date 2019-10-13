@@ -20,7 +20,9 @@ if [ "$ISTMPFS" == 0 ]; then
     service ntp restart
     pkill -HUP valhalla_server
     restart rsyslog
-    echo SYSLOG now on TMPFS
-else
-    echo SYSLOG already on TMPFS
+    
+    ssh ic mount -t tmpfs -o size=1500k,nr_inodes=200 tmpfs /var/log
+    ssh ic mkdir /var/log/ntpstats /var/log/mgetty
+    ssh ic service ntp restart 
+    ssh ic restart rsyslog     
 fi
