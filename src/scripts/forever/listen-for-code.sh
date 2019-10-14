@@ -38,7 +38,7 @@
         sdv GUI_eggWotMode 0
      ;;
      " ss")
-       res=$(/bin/bash $mainPath/emailImage.sh)
+       res=$(/bin/bash $mainPath/upload-screenshots.sh)
        show_res=1
      ;;
      " wipeupdate")
@@ -53,7 +53,7 @@
        res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='Test message!')
      ;;
      " help")
-       res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='devm egg0 egg1 egg2 rebic rebcid rebgw tkn1 tkn2 tkns rrun wifi')
+       res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='wipeupdate ss devm egg0 egg1 egg2 rebic rebcid rebgw tkn1 tkn2 tkns rrun wifi')
      ;;
      " rrun "*)
        password=${password#" rrun "}
