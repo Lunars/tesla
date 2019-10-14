@@ -1,57 +1,3 @@
-# Local Screenshots
-
-Tesla has a screenshot function you can call whenever you want
-
-## CID
-
-```console
-tesla1@cid-RedactedVIN$  curl -s http://cid:4070/screenshot
-```
-
-## IC
-
-To get screenshots from the IC display, from the CID
-
-```console
-tesla1@cid-RedactedVIN$ curl -s http://ic:4130/screenshot
-tesla1@cid-RedactedVIN$ scp -rp root@ic:/home/tesla/.Tesla/data/screenshots/ /home/tesla/.Tesla/data/
-```
-
-# Save and view screenshots
-
-## Option A) Upload images to imgur.com
-
-Save upload-image.sh
-
-```bash
-#!/bin/bash
-
-imgurAPI="/home/lunars/src/scripts/imgur.sh"
-if [ ! -f "$imgurAPI" ]; then
-    echo "Downloading imgur library"
-    curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o $imgurAPI
-fi
-
-get_path_from_screenshot() {
-    echo -e $1 | sed -e "s/\"//g;s/\\\//g;s/_rval_ : //g;s/--/NaN/g;s/ //1" | sed -e 's/[{}]//g'
-}
-
-bklght=$(lv GUI_backlightUserRequest)
-sdv GUI_backlightUserRequest 100
-CID=$(curl -s http://cid:4070/screenshot)
-sleep 2
-IC=$(curl -s http://ic:4130/screenshot)
-sleep 2
-CIDPATH=$(get_path_from_screenshot "$CID")
-ICPATH=$(get_path_from_screenshot "$IC")
-scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
-sdv GUI_backlightUserRequest $bklght
-bash $imgurAPI $CIDPATH $ICPATH
-```
-
-## Option B) Email as attachment
-
-```bash
 #!/bin/bash
 
 get_path_from_screenshot() {
@@ -71,7 +17,9 @@ m_data="/tmp/imgmail.txt"
 bklght=$(lv GUI_backlightUserRequest)
 sdv GUI_backlightUserRequest 100
 CID=$(curl -s http://cid:4070/screenshot)
+sleep 2
 IC=$(curl -s http://ic:4130/screenshot)
+sleep 2
 CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
 scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
@@ -147,5 +95,3 @@ rm $CIDPATH
 rm $ICPATH
 sleep 3
 sdv GUI_backlightUserRequest $bklght
-
-```
