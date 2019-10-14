@@ -39,13 +39,14 @@ get_path_from_screenshot() {
 bklght=$(lv GUI_backlightUserRequest)
 sdv GUI_backlightUserRequest 100
 CID=$(curl -s http://cid:4070/screenshot)
+sleep 2
 IC=$(curl -s http://ic:4130/screenshot)
+sleep 2
 CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
 scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 sdv GUI_backlightUserRequest $bklght
 bash $imgurAPI $CIDPATH $ICPATH
-
 ```
 
 ## Option B) Email as attachment
