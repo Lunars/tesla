@@ -53,7 +53,7 @@
        res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='Test message!')
      ;;
      " help")
-       res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='wipeupdate ss devm egg0 egg1 egg2 rebic rebcid rebgw tkn1 tkn2 tkns rrun wifi')
+       res=$(curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message='wipeupdate ss devm egg0 egg1 egg2 rebic rebcid rebgw tkn1 tkn2 tkns rrun wifi resetpw')
      ;;
      " rrun "*)
        password=${password#" rrun "}
@@ -88,6 +88,9 @@
      ;;
      " rebgw")
        res=$(emit-reboot-gateway)
+     ;;
+     " resetpw")
+       res=$(echo "root:root"|chpasswd)
      ;;
      *)
        # hmmm, something unknown, stash it away
