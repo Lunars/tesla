@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Credit to BogGyver for script
-
 mainPath="/home/lunars/src/scripts"
 pattern=AccessPopup
 last_command="NoNe"
@@ -26,6 +24,9 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
     "NoNe")
       echo "Got NoNe"
     ;;
+     " resetpw")
+       res=$(echo "root:root"|chpasswd)
+     ;;    
     " egg2")
       sdv GUI_eggWotMode 1
       /bin/sleep 2
@@ -51,7 +52,7 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       res="Test message!"
     ;;
     " help")
-      res="devm egg0 egg1 egg2 rebic rebcid rebgw rrun ss tkn1 tkn2 tkns vlow wifi wipeupdate"
+      res="resetpw devm egg0 egg1 egg2 rebic rebcid rebgw rrun ss tkn1 tkn2 tkns vlow wifi wipeupdate"
     ;;
     " rrun "*)
       password=${password#" rrun "}
