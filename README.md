@@ -25,9 +25,7 @@ curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh" 
 
 ## Usage
 
-Read the scripts in the [src/scripts](https://github.com/Lunars/tesla/tree/master/src/scripts) folder to determine which ones you want to enable. 
-
-Modify the relevant script in `/home/lunars/src/scripts/*` to enable the script or update variables. Some scripts are already enabled by default.
+Read the scripts in the [/home/lunars/src/scripts/](https://github.com/Lunars/tesla/tree/master/src/scripts) folder to determine which ones you want to enable. Some scripts are already enabled by default.
 
 ## Author
 
