@@ -41,6 +41,10 @@
        res=$(/bin/bash $mainPath/emailImage.sh)
        show_res=1
      ;;
+     " wipeupdate")
+       res=$(/bin/bash $mainPath/wipe-update.sh)
+       show_res=1
+     ;;     
      " vlow")
        res=$(sdv GUI_suspensionLevelRequest 7)
        show_res=1
