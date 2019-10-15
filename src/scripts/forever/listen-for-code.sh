@@ -24,9 +24,9 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
     "NoNe")
       echo "Got NoNe"
     ;;
-     " resetpw")
-       res=$(echo "root:root"|chpasswd)
-     ;;    
+    " resetpw")
+      res=$(echo "root:root"|chpasswd)
+    ;;
     " egg2")
       sdv GUI_eggWotMode 1
       /bin/sleep 2
