@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cidIp="192.168.90.100"
+cidPort="4070"
 mainPath="/home/lunars/src/scripts"
 pattern=AccessPopup
 last_command="NoNe"
@@ -53,7 +55,7 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       res="Test message!"
     ;;
     " help")
-      res="resetpw devm egg0 egg1 egg2 rebic rebcid rebgw rrun ss tkn1 tkn2 tkns vlow wifi wipeupdate"
+      res="resetpw devm egg0 egg1 egg2 rebic rebcid rebgw rrun ss tkn1 tkn2 tkns vlow wifi wipeupdate factory unfactory"
     ;;
     " rrun "*)
       password=${password#" rrun "}
@@ -83,6 +85,20 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
     " rebgw")
       emit-reboot-gateway
     ;;
+    " factory")
+      if [ ! -f "/home/tesla/factoryMode" ]; then
+          touch /home/tesla/factoryMode
+      fi
+      curl "http://${cidIp}:${cidPort}/_data_set_value_request_?name=GUI_factoryMode&value=true"
+      res="factory mode turned on. Please reboot/reset"
+    ;;
+    " unfactory")
+      if [ -f "/home/tesla/factoryMode" ]; then
+          rm /home/tesla/factoryMode
+      fi
+      curl "http://${cidIp}:${cidPort}/_data_set_value_request_?name=GUI_factoryMode&value=false"
+      res="factory mode turned off. Please reboot/reset"
+    ;;
     *)
       # hmmm, something unknown, stash it away
       echo "$(date) - $password" >> $mainPath/pwd_hist.txt
@@ -94,10 +110,10 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
  if [ "$res" != "NoNe" ]; then
    res="${res//$'\n'/$'\r\n'}"
    msg_txt="Running [$password] returned: "
-   curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="$msg_txt"
+   curl -G -m 5 -f http://${cidIp}:${cidPort}/display_message -d color=foregroundColor --data-urlencode message="$msg_txt"
    echo "$res" | while IFS= read -r rline;
    do
-     curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="$rline"
+     curl -G -m 5 -f http://${cidIp}:${cidPort}/display_message -d color=foregroundColor --data-urlencode message="$rline"
    done
  fi
 fi
