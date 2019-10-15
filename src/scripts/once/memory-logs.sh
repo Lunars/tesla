@@ -17,6 +17,7 @@ if [ "$ISTMPFS" == 0 ]; then
     #if we mount while the programs are still active and they keep their logfiles open, they keep on writing to the
     #(now hidden) location on the eMMC, so we need to restart or send the HUP signal (if it's properly impemented)    
     mkdir /var/log/ntpstats /var/log/mgetty
+    chown ntp:ntp /var/log/ntpstats/
     service ntp restart
     pkill -HUP valhalla_server
     restart rsyslog
