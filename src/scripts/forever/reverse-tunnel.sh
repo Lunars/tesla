@@ -8,17 +8,19 @@
 #
 # ssh -p <last4ofvin> <name>@localhost
 
+ENABLE=false
+
+if [ "$ENABLE" != "true" ]; then
+    echo "Script not enabled, quitting"
+    exit 1
+fi
+
 server="tesla@yourserver.com"
 port=$(cut -c 14-17 < /var/etc/vin)
 
-if [ "$server" == "tesla@yourserver.com" ]; then
-  echo "Script not yet setup, quitting"
-  exit 1
-fi
-
 while : ; do
-  RET=`ps ax | grep "${port}:localhost:22" | grep -v "grep"`
-  if [ "$RET" = "" ];then
+  RET=$(ps ax | grep "${port}:localhost:22" | grep -v "grep"|wc -l)
+  if [ "$RET" -eq 0 ];then
     ssh -N -T -R ${port}:localhost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes $server
   fi
   sleep 60
