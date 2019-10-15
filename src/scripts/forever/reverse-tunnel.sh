@@ -16,12 +16,12 @@ if [ "$ENABLE" != "true" ]; then
 fi
 
 server="tesla@yourserver.com"
-port=$(cut -c 14-17 < /var/etc/vin)
+port=$(cut -c 13-17 < /var/etc/vin)
 
 while : ; do
   RET=$(ps ax | grep "${port}:localhost:22" | grep -v "grep"|wc -l)
   if [ "$RET" -eq 0 ];then
-    ssh -N -T -R ${port}:localhost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes $server
+    ssh -N -T -R ${port}:localhost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes $server -p $port
   fi
   sleep 60
 done
