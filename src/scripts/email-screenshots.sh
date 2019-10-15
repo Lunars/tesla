@@ -13,15 +13,14 @@ m_pwd="yoursender_password"
 m_file="/tmp/imgmail.html"
 m_data="/tmp/imgmail.txt"
 
-# Save the backlight to a variable, set it to 100, then set it back after imgur.sh ?
 bklght=$(lv GUI_backlightUserRequest)
-sdv GUI_backlightUserRequest 100
+sdv GUI_backlightUserRequest 255 && sleep 1
 CID=$(curl -s http://cid:4070/screenshot)
-sleep 2
 IC=$(curl -s http://ic:4130/screenshot)
-sleep 2
+sdv GUI_backlightUserRequest ${bklght//\"}
 CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
+sleep 1
 scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 
 echo "<html>
@@ -93,5 +92,3 @@ rm $m_file
 rm $m_data
 rm $CIDPATH
 rm $ICPATH
-sleep 3
-sdv GUI_backlightUserRequest $bklght
