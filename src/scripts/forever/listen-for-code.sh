@@ -55,7 +55,7 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       res="Test message!"
     ;;
     " help")
-      res="resetpw devm egg0 egg1 egg2 rebic rebcid rebgw rrun ss tkn1 tkn2 tkns vlow wifi wipeupdate factory unfactory"
+      res="resetpw devm egg0 egg1 egg2 rebic rebcid rebgw rrun ss tkn1 tkn2 tkns vlow wifi wipeupdate factory unfactory ip"
     ;;
     " rrun "*)
       password=${password#" rrun "}
@@ -98,6 +98,9 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       fi
       curl "http://${cidIp}:${cidPort}/_data_set_value_request_?name=GUI_factoryMode&value=false"
       res="factory mode turned off. Please reboot/reset"
+    ;;
+    " ip")
+      res=$(ip addr show)
     ;;
     *)
       # hmmm, something unknown, stash it away
