@@ -20,7 +20,7 @@ CIDPATH=$(get_path_from_screenshot "$CID")
 if [ "$IC" != "" ]; then # ic may be sleeping (energy savings mode)
     ICPATH=$(get_path_from_screenshot "$IC")
     sleep 1
-    scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
+    scp -q -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 fi
 bash $imgurAPI $CIDPATH $ICPATH
 printf "\n"
