@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # grumi
-# 🖼️ Upload an image, video or album to Imgur.
+# Upload an image, video or album to Imgur.
 
 readonly program="$(basename "$0")"
 readonly version='0.0.4'
@@ -69,13 +69,7 @@ function size() {
 }
 
 function leng() {
-    deps 'ffprobe'
-
-    if [[ "$2" -eq '2' && "$(ffprobe -i "$1" -show_entries format=duration -v quiet -of csv='p=0')" > '30.0' ]]; then
-        printf '%s is too long (max: 30s)\n' "$1" 1>&2; return 0
-    fi
-
-    return "$2"
+    return 0
 }
 
 function upld() {
@@ -118,11 +112,7 @@ args "$@"
 deps 'curl' 'file' 'jq'
 
 # https://api.imgur.com/oauth2/addclient
-readonly client_id="$(<${HOME}/.grumi)"
-if [[ -z "$client_id" ]]; then
-    touch "${HOME}/.grumi"
-    printf 'You must provide a valid Client ID in %s/.grumi\n' "$HOME" 1>&2; exit 1
-fi
+readonly client_id="ad29ad5fee41aa9"
 
 # stat differs between BSD and GNU coreutils.
 case "$(stat --version | grep -o 'stat\s(GNU\scoreutils)')" in
