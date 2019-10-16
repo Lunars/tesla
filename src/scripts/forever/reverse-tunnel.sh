@@ -15,13 +15,16 @@ if [ "$ENABLE" != "true" ]; then
     exit 1
 fi
 
+port=$(cut -c 14-17 < /var/etc/vin)
 server="tesla@yourserver.com"
-port=$(cut -c 13-17 < /var/etc/vin)
+
+# Non standard sshd ports can be set like so
+#server="tesla@yourserver.com -p ${port}"
 
 while : ; do
   RET=$(ps ax | grep "${port}:localhost:22" | grep -v "grep"|wc -l)
   if [ "$RET" -eq 0 ];then
-    ssh -N -T -R ${port}:localhost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes $server -p $port
+    ssh -N -T -R ${port}:localhost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes $server
   fi
   sleep 60
 done
