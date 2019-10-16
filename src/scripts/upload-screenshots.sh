@@ -23,4 +23,5 @@ if [ "$IC" != "" ]; then # ic may be sleeping (energy savings mode)
     scp -q -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 fi
 bash $imgurAPI $CIDPATH $ICPATH
+rm $CIDPATH $ICPATH
 printf "\n"
