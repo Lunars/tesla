@@ -3,7 +3,7 @@
 imgurAPI="/home/lunars/src/scripts/imgur.sh"
 if [ ! -f "$imgurAPI" ]; then
     echo "Downloading imgur library"
-    curl https://raw.githubusercontent.com/tremby/imgur.sh/master/imgur.sh -o $imgurAPI
+    curl https://raw.githubusercontent.com/Lunars/tesla/master/src/scripts/imgur.sh -o $imgurAPI
     sleep 1
 fi
 
