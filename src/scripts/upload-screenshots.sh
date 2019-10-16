@@ -12,13 +12,14 @@ get_path_from_screenshot() {
 }
 
 bklght=$(lv GUI_backlightUserRequest)
-sdv GUI_backlightUserRequest 100
+sdv GUI_backlightUserRequest 255 && sleep 1
 CID=$(curl -s http://cid:4070/screenshot)
-sleep 2
 IC=$(curl -s http://ic:4130/screenshot)
-sleep 2
+sdv GUI_backlightUserRequest ${bklght//\"}
 CIDPATH=$(get_path_from_screenshot "$CID")
-ICPATH=$(get_path_from_screenshot "$IC")
-scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
-sdv GUI_backlightUserRequest $bklght
+if [ "$IC" != "" ]; then # ic may be sleeping (energy savings mode)
+    ICPATH=$(get_path_from_screenshot "$IC")
+    sleep 1
+    scp -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
+fi
 bash $imgurAPI $CIDPATH $ICPATH
