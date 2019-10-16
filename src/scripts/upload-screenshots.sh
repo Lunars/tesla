@@ -24,4 +24,5 @@ if [ "$IC" != "" ]; then # ic may be sleeping (energy savings mode)
 fi
 bash $imgurAPI $CIDPATH $ICPATH
 rm $CIDPATH $ICPATH
+ssh ic "rm $ICPATH"
 printf "\n"
