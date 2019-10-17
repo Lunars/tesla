@@ -86,18 +86,14 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       emit-reboot-gateway
     ;;
     " factory")
-      if [ ! -f "/home/tesla/factoryMode" ]; then
-          touch /home/tesla/factoryMode
-      fi
-      curl "http://${cidIp}:${cidPort}/_data_set_value_request_?name=GUI_factoryMode&value=true"
-      res="factory mode turned on. Please reboot/reset"
+      sdv GUI_factoryMode true
+      touch /home/tesla/factoryMode
+      emit-reboot-cid
     ;;
     " unfactory")
-      if [ -f "/home/tesla/factoryMode" ]; then
-          rm /home/tesla/factoryMode
-      fi
-      curl "http://${cidIp}:${cidPort}/_data_set_value_request_?name=GUI_factoryMode&value=false"
-      res="factory mode turned off. Please reboot/reset"
+      sdv GUI_factoryMode false
+      rm /home/tesla/factoryMode
+      emit-reboot-cid
     ;;
     " ip")
       res=$(ip addr show)
