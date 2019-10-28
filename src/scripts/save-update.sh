@@ -5,6 +5,7 @@
 
 PORT=$(cut -c 14-17 </var/etc/vin)
 SERVER="tesla@yourserver.com"
+FTPSERVER="user:password@ftp.example.com:21"
 
 # Non standard sshd ports can be set like so
 #server="tesla@yourserver.com -p ${port}"
@@ -54,8 +55,11 @@ elif [ "$MODE" = usb ]; then
     sync
     umount /disk/usb.*/
 elif [ "$MODE" = ssh ]; then
-    echo "Saving to /tmp/$NEWVER.image on remote server"
+    echo "Saving to /tmp/$NEWVER.image on remote server via SSH"
     dd if=/dev/mmcblk0p$OFFLINEPART bs=64 count=$NEWSIZE | ssh $SERVER "dd of=/tmp/$NEWVER.image"
+elif [ "$MODE" = ftp ]; then
+    echo "Saving to /tmp/$NEWVER.image on remote server via FTP"
+    dd if=/dev/mmcblk0p$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/$NEWVER.image
 else
     die "MODE must be one of usb | cid | ssh"
 fi
