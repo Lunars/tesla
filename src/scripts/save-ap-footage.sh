@@ -4,14 +4,15 @@
 
 # IP to CID
 host="192.168.1.100"
-port=22
+port="22"
+user="tesla1"
 
 # Imagemagick used to create the gif's
 sudo apt-get install --assume-yes imagemagick
 
 # Save the dash footage
-ssh -p $port tesla1@$host "mkdir ~/dashfootage; gwxfer gw:/DAS/ ~/dashfootage/; gwxfer gw:/EDR/DAS/ ~/dashfootage/"
-scp -P $port -r tesla1@$host:~/dashfootage ~/
+ssh -p $port $user@$host "mkdir ~/dashfootage; gwxfer gw:/DAS/ ~/dashfootage/; gwxfer gw:/EDR/DAS/ ~/dashfootage/"
+scp -P $port -r $user@$host:~/dashfootage ~/
 cd ~/dashfootage/
 
 # Author: Nemsoma
