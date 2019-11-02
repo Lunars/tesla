@@ -47,6 +47,7 @@ if [ "$MODE" = internal ]; then
     echo "Saving to /tmp/$NEWVER.image"
     dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 of=/tmp/$NEWVER.image count=$NEWSIZE
 elif [ "$MODE" = usb ]; then
+    echo "Saving to /$NEWVER.image on usb"
     sudo mount -o rw,noexec,nodev,noatime,utf8 /dev/sda1 /disk/usb.*/
     dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 of=/disk/usb.*/$NEWVER.image count=$NEWSIZE
     sync
@@ -55,7 +56,7 @@ elif [ "$MODE" = ssh ]; then
     echo "Saving to /tmp/$NEWVER.image on remote server via SSH"
     dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
 elif [ "$MODE" = ftp ]; then
-    echo "Saving to /tmp/$NEWVER.image on remote server via FTP"
+    echo "Saving to ~/$NEWVER.image on remote server via FTP"
     dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/~/$NEWVER.image
 else
     die "MODE must be one of usb | internal | ssh | ftp"
