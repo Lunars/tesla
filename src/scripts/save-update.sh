@@ -56,7 +56,7 @@ elif [ "$MODE" = ssh ]; then
     dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
 elif [ "$MODE" = ftp ]; then
     echo "Saving to /tmp/$NEWVER.image on remote server via FTP"
-    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/$NEWVER.image
+    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/~/$NEWVER.image
 else
     die "MODE must be one of usb | internal | ssh | ftp"
 fi
