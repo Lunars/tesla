@@ -2,10 +2,10 @@
 
 # Run this script in the background, because it may take a while to complete
 
-# Types: IC, CID
+# Types: ic, cid
 # Modes: usb, internal, ssh, ftp
 
-# Usage: bash save-update.sh $TYPE $MODE &
+# Usage: bash save-update.sh TYPE MODE &
 
 PORT=$(cut -c 14-17 </var/etc/vin)
 SSHSERVER="tesla@yourserver.com -p 22"
@@ -23,8 +23,13 @@ die() {
 TYPE="$1"
 MODE="$2"
 
-PARTITIONPREFIX=$([ "$TYPE" = IC ] && echo "mmcblk3p" || echo "mmcblk0p")
-STATUS=$([ "$TYPE" = IC ] && curl http://ic:21576/status || curl http://cid:20564/status)
+# Quick fail safe to move from cid to ic
+if [ "$TYPE" = ic ] && [ $(hostname) = cid ]; then
+    ssh root@ic;
+fi
+
+PARTITIONPREFIX=$([ "$TYPE" = ic ] && echo "mmcblk3p" || echo "mmcblk0p")
+STATUS=$([ "$TYPE" = ic ] && curl http://ic:21576/status || curl http://cid:20564/status)
 NEWSIZE=$(echo "$STATUS" | grep 'Offline dot-model-s size:' | awk -F'size: ' '{print $2}' | awk '{print $1/64}')
 NEWVER=$(echo "$STATUS" | awk -F'built for package version: ' '{print $2}' | sed 's/\s.*$//')
 
