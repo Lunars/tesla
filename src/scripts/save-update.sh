@@ -35,8 +35,7 @@ if [ "$ONLINEPART" == "1" ]; then
 elif [ "$ONLINEPART" == "2" ]; then
     OFFLINEPART=1
 else
-    echo "Error figuring out which partition is which."
-    exit 0
+    die "Could not determine offline partition"
 fi
 
 if [ "$MODE" = internal ]; then
