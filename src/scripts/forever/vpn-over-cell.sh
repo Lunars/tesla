@@ -14,6 +14,11 @@ fi
 DHCPLEASES="/var/lib/dhcp3/dhclient.wwan0.leases"
 OVPN="/home/lunars/src/tesla.ovpn"
 
+if grep -q "YOURIPADDRESSHERE" $OVPN; then
+    echo "openvpn not yet setup, quitting"
+    exit 1
+fi
+
 while inotifywait -e modify $DHCPLEASES; do
     echo "Found cell change, updating route"
 
