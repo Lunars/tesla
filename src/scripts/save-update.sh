@@ -7,33 +7,19 @@
 
 # Usage: bash save-update.sh $TYPE $MODE &
 
-
 PORT=$(cut -c 14-17 </var/etc/vin)
-SSHSERVER="tesla@yourserver.com"
+SSHSERVER="tesla@yourserver.com -p 22"
 FTPSERVER="user:password@ftp.example.com:21"
 
 # Non standard sshd ports can be set like so
-#SSHSERVER="tesla@yourserver.com -p ${port}"
+# SSHSERVER="tesla@yourserver.com -p $PORT"
 
 die() {
     echo "ERROR: $1" >&2
     exit 1
 }
 
-######### START NAVIGON
-# @TODO: Add navigon image to arguments
-
-NAVPART=$(cat /proc/mounts | grep opt/nav | head -n1 | cut -d " " -f1)
-NAVMOUNT=$(cat /proc/mounts | grep opt/nav | head -n1 | awk '{print $2;}')
-NAVSIZE=$(echo "$STATUS" | grep 'Online map package size:' | awk -F'Online map package size: ' '{print $2}' | awk '{print $1/64}')
-NAVVERSION=$(cat $NAVMOUNT/VERSION | head -n1 | cut -d " " -f1)
-echo "Version $NAVVERSION is mounted at $NAVPART $NAVMOUNT ($NAVSIZE)"
-# dd if=$NAVPART bs=64 count=$NAVSIZE of=/disk/usb.*/$NAVVERSION.image
-# SSHSERVER=spam@xyz.com
-# rsync -r -v --progress --partial --append-verify $NAVMOUNT/. $SSHSERVER:~/$NAVVERSION/.
-######### END NAVIGON
-
-[[ $# < 2 ]] && die "Must have arguments of bash save-update.sh $TYPE $MODE"
+[[ $# < 2 ]] && die "Must have arguments of bash save-update.sh TYPE MODE"
 TYPE="$1"
 MODE="$2"
 
@@ -70,5 +56,19 @@ elif [ "$MODE" = ftp ]; then
 else
     die "MODE must be one of usb | internal | ssh | ftp"
 fi
+
+
+######### START NAVIGON
+# @TODO: Add navigon image to arguments
+
+#NAVPART=$(cat /proc/mounts | grep opt/nav | head -n1 | cut -d " " -f1)
+#NAVMOUNT=$(cat /proc/mounts | grep opt/nav | head -n1 | awk '{print $2;}')
+#NAVSIZE=$(echo "$STATUS" | grep 'Online map package size:' | awk -F'Online map package size: ' '{print $2}' | awk '{print $1/64}')
+#NAVVERSION=$(cat $NAVMOUNT/VERSION | head -n1 | cut -d " " -f1)
+#echo "Version $NAVVERSION is mounted at $NAVPART $NAVMOUNT ($NAVSIZE)"
+# dd if=$NAVPART bs=64 count=$NAVSIZE of=/disk/usb.*/$NAVVERSION.image
+# SSHSERVER=spam@xyz.com
+# rsync -r -v --progress --partial --append-verify $NAVMOUNT/. $SSHSERVER:~/$NAVVERSION/.
+######### END NAVIGON
 
 exit
