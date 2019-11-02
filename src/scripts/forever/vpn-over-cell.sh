@@ -26,8 +26,10 @@ while inotifywait -e modify $DHCPLEASES; do
     CELLIP=$(ip r | grep wwan0 | grep -Pom 1 '[0-9.]{7,15}' | tail -1)
     ROUTERIP=$(cat $DHCPLEASES | grep $CELLIP -A 3 | tail -1 | grep -Pom 1 '[0-9.]{7,15}')
 
-    service openvpn stop
-    route delete $VPNIP > /dev/null 2>&1
-    route add $VPNIP gw $ROUTERIP
-    service openvpn start
+    if [ ! -z "$VPNIP" ] && [ ! -z "$CELLIP" ] && [ ! -z "$ROUTERIP" ]; then
+        service openvpn stop
+        route delete $VPNIP > /dev/null 2>&1
+        route add $VPNIP gw $ROUTERIP
+        service openvpn start
+    fi
 done
