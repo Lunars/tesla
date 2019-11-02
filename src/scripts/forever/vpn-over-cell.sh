@@ -29,7 +29,7 @@ while inotifywait -e modify $DHCPLEASES; do
     route delete $VPNIP > /dev/null 2>&1
     
     if [ ! -z "$CELLIP" ]; then
-        ROUTERIP=$(cat $DHCPLEASES | grep $CELLIP -A 3 | tail -1 | grep -Pom 1 '[0-9.]{7,15}')
+        ROUTERIP=$(grep $CELLIP -A 3 $DHCPLEASES | tail -1 | grep -Pom 1 '[0-9.]{7,15}')
         route add $VPNIP gw $ROUTERIP
     fi
     
