@@ -25,7 +25,7 @@ MODE="$2"
 
 # Quick fail safe to move from cid to ic
 if [ "$TYPE" = ic ] && [ $(hostname) = cid ]; then
-    ssh root@ic;
+    die "Run this script from ic"
 fi
 
 PARTITIONPREFIX=$([ "$TYPE" = ic ] && echo "mmcblk3p" || echo "mmcblk0p")
