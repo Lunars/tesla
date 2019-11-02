@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # Run this script in the background, because it may take a while to complete
-# Usage: bash save-update.sh MODE &
+
+# Types: IC, CID
+# Modes: usb, internal, ssh, ftp
+
+# Usage: bash save-update.sh $TYPE $MODE &
+
 
 PORT=$(cut -c 14-17 </var/etc/vin)
 SSHSERVER="tesla@yourserver.com"
