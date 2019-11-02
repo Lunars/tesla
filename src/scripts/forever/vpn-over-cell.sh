@@ -24,12 +24,14 @@ while inotifywait -e modify $DHCPLEASES; do
 
     VPNIP=$(awk '/^remote /' $OVPN | awk '{print $2}' )
     CELLIP=$(ip r | grep wwan0 | grep -Pom 1 '[0-9.]{7,15}' | tail -1)
-    ROUTERIP=$(cat $DHCPLEASES | grep $CELLIP -A 3 | tail -1 | grep -Pom 1 '[0-9.]{7,15}')
-
-    if [ ! -z "$VPNIP" ] && [ ! -z "$CELLIP" ] && [ ! -z "$ROUTERIP" ]; then
-        service openvpn stop
-        route delete $VPNIP > /dev/null 2>&1
+    
+    service openvpn stop
+    route delete $VPNIP > /dev/null 2>&1
+    
+    if [ ! -z "$CELLIP" ]; then
+        ROUTERIP=$(cat $DHCPLEASES | grep $CELLIP -A 3 | tail -1 | grep -Pom 1 '[0-9.]{7,15}')
         route add $VPNIP gw $ROUTERIP
-        service openvpn start
     fi
+    
+    service openvpn start
 done
