@@ -28,15 +28,17 @@ echo "Version $NAVVERSION is mounted at $NAVPART $NAVMOUNT ($NAVSIZE)"
 # rsync -r -v --progress --partial --append-verify $NAVMOUNT/. $SSHSERVER:~/$NAVVERSION/.
 ######### END NAVIGON
 
-[[ $# != 1 ]] && die "Mode must be the only argument"
-MODE="$1"
+[[ $# < 2 ]] && die "Must have arguments of bash save-update.sh $TYPE $MODE"
+TYPE="$1"
+MODE="$2"
 
-STATUS=$(curl http://cid:20564/status)
+PARTITIONPREFIX=$([ "$TYPE" = IC ] && echo "mmcblk3p" || echo "mmcblk0p")
+STATUS=$([ "$TYPE" = IC ] && curl http://ic:21576/status || curl http://cid:20564/status)
 NEWSIZE=$(echo "$STATUS" | grep 'Offline dot-model-s size:' | awk -F'size: ' '{print $2}' | awk '{print $1/64}')
 NEWVER=$(echo "$STATUS" | awk -F'built for package version: ' '{print $2}' | sed 's/\s.*$//')
 
 # Ty kalud for finding offline part number
-ONLINEPART=$(cat /proc/self/mounts | grep "/usr" | grep ^/dev/mmcblk0p[12] | cut -b14)
+ONLINEPART=$(cat /proc/self/mounts | grep "/usr" | grep ^/dev/$PARTITIONPREFIX[12] | cut -b14)
 if [ "$ONLINEPART" == "1" ]; then
     OFFLINEPART=2
 elif [ "$ONLINEPART" == "2" ]; then
@@ -46,22 +48,22 @@ else
     exit 0
 fi
 
-if [ "$MODE" = cid ]; then
+if [ "$MODE" = internal ]; then
     echo "Saving to /tmp/$NEWVER.image"
-    dd if=/dev/mmcblk0p$OFFLINEPART bs=64 of=/tmp/$NEWVER.image count=$NEWSIZE
+    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 of=/tmp/$NEWVER.image count=$NEWSIZE
 elif [ "$MODE" = usb ]; then
     sudo mount -o rw,noexec,nodev,noatime,utf8 /dev/sda1 /disk/usb.*/
-    dd if=/dev/mmcblk0p$OFFLINEPART bs=64 of=/disk/usb.*/$NEWVER.image count=$NEWSIZE
+    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 of=/disk/usb.*/$NEWVER.image count=$NEWSIZE
     sync
     umount /disk/usb.*/
 elif [ "$MODE" = ssh ]; then
     echo "Saving to /tmp/$NEWVER.image on remote server via SSH"
-    dd if=/dev/mmcblk0p$OFFLINEPART bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
+    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
 elif [ "$MODE" = ftp ]; then
     echo "Saving to /tmp/$NEWVER.image on remote server via FTP"
-    dd if=/dev/mmcblk0p$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/$NEWVER.image
+    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/$NEWVER.image
 else
-    die "MODE must be one of usb | cid | ssh"
+    die "MODE must be one of usb | internal | ssh | ftp"
 fi
 
 exit
