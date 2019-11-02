@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script makes your VPN go over cell connection instead of wifi
+# Useful for when your car goes in to service and you still want to access SSH
+# Service center wifi does not usually let outgoing / incoming connections
+
 ENABLE=false
 
 if [ "$ENABLE" == "false" ]; then
