@@ -8,16 +8,19 @@
 # Usage: bash save-update.sh HOST MODE &
 
 PORT=$(cut -c 14-17 </var/etc/vin)
-SSHSERVER="tesla@yourserver.com -p 22"
-FTPSERVER="user:password@ftp.example.com:21"
 
-# Non standard sshd ports can be set like so
-# SSHSERVER="tesla@yourserver.com -p $PORT"
+SSHSERVER="tesla@yourserver.com -p 22"
+FTPSERVER="username:password@ftp.example.com:21"
 
 die() {
     echo "ERROR: $1" >&2
     exit 1
 }
+
+# If FTP username has an @, replace with %40
+USERNAME=$(echo $FTPSERVER | cut -d: -f1)
+ENCODEDUSERNAME=${USERNAME/@/%40}
+FTPSERVER=${FTPSERVER/$USERNAME/$ENCODEDUSERNAME}
 
 [[ $# < 2 ]] && die "Must have arguments of bash save-update.sh ic|cid usb|internal|ssh|ftp"
 HOST="$1"
