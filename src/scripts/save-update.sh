@@ -77,7 +77,7 @@ function saveAPE {
             echo "Defaulting to .ape0 so we still save this file"
         fi
 
-        curl -T $APELOCATION ftp://$FTPSERVER/~/$NEWVER.$APE
+        curl --interface wwan0 -T $APELOCATION ftp://$FTPSERVER/~/$NEWVER.$APE
     else
         echo "Skipping transfer of ape-cache.ssq, did not find file at $APELOCATION"
     fi
@@ -99,7 +99,7 @@ function saveUpdate {
     elif [ "$MODE" = ftp ]; then
         saveAPE
         echo "Saving to ~/$NEWVER.image on remote server via FTP"
-        dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/~/$NEWVER.image
+        dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl --interface wwan0 -T - ftp://$FTPSERVER/~/$NEWVER.image
     else
         die "MODE must be one of usb | internal | ssh | ftp"
     fi
