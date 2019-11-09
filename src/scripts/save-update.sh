@@ -27,7 +27,7 @@ function initializeVariables {
     # $PORT not used anywhere. Just left here as a helper in case you have non-standard ftp/ssh ports
     PORT=$(cut -c 14-17 </var/etc/vin)
 
-    SSHSERVER="tesla@yourserver.com -p 22"
+    SSHSERVER="-p 22 tesla@yourserver.com"
     FTPSERVER="username:password@ftp.example.com:21"
 }
 
@@ -64,28 +64,41 @@ function getFirmwareInfo {
 
 function saveAPE {
     APELOCATION="/home/cid-updater/ape-cache.ssq"
-    if [ -f "$APELOCATION" ]; then
-        echo "Found APE image at $APELOCATION"
 
-        # Download gateway config in case it doesn't exist
-        echo "Attempting to download gateway config..."
-        [ -x "$(command -v get-gateway-config.sh)" ] && [ "$HOST" = cid ] && bash get-gateway-config.sh
-
-        APE="ape0"
-        MODEL=$(< /var/etc/dashw)
-
-        [ "$MODEL" == 2 ] && APE="ape2"
-        [ "$MODEL" == 3 ] && APE="ape25"
-        [[ "$MODEL" -ge 4 ]] && APE="ape3"
-
-        if [ "$APE" == "ape0" ]; then
-            echo "Found ape image but could not determine APE version from dashw: $MODEL"
-            echo "Defaulting to .ape0 so we still save this file"
-        fi
-
-        curl -T $APELOCATION ftp://$FTPSERVER/~/$NEWVER.$APE
-    else
+    if [ ! -f "$APELOCATION" ]; then
         echo "Skipping transfer of ape-cache.ssq, did not find file at $APELOCATION"
+        return
+    fi
+
+    echo "Found APE image at $APELOCATION"
+
+    # Download gateway config in case it doesn't exist
+    echo "Attempting to download gateway config..."
+    [ -x "$(command -v get-gateway-config.sh)" ] && [ "$HOST" = cid ] && bash get-gateway-config.sh
+
+    APE="ape0"
+    MODEL=$(< /var/etc/dashw)
+
+    [ "$MODEL" == 2 ] && APE="ape2"
+    [ "$MODEL" == 3 ] && APE="ape25"
+    [[ "$MODEL" -ge 4 ]] && APE="ape3"
+
+    if [ "$APE" == "ape0" ]; then
+        echo "Found ape image but could not determine APE version from dashw: $MODEL"
+        echo "Defaulting to .ape0 so we still save this file"
+    fi
+
+    if [ "$MODE" = internal ]; then
+        cp $APELOCATION /tmp/$NEWVER.$APE
+    elif [ "$MODE" = usb ]; then
+        sudo mount -o rw,noexec,nodev,noatime,utf8 /dev/sda1 /disk/usb.*/
+        cp $APELOCATION /disk/usb.*/$NEWVER.$APE
+        sync
+        umount /disk/usb.*/
+    elif [ "$MODE" = ssh ]; then
+        scp $APELOCATION $SSHSERVER:~/$NEWVER.$APE
+    elif [ "$MODE" = ftp ]; then
+        curl -T $APELOCATION ftp://$FTPSERVER/~/$NEWVER.$APE
     fi
 }
 
@@ -103,7 +116,6 @@ function saveUpdate {
         echo "Saving to /tmp/$NEWVER.image on remote server via SSH"
         dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
     elif [ "$MODE" = ftp ]; then
-        saveAPE
         echo "Saving to ~/$NEWVER.image on remote server via FTP"
         dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/~/$NEWVER.image
     else
@@ -130,6 +142,7 @@ function main {
     validateIC
     getFirmwareInfo
     saveUpdate
+    saveAPE
 }
 
 main
