@@ -7,15 +7,21 @@
 
 # Usage: bash save-update.sh HOST MODE &
 
-HOST="$1"
-MODE="$2"
-
 function die {
     echo "ERROR: $1" >&2
     exit 1
 }
 
 [[ $# < 2 ]] && die "Must have arguments of bash save-update.sh ic|cid usb|internal|ssh|ftp"
+
+HOST="$1"
+MODE="$2"
+
+me="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
+case $(ps -o stat= -p $$) in
+  *+*) die "Run this script in the background dummy: bash $me $1 $2 &" ;;
+  *) echo "OK: Running in background" ;;
+esac
 
 function initializeVariables {
     # $PORT not used anywhere. Just left here as a helper in case you have non-standard ftp/ssh ports
