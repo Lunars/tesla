@@ -26,12 +26,12 @@ esac
 function initializeVariables {
     # $PORT not used anywhere. Just left here as a helper in case you have non-standard ftp/ssh ports
     PORT=$(cut -c 14-17 </var/etc/vin)
-    
+
     SSHSERVER="tesla@yourserver.com -p 22"
     FTPSERVER="username:password@ftp.example.com:21"
 }
 
-function cleanFTPUsername { 
+function cleanFTPUsername {
     # If FTP username has an @, replace with %40
     USERNAME=$(echo $FTPSERVER | cut -d: -f1)
     ENCODEDUSERNAME=${USERNAME/@/%40}
@@ -73,7 +73,7 @@ function saveAPE {
 
         APE="ape0"
         MODEL=$(< /var/etc/dashw)
-        
+
         [ "$MODEL" == 2 ] && APE="ape2"
         [ "$MODEL" == 3 ] && APE="ape25"
         [[ "$MODEL" -ge 4 ]] && APE="ape3"
