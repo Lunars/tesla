@@ -5,7 +5,7 @@
 # Hosts: ic, cid
 # Modes: usb, internal, ssh, ftp
 
-# Usage: bash save-update.sh HOST MODE &
+# Usage: bash save-update.sh HOST MODE &> output.log &
 
 function die {
     echo "ERROR: $1" >&2
@@ -19,7 +19,7 @@ MODE="$2"
 
 me="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 case $(ps -o stat= -p $$) in
-  *+*) die "Run this script in the background dummy: bash $me $1 $2 &" ;;
+  *+*) die "Run this script in the background dummy: bash $me $1 $2 &> output.log &" ;;
   *) echo "OK: Running in background" ;;
 esac
 
@@ -131,9 +131,9 @@ function saveNavigon {
     NAVSIZE=$(echo "$STATUS" | grep 'Online map package size:' | awk -F'Online map package size: ' '{print $2}' | awk '{print $1/64}')
     NAVVERSION=$(cat $NAVMOUNT/VERSION | head -n1 | cut -d " " -f1)
     echo "Version $NAVVERSION is mounted at $NAVPART $NAVMOUNT ($NAVSIZE)"
-     dd if=$NAVPART bs=64 count=$NAVSIZE of=/disk/usb.*/$NAVVERSION.image
-     SSHSERVER=spam@xyz.com
-     rsync -r -v --progress --partial --append-verify $NAVMOUNT/. $SSHSERVER:~/$NAVVERSION/.
+    dd if=$NAVPART bs=64 count=$NAVSIZE of=/disk/usb.*/$NAVVERSION.image
+    SSHSERVER=spam@xyz.com
+    rsync -r -v --progress --partial --append-verify $NAVMOUNT/. $SSHSERVER:~/$NAVVERSION/.
 }
 
 function main {
