@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Run this script in the background, because it may take a while to complete
-
 # Hosts: ic, cid
 # Modes: usb, internal, ssh, ftp
 
