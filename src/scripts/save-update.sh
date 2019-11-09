@@ -57,13 +57,14 @@ function getFirmwareInfo {
 }
 
 function saveAPE {
-    # Download gateway config in case it doesn't exist
-    echo "Attempting to download gateway config..."
-    [ -x "$(command -v get-gateway-config.sh)" ] && [ "$HOST" = cid ] && bash get-gateway-config.sh
-
     APELOCATION="/home/cid-updater/ape-cache.ssq"
     if [ -f "$APELOCATION" ]; then
         echo "Found APE image at $APELOCATION"
+
+        # Download gateway config in case it doesn't exist
+        echo "Attempting to download gateway config..."
+        [ -x "$(command -v get-gateway-config.sh)" ] && [ "$HOST" = cid ] && bash get-gateway-config.sh
+
         APE="ape0"
         MODEL=$(< /var/etc/dashw)
         
