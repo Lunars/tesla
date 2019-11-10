@@ -25,21 +25,9 @@ if [[ -f "$onRebootFile" ]]; then
 else
     # Downloading repo to CID
     mkdir -p $homeOfLunars
-    curl -sL https://github.com/Lunars/tesla/tarball/master -o ./lunars.zip || exit 5
-    tar xf ./lunars.zip -C $homeOfLunars/
-    rm ./lunars.zip
-
-    # Only syncs over new files, does not overwrite newer files
-    rsync -raz --update --remove-source-files $homeOfLunars/Lunars-tesla*/ $homeOfLunars/
-    rm -rf $homeOfLunars/Lunars-tesla*
-
-    # Only keep src folder
-    cd $homeOfLunars
-    shopt -s extglob
-    rm -v !("src") -rf
-    mv src/* .
-    rm -rf src
-    cd -
+    curl -sL https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zxvf lunars.zip -C $homeOfLunars "Lunars-tesla-*/src"
+    mv $homeOfLunars/*/src/* $homeOfLunars
+    rm -rf $homeOfLunars/Lunars-tesla-*
 
     [ ! -z "$search" ] && sed -i "s~$search~$homeOfLunars~g" "$homeOfLunars/config.sh"
     echo [OK] Lunars source downloaded
