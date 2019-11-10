@@ -1,7 +1,7 @@
 #!/bin/bash
 if (($(cat /proc/uptime | cut -d. -f1) < 60)); then sleep 15; fi
 
-file="/home/lunars/src/tesla.ovpn"
+file="$homeOfLunars/src/tesla.ovpn"
 vpn="tun8"
 
 if grep -q "YOURIPADDRESSHERE" $file; then

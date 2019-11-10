@@ -1,5 +1,8 @@
 #!/bin/bash
 
+homeOfLunars="/home/lunars"
+scriptsOfLunars="$homeOfLunars/src/scripts"
+
 # Credit to FreedomEV for the install script
 echo [START] Install Lunars
 
@@ -11,24 +14,24 @@ fi
 
 echo [OK] Not running chrooted
 
-onRebootFile="/home/lunars/src/scripts/on-reboot.sh"
+onRebootFile="$scriptsOfLunars/on-reboot.sh"
 if [[ -f "$onRebootFile" ]]; then
     echo [SKIP] Lunars source already downloaded
 else
     # Downloading repo to CID
-    mkdir -p /home/lunars
+    mkdir -p $homeOfLunars
     curl -sL https://github.com/Lunars/tesla/tarball/master -o ./lunars.zip || exit 5
-    tar xf ./lunars.zip -C /home/lunars/
+    tar xf ./lunars.zip -C $homeOfLunars/
     rm ./lunars.zip
 
     # Only syncs over new files, does not overwrite newer files
-    rsync -raz --update --remove-source-files /home/lunars/Lunars-tesla*/ /home/lunars/
-    rm -rf /home/lunars/Lunars-tesla*
+    rsync -raz --update --remove-source-files $homeOfLunars/Lunars-tesla*/ $homeOfLunars/
+    rm -rf $homeOfLunars/Lunars-tesla*
     echo [OK] Lunars source downloaded
 fi
 
 # Installing crontab
-alreadyinstalled=$(crontab -l | grep /home/lunars)
+alreadyinstalled=$(crontab -l | grep $homeOfLunars)
 if [[ "$alreadyinstalled" != "" ]]; then
     echo [SKIP] Lunars cron already installed
 else

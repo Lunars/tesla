@@ -2,10 +2,11 @@
 
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
-mainPath="/home/lunars/src/scripts"
+homeOfLunars="/home/lunars"
+scriptsOfLunars="$homeOfLunars/src/scripts"
 
 echo "Starting reboot once scripts"
-cd $mainPath/once || exit
+cd $scriptsOfLunars/once || exit
 for f in *.sh; do
     echo "Found $f"
     # check if already running
@@ -19,7 +20,7 @@ for f in *.sh; do
 done
 
 echo "Starting reboot forever scripts"
-cd $mainPath/forever || exit
+cd $scriptsOfLunars/forever || exit
 for f in *.sh; do
     echo "Found $f"
     # check if already running
@@ -32,7 +33,7 @@ for f in *.sh; do
 done
 
 echo "Starting 5 minute scripts"
-cd $mainPath/every5 || exit
+cd $scriptsOfLunars/every5 || exit
 while true; do
     for f in *.sh; do
         echo "Found $f"
