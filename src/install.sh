@@ -5,7 +5,7 @@ mydir="${0%/*}"
 [ -f "$mydir/config.sh" ] && source "$mydir/config.sh" || eval "$(curl "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
 
 # Credit to FreedomEV for the install script
-echo [START] Install Lunars
+echo [START] Installing Lunars to $homeOfLunars
 
 # Detect if we are running chrooted by checking if the root of the init process is the same as the root of this process
 if [[ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]]; then
