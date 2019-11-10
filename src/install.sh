@@ -1,8 +1,13 @@
 #!/bin/bash
 
 # Pull in global vars
-mydir="${0%/*}"
-[ -f "$mydir/config.sh" ] && source "$mydir/config.sh" || eval "$(curl "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
+if [ -z $1 ]; then
+    mydir="${0%/*}"
+    [ -f "$mydir/config.sh" ] && source "$mydir/config.sh" || eval "$(curl "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
+else
+    search="/home/lunars"
+    homeOfLunars="$1"
+fi
 
 # Credit to FreedomEV for the install script
 echo [START] Installing Lunars to $homeOfLunars
@@ -15,7 +20,7 @@ fi
 
 echo [OK] Not running chrooted
 
-onRebootFile="$scriptsOfLunars/on-reboot.sh"
+onRebootFile="$homeOfLunars/src/scripts/on-reboot.sh"
 if [[ -f "$onRebootFile" ]]; then
     echo [SKIP] Lunars source already downloaded
 else
@@ -28,6 +33,7 @@ else
     # Only syncs over new files, does not overwrite newer files
     rsync -raz --update --remove-source-files $homeOfLunars/Lunars-tesla*/ $homeOfLunars/
     rm -rf $homeOfLunars/Lunars-tesla*
+    [ -z "$search" ] && sed -i "s/${search}/${homeOfLunars}/g" "$homeOfLunars/src/config.sh"
     echo [OK] Lunars source downloaded
 fi
 

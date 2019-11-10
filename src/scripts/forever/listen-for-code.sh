@@ -2,7 +2,7 @@
 
 cidIp="192.168.90.100"
 cidPort="4070"
-mainPath="$scriptsOfLunars"
+mainPath="$homeOfLunars/src/scripts"
 pattern=AccessPopup
 last_command="NoNe"
 if ps ax | grep $0 | grep -v $$ | grep bash | grep -v grep
