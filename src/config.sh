@@ -1,3 +1,4 @@
 #!/bin/bash
 
-homeOfLunars="/home/lunars"
+# Changed from /home/ because a factory reset will wipe out Lunars
+homeOfLunars="/var/lunars"
