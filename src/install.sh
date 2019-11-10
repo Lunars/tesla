@@ -34,10 +34,12 @@ else
     rm -rf $homeOfLunars/Lunars-tesla*
 
     # Only keep src folder
+    cd $homeOfLunars
     shopt -s extglob
     rm -v !("src") -rf
     mv src/* .
     rm -rf src
+    cd -
 
     [ ! -z "$search" ] && sed -i "s~$search~$homeOfLunars~g" "$homeOfLunars/config.sh"
     echo [OK] Lunars source downloaded
