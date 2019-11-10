@@ -7,7 +7,7 @@ mydir="${0%/*}"
 source "$mydir"/../config.sh
 
 echo "Starting reboot once scripts"
-cd $homeOfLunars/src/scripts/once || exit
+cd $homeOfLunars/scripts/once || exit
 for f in *.sh; do
     echo "Found $f"
     # check if already running
@@ -21,7 +21,7 @@ for f in *.sh; do
 done
 
 echo "Starting reboot forever scripts"
-cd $homeOfLunars/src/scripts/forever || exit
+cd $homeOfLunars/scripts/forever || exit
 for f in *.sh; do
     echo "Found $f"
     # check if already running
@@ -34,7 +34,7 @@ for f in *.sh; do
 done
 
 echo "Starting 5 minute scripts"
-cd $homeOfLunars/src/scripts/every5 || exit
+cd $homeOfLunars/scripts/every5 || exit
 while true; do
     for f in *.sh; do
         echo "Found $f"

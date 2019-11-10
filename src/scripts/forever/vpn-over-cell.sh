@@ -12,7 +12,7 @@ if [ "$ENABLE" == "false" ]; then
 fi
 
 DHCPLEASES="/var/lib/dhcp3/dhclient.wwan0.leases"
-OVPN="$homeOfLunars/src/tesla.ovpn"
+OVPN="$homeOfLunars/tesla.ovpn"
 
 if grep -q "YOURIPADDRESSHERE" $OVPN; then
     echo "openvpn not yet setup, quitting"
