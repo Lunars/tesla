@@ -2,8 +2,9 @@
 
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
-homeOfLunars="/home/lunars"
-scriptsOfLunars="$homeOfLunars/src/scripts"
+# Pull in global vars
+mydir="${0%/*}"
+source "$mydir"/../config.sh
 
 echo "Starting reboot once scripts"
 cd $scriptsOfLunars/once || exit

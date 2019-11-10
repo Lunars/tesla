@@ -1,7 +1,8 @@
 #!/bin/bash
 
-homeOfLunars="/home/lunars"
-scriptsOfLunars="$homeOfLunars/src/scripts"
+# Pull in global vars
+mydir="${0%/*}"
+source "$mydir"/config.sh
 
 # Credit to FreedomEV for the install script
 echo [START] Install Lunars
