@@ -33,7 +33,7 @@ else
     # Only syncs over new files, does not overwrite newer files
     rsync -raz --update --remove-source-files $homeOfLunars/Lunars-tesla*/ $homeOfLunars/
     rm -rf $homeOfLunars/Lunars-tesla*
-    [ -z "$search" ] && sed -i "s/${search}/${homeOfLunars}/g" "$homeOfLunars/src/config.sh"
+    [ ! -z "$search" ] && sed -i "s/${search}/${homeOfLunars}/g" "$homeOfLunars/src/config.sh"
     echo [OK] Lunars source downloaded
 fi
 
