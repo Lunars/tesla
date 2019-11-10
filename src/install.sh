@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # Pull in global vars
-if [ -z $1 ]; then
-    mydir="${0%/*}"
-    [ -f "$mydir/config.sh" ] && source "$mydir/config.sh" || eval "$(curl "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
-else
-    search="/home/lunars"
-    homeOfLunars="$1"
-fi
+eval "$(curl -s "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
+mydir="${0%/*}"
+[ -f "$mydir/config.sh" ] && source "$mydir/config.sh"
+
+search="$homeOfLunars"
+[ ! -z "$1" ] && homeOfLunars="$1"
 
 # Credit to FreedomEV for the install script
 echo [START] Installing Lunars to $homeOfLunars
