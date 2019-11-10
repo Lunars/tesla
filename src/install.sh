@@ -47,9 +47,9 @@ else
     echo [OK] Lunars cron installed
 fi
 
-# check if already running
+# Check if already running
 rebootProcess=$(ps ax | grep "on-reboot.sh" | grep -v $$ | grep bash | grep -v grep)
-if [ ! -z rebootProcess ]; then
+if [ ! -z $rebootProcess ]; then
     echo "[SKIP] Lunars on-reboot.sh is already running"
 else
     /bin/bash $onRebootFile >/dev/null 2>&1 &

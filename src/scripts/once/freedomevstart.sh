@@ -1,3 +1,10 @@
+ENABLE=false
+
+if [ "$ENABLE" == "false" ]; then
+  echo "Script not enabled, quitting"
+  exit 1
+fi
+
 # Credits to https://github.com/jnuyens/freedomev/blob/master/freedomevstart
 # This starts freedomev in case you have a USB that contains it
 
