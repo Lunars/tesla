@@ -38,7 +38,7 @@ else
 fi
 
 # Installing crontab
-alreadyinstalled=$(crontab -l | grep $homeOfLunars)
+alreadyinstalled=$(crontab -l | grep "on-reboot.sh")
 if [[ "$alreadyinstalled" != "" ]]; then
     echo [SKIP] Lunars cron already installed
 else
