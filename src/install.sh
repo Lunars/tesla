@@ -2,7 +2,7 @@
 
 # Pull in global vars
 mydir="${0%/*}"
-source "$mydir"/config.sh
+[ -f "$mydir/config.sh" ] && source "$mydir/config.sh" || eval "$(curl "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
 
 # Credit to FreedomEV for the install script
 echo [START] Install Lunars
