@@ -52,7 +52,7 @@ else
 fi
 
 # check if already running
-if ps ax | grep $onRebootFile | grep -v $$ | grep bash | grep -v grep; then
+if ps ax | grep "on-reboot" | grep -v $$ | grep bash | grep -v grep; then
     echo "[SKIP] Lunars on-reboot.sh is already running"
 else
     /bin/bash $onRebootFile >/dev/null 2>&1 &
