@@ -67,8 +67,8 @@ function saveAPE {
     [ -f $APELOCATIONONE ] && APELOCATION=$APELOCATIONONE
     [ -f $APELOCATIONTWO ] && APELOCATION=$APELOCATIONTWO
 
-    if [ ! -f "$APELOCATION" ]; then
-        echo "Skipping transfer of APE, did not find file at $APELOCATION"
+    if [ -z "$APELOCATION" ]; then
+        echo "Skipping transfer of APE, did not find ssq file"
         return
     fi
 
