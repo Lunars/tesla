@@ -2,7 +2,12 @@
 if (($(cat /proc/uptime | cut -d. -f1) < 60)); then sleep 15; fi
 
 file="$homeOfLunars/tesla.ovpn"
-vpn="tun8"
+vpn=$(awk '/^dev /' $file | awk '{print $2}' )
+
+if [ -z $vpn ]; then
+    echo "Script not yet setup, quitting"
+    exit 1
+fi
 
 if grep -q "YOURIPADDRESSHERE" $file; then
     echo "Script not yet setup, quitting"
