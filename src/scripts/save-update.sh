@@ -61,10 +61,14 @@ function getFirmwareInfo {
 }
 
 function saveAPE {
-    APELOCATION="/home/cid-updater/ape-cache.ssq"
+    APELOCATION=""
+    APELOCATIONONE="/home/cid-updater/ape-cache.ssq"
+    APELOCATIONTWO="/home/cid-updater/ape.ssq"
+    [ -f $APELOCATIONONE ] && APELOCATION=$APELOCATIONONE
+    [ -f $APELOCATIONTWO ] && APELOCATION=$APELOCATIONTWO
 
     if [ ! -f "$APELOCATION" ]; then
-        echo "Skipping transfer of ape-cache.ssq, did not find file at $APELOCATION"
+        echo "Skipping transfer of APE, did not find file at $APELOCATION"
         return
     fi
 
