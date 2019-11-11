@@ -7,7 +7,7 @@
 
 # ssh -p $WIFIPORT tesla1@192.168.1.154
 
-ENABLE=false
+ENABLE=true
 
 if [ "$ENABLE" == "false" ]; then
     echo "Script not enabled, quitting"
