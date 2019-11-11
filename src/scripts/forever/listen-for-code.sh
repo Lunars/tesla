@@ -76,6 +76,12 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
     " devm")
       sdv GUI_developerMode true
     ;;
+    " rebparrot")
+      emit-restart-parrot
+    ;;
+    " rebmodem")
+      modem-power cycle
+    ;;
     " rebic")
       emit-reboot-cluster
     ;;
