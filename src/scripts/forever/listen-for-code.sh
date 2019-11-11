@@ -55,7 +55,8 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       res="Test message!"
     ;;
     " help")
-      res="resetpw devm egg0 egg1 egg2 rebic rebcid rebgw rrun ss tkn1 tkn2 tkns vlow wifi wipeupdate factory unfactory ip"
+      res=$(grep -o '" .*")' $mainPath/forever/listen-for-code.sh | tr -d '") ') # Get all commands from this file
+      res="${res//$'\n'/ }" # Replace newlines
     ;;
     " rrun "*)
       password=${password#" rrun "}
