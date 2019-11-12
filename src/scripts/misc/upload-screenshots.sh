@@ -1,6 +1,6 @@
 #!/bin/bash
 
-imgurAPI="$homeOfLunars/scripts/imgur.sh"
+imgurAPI="$homeOfLunars/scripts/misc/imgur.sh"
 if [ ! -f "$imgurAPI" ]; then
     echo "Downloading imgur library"
     curl https://raw.githubusercontent.com/Lunars/tesla/master/src/scripts/imgur.sh -o $imgurAPI
