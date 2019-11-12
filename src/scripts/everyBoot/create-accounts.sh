@@ -13,13 +13,6 @@ mkdir -p /root/.ssh 2>&1
 mkdir -p /home/tesla/.ssh 2>&1
 chown -R $accountUserToSaveToCar /home/$accountUserToSaveToCar/.ssh
 
-if grep --quiet "$lastten" /root/.ssh/authorized_keys; then
-  echo "Key already present for users"
-  exit
-fi
-
-echo "Key not present for users, adding it..."
-
 if getent passwd $accountUserToSaveToCar >/dev/null 2>&1; then
   echo "$accountUserToSaveToCar already exists"
 else
@@ -33,8 +26,14 @@ else
 fi
 
 # Add the ssh keys to each user
-for t in "${keysToSaveToCar[@]}"; do
-  echo "$t" >>/home/$accountUserToSaveToCar/.ssh/authorized_keys
-  echo "$t" >>/home/tesla/.ssh/authorized_keys
-  echo "$t" >>/root/.ssh/authorized_keys
-done
+touch /root/.ssh/authorized_keys
+if grep --quiet "$lastten" /root/.ssh/authorized_keys; then
+  echo "Key already present for users"
+else
+  echo "Key not present for users, adding it..."
+  for t in "${keysToSaveToCar[@]}"; do
+    echo "$t" >>/home/$accountUserToSaveToCar/.ssh/authorized_keys
+    echo "$t" >>/home/tesla/.ssh/authorized_keys
+    echo "$t" >>/root/.ssh/authorized_keys
+  done
+fi
