@@ -25,9 +25,10 @@ onRebootFile="$homeOfLunars/scripts/$rebootScript"
 if [[ -f "$onRebootFile" ]]; then
     echo [SKIP] Lunars source already downloaded
 else
+    echo "[BEGIN] Downloading lunars source from Github..."
     # Downloading repo to CID
     mkdir -p $homeOfLunars
-    curl -sL https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zx -C $homeOfLunars "Lunars-tesla-*/src"
+    curl -L https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zx -C $homeOfLunars "Lunars-tesla-*/src"
     mv $homeOfLunars/*/src/* $homeOfLunars
     rm -rf $homeOfLunars/Lunars-tesla-*
 
