@@ -1,51 +1,41 @@
 #!/bin/bash
 
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
-
 # Pull in global vars
 mydir="${0%/*}"
 source "$mydir"/../config.sh
 
-echo "Starting reboot once scripts"
-cd $homeOfLunars/scripts/once || exit
-for f in *.sh; do
-    echo "Found $f"
-    # check if already running
-    if ps ax | grep "$f" | grep -v $$ | grep bash | grep -v grep; then
-        echo "The script [$f] is already running."
-        break
-    else
-        echo "Running $f..."
-        /bin/bash "$f" >/dev/null 2>&1
-    fi
-done
+function isRunning {
+    process=$(ps ax | grep "$1" | grep -v $$ | grep bash | grep -v grep)
+    [ ! -z "$process" ]
+}
 
-echo "Starting reboot forever scripts"
-cd $homeOfLunars/scripts/forever || exit
-for f in *.sh; do
-    echo "Found $f"
-    # check if already running
-    if ps ax | grep "$f" | grep -v $$ | grep bash | grep -v grep; then
-        echo "The script [$f] is already running."
-    else
-        echo "Starting $f..."
-        /bin/bash "$f" >/dev/null 2>&1 &
-    fi
-done
+function scriptBackground {
+    bash "$1" >/dev/null 2>&1 &
+}
 
-echo "Starting 5 minute scripts"
-cd $homeOfLunars/scripts/every5 || exit
-while true; do
-    for f in *.sh; do
-        echo "Found $f"
-        # check if already running
-        if ps ax | grep "$f" | grep -v $$ | grep bash | grep -v grep; then
-            echo "The script [$f] is already running."
-        else
-            echo "Starting $f..."
-            /bin/bash "$f" >/dev/null 2>&1
-        fi
+function beginScript {
+    printf "Found $1..."
+    if ! isRunning $1; then
+        printf "\tStarting\n"
+        scriptBackground $1
+    else
+        printf "\tAlready running\n"
+    fi
+}
+
+function main {
+    for scriptPath in $scheduledScripts; do
+        beginScript $scriptPath
     done
-    echo "Waiting 5 minutes"
-    sleep 300
-done
+
+    # Five minutes
+    while true; do
+        for scriptPath in $everyFiveMinuteScripts; do
+            beginScript $scriptPath
+        done
+        echo "Waiting 5 minutes..."
+        sleep 300
+    done
+}
+
+main

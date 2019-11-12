@@ -7,13 +7,6 @@
 
 saveLocation="$homeOfLunars/overwrite-files"
 
-ENABLE=true
-
-if [ "$ENABLE" == "false" ]; then
-  echo "Script not enabled, quitting"
-  exit 1
-fi
-
 mkdir -p "$saveLocation/usr/local/bin/"
 for bindmount in $(mount | grep -e bind -e lunars | awk '{ print $1 }'); do
   chmod +x $bindmount 2>/dev/null

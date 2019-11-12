@@ -1,12 +1,5 @@
 #!/bin/bash
 
-ENABLE=false
-
-if [ "$ENABLE" == "false" ]; then
-    echo "Script not enabled, quitting"
-    exit 1
-fi
-
 # Mode 1 shows the battery temperature level on the IC display, as a purple indicator on the same menu as the energy graph
 # Mode 2 does what 1 does, in addition to showing drive unit statistics on the left IC menu
 # Can also be used to control other sdv commands such as GUI_developerMode (values= true and false for $MODE)

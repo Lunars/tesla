@@ -55,7 +55,7 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       res="Test message!"
     ;;
     " help")
-      res=$(grep -o '" .*")' $mainPath/forever/listen-for-code.sh | tr -d '") ') # Get all commands from this file
+      res=$(grep -o '" .*")' $mainPath/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
       res="${res//$'\n'/ }" # Replace newlines
     ;;
     " rrun "*)
@@ -63,7 +63,7 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       res=$(eval $password)
     ;;
     " wifi")
-      res=$(/bin/bash $mainPath/every5/open-wifi.sh)
+      res=$(/bin/bash $mainPath/everyFiveMinutes/open-wifi.sh)
     ;;
     " tkn1")
       res=$(cat /var/etc/saccess/tesla1)
@@ -72,7 +72,7 @@ if  inotifywait -q -q -e modify /var/log/syslog; then
       res=$(cat /var/etc/saccess/tesla2)
     ;;
     " tkns")
-      res=$(/bin/bash $mainPath/every5/save-key.sh)
+      res=$(/bin/bash $mainPath/everyFiveMinutes/save-key-to-php.sh)
     ;;
     " devm")
       sdv GUI_developerMode true

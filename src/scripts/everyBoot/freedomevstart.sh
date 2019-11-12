@@ -1,10 +1,3 @@
-ENABLE=false
-
-if [ "$ENABLE" == "false" ]; then
-  echo "Script not enabled, quitting"
-  exit 1
-fi
-
 # Credits to https://github.com/jnuyens/freedomev/blob/master/freedomevstart
 # This starts freedomev in case you have a USB that contains it
 
@@ -15,8 +8,8 @@ fi
 #
 # checks for presence of freedomev USB stick and performs its magic
 # if stick is not present - kills thing launched and does nothing -
-# this way its easy to 
-# disable the entire freedomev system and not overload Car Service 
+# this way its easy to
+# disable the entire freedomev system and not overload Car Service
 # with strange requests. If you run into problems, reset the central
 # display and instrument cluster with the buttons on the steering wheel
 # and remove the freedomev USB stick
@@ -57,16 +50,16 @@ function killandumount {
 #check if the USB stick is present
 usbstickpresent=$(cat /proc/partitions | grep sd[a-z]1$)
 if [[ ${usbstickpresent} == "" ]]
-then 
+then
  if ! ${freedomevstarted}
  then
-  #we want to end as quickly as possible if we don't need to do anything 
+  #we want to end as quickly as possible if we don't need to do anything
   #possibly we need to check if we need to kill some processes or umount bind mounted stuff
   #for now, one can also reboot after removing the stick
   exit 0
- else 
+ else
   #we need to kill all possible processes who run on the removed rootfs from the USB stick and possibly umount
-  killandumount 
+  killandumount
  fi
 fi
 
@@ -85,7 +78,7 @@ if [[ ${usbstickmounted} != "" ]]
 then
  mount -o remount,rw,exec,dev /dev/sd?1 || exit 2
 fi
- 
+
 #check if it contains the correct content and determine the version
 freedomevversion=$(cat ${usbmountpoint}/etc/freedomevversion)
 if [[ ${freedomevversion} == "" ]]
@@ -107,7 +100,7 @@ function checkbootstrapversion {
  usbversion=$(head -n 1 ${usbmountpoint}/freedomevstart | awk '{ print $4 }')
  if [[ "$runningversion" != "$usbversion" ]]
  then
-  cp ${usbmountpoint}/freedomevstart /var/freedomevstart 
+  cp ${usbmountpoint}/freedomevstart /var/freedomevstart
   sync
   curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="FreedomEV core bootstrap updated!"
   curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="Please remove the US stick then "
