@@ -10,7 +10,7 @@
 
 ## Prerequisite
 
-You must already have rooted your Tesla. This is the only prerequisite. 
+You must already have rooted your Tesla. This is the only prerequisite.
 
 ## Install
 
@@ -25,7 +25,7 @@ bash <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/insta
 
 ## Usage
 
-Read the scripts in the [/home/lunars/src/scripts/](https://github.com/Lunars/tesla/tree/master/src/scripts) folder to determine which ones you want to enable. Some scripts are already enabled by default.
+Fill in the variables on [/var/lunars/config.sh](https://github.com/Lunars/tesla/blob/master/src/config.sh) and uncomment the scripts you want to run. Some scripts are already enabled by default.
 
 ## Author
 
