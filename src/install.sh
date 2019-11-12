@@ -19,7 +19,9 @@ fi
 
 echo [OK] Not running chrooted
 
-onRebootFile="$homeOfLunars/scripts/on-reboot.sh"
+rebootScript="on-reboot.sh"
+onRebootFile="$homeOfLunars/scripts/$rebootScript"
+
 if [[ -f "$onRebootFile" ]]; then
     echo [SKIP] Lunars source already downloaded
 else
@@ -34,8 +36,8 @@ else
 fi
 
 # Installing crontab
-alreadyinstalled=$(crontab -l | grep "on-reboot.sh")
-if [[ "$alreadyinstalled" != "" ]]; then
+alreadyInstalled=$(crontab -l | grep "$rebootScript")
+if [[ "$alreadyInstalled" != "" ]]; then
     echo [SKIP] Lunars cron already installed
 else
     # Just in case this file already exists
@@ -48,12 +50,12 @@ else
 fi
 
 # Check if already running
-rebootProcess=$(ps ax | grep "on-reboot.sh" | grep -v $$ | grep bash | grep -v grep)
-if [ ! -z $rebootProcess ]; then
-    echo "[SKIP] Lunars on-reboot.sh is already running"
+rebootProcess=$(ps ax | grep "$rebootScript" | grep -v $$ | grep bash | grep -v grep)
+if [ ! -z "$rebootProcess" ]; then
+    echo "[SKIP] Lunars $rebootScript is already running"
 else
     /bin/bash $onRebootFile >/dev/null 2>&1 &
-    echo [OK] Lunars on-reboot.sh backgrounded
+    echo [OK] Lunars $rebootScript backgrounded
 fi
 
 echo [DONE] Lunars is now installed, have fun!
