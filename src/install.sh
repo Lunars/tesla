@@ -27,7 +27,7 @@ if [[ -f "$onRebootFile" ]]; then
 else
     # Downloading repo to CID
     mkdir -p $homeOfLunars
-    curl -sL https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zxvf lunars.zip -C $homeOfLunars "Lunars-tesla-*/src"
+    curl -sL https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zx -C $homeOfLunars "Lunars-tesla-*/src"
     mv $homeOfLunars/*/src/* $homeOfLunars
     rm -rf $homeOfLunars/Lunars-tesla-*
 
