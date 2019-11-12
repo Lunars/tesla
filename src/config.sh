@@ -25,7 +25,6 @@ export saveTokenOverSshFile="tesla-keys.txt"
 export saveTokenOverSshServer="tesla@yourserver.com -p 22"
 
 ## create-accounts.sh
-# You can save multiple authorized keys by supplying them here as an array
 export keyToSaveToCar="ssh-rsa first example"
 export accountUserToSaveToCar="yourUsername"
 export accountPassToSaveToCar="myCarIsRooted"
