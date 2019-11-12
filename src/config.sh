@@ -5,6 +5,10 @@ export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 # Changed from /home/ because a factory reset will wipe out Lunars in /home/ but will remain in /var/
 export homeOfLunars="/var/lunars"
 
+## reverse-tunnel.sh
+# Could be used on other files in the future
+export nonStandardPort=$(cut -c 14-17 </var/etc/vin)
+
 ## vitals-to-php.sh
 # Save src/save-vitals.php to your public server
 export urlToVitalsPHP="http://yourserver.com/path/save-vitals.php"

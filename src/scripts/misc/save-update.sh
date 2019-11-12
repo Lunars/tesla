@@ -22,9 +22,6 @@ case $(ps -o stat= -p $$) in
 esac
 
 function initializeVariables {
-    # $PORT not used anywhere. Just left here as a helper in case you have non-standard ftp/ssh ports
-    PORT=$(cut -c 14-17 </var/etc/vin)
-
     SSHSERVER="-p 22 tesla@yourserver.com"
     FTPSERVER="username:password@ftp.example.com:21"
 }
