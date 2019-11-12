@@ -22,10 +22,11 @@ export saveTokenOverSshServer="tesla@yourserver.com -p 22"
 
 ## create-accounts.sh
 # You can save multiple authorized keys by supplying them here as an array
-export keysToSaveToCar[0]="ssh-rsa first example"
-export keysToSaveToCar[1]="ssh-rsa second example"
+keysToSaveToCar[0]="ssh-rsa first example"
+keysToSaveToCar[1]="ssh-rsa second example"
 export accountUserToSaveToCar="yourUsername"
 export accountPassToSaveToCar="myCarIsRooted"
+export keysToSaveToCar
 
 scheduledScripts=(
      "$homeOfLunars/scripts/everyBoot/memory-logs.sh"
