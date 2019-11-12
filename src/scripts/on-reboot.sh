@@ -14,23 +14,23 @@ function scriptBackground {
 }
 
 function beginScript {
-    printf "Found $1..."
+    printf "Found $1... "
     if ! isRunning $1; then
-        printf "\tStarting\n"
+        printf "Starting\n"
         scriptBackground $1
     else
-        printf "\tAlready running\n"
+        printf "Already running\n"
     fi
 }
 
 function main {
-    for scriptPath in $scheduledScripts; do
+    for scriptPath in "${scheduledScripts[@]}"; do
         beginScript $scriptPath
     done
 
     # Five minutes
     while true; do
-        for scriptPath in $everyFiveMinuteScripts; do
+        for scriptPath in "${everyFiveMinuteScripts[@]}"; do
             beginScript $scriptPath
         done
         echo "Waiting 5 minutes..."
