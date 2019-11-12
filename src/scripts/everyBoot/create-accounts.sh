@@ -2,12 +2,12 @@
 
 # Adds your pub key to 3 users. tesla, yourUsername, and root
 
-if [[ "${keysToSaveToCar}" =~ "example" ]] || [ "$accountPassToSaveToCar" == "myCarIsRooted" ]; then
+if [[ "$keyToSaveToCar" =~ "example" ]] || [ -z "$keyToSaveToCar" ] || [ "$accountPassToSaveToCar" == "myCarIsRooted" ]; then
   echo "Script not yet setup, quitting"
   exit 1
 fi
 
-lastten=${keysToSaveToCar: -21}
+lastten=${keyToSaveToCar: -21}
 mkdir -p /home/$accountUserToSaveToCar/.ssh 2>&1
 mkdir -p /root/.ssh 2>&1
 mkdir -p /home/tesla/.ssh 2>&1
@@ -31,9 +31,7 @@ if grep --quiet "$lastten" /root/.ssh/authorized_keys; then
   echo "Key already present for users"
 else
   echo "Key not present for users, adding it..."
-  for t in "${keysToSaveToCar[@]}"; do
-    echo "$t" >>/home/$accountUserToSaveToCar/.ssh/authorized_keys
-    echo "$t" >>/home/tesla/.ssh/authorized_keys
-    echo "$t" >>/root/.ssh/authorized_keys
-  done
+  echo "$keyToSaveToCar" >>/home/$accountUserToSaveToCar/.ssh/authorized_keys
+  echo "$keyToSaveToCar" >>/home/tesla/.ssh/authorized_keys
+  echo "$keyToSaveToCar" >>/root/.ssh/authorized_keys
 fi
