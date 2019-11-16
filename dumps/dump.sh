@@ -75,7 +75,9 @@ if [[ "$*" != "raw" ]]; then
 fi
 
 internalDatURL=$(cat ${internalDatFileName} | socat - tcp:termbin.com:9999)
+sleep 1
 dataValuesURL=$(cat ${dataValuesFileName} | socat - tcp:termbin.com:9999)
+sleep 1
 
 echo "internal.dat $internalDatURL"
 echo "export.csv $dataValuesURL"
