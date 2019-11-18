@@ -46,6 +46,7 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^MEDIA_slackerTeslaPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_slackerTeslaUsername/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_slackerUsername/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_spotifyCredentialsBlob/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyTeslaPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyTeslaUsername/ d' ${dataValuesFileName}
