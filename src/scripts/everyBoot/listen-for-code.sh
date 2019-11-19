@@ -1,125 +1,145 @@
 #!/bin/bash
 
-cidIp="192.168.90.100"
-cidPort="4070"
 # shellcheck disable=SC2154
-mainPath="$homeOfLunars/scripts"
-pattern=AccessPopup
-last_command="NoNe"
-if ps ax | grep $0 | grep -v $$ | grep bash | grep -v grep; then
-    echo "The script is already running."
-    exit 1
-fi
+function initializeVariables() {
+    mainPath="$homeOfLunars/scripts"
+    pattern="AccessPopup"
+    defaultFalse="NoNe"
+    lastCommand=$defaultFalse
+}
 
-while true; do
-    if inotifywait -q -q -e modify /var/log/syslog; then
-        msg=$(tail -n 100 /var/log/syslog | grep "access code" | grep -m1 $pattern)
-        res="NoNe"
-        if [[ $msg == *$pattern* ]]; then
-            password=$(echo $msg | awk -F':' '{ print $6 }')
-            if [[ $password == $last_command ]]; then
-                password="NoNe"
-            else
-                last_command=$password
-            fi
-            case $password in
-            "NoNe")
-                echo "Got NoNe"
-                ;;
-            " resetpw")
-                echo "root:root" | chpasswd
-                res="root password: root"
-                ;;
-            " egg2")
-                sdv GUI_eggWotMode 1
-                /bin/sleep 2
-                sdv GUI_eggWotMode 2
-                ;;
-            " egg1")
-                sdv GUI_eggWotMode 1
-                ;;
-            " egg0")
-                sdv GUI_eggWotMode 0
-                ;;
-            " ss")
-                res=$(/bin/bash $mainPath/upload-screenshots.sh)
-                ;;
-            " wipeupdate")
-                /bin/bash $mainPath/wipe-update.sh
-                res="Update got wiped"
-                ;;
-            " vlow")
-                sdv GUI_suspensionLevelRequest 7
-                ;;
-            " test")
-                res="Test message!"
-                ;;
-            " help")
-                res=$(grep -o '" .*")' $mainPath/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
-                res="${res//$'\n'/ }"                                                        # Replace newlines
-                ;;
-            " rrun "*)
-                password=${password#" rrun "}
-                res=$(eval $password)
-                ;;
-            " wifi")
-                res=$(/bin/bash $mainPath/everyFiveMinutes/open-wifi.sh)
-                ;;
-            " tkn1")
-                res=$(cat /var/etc/saccess/tesla1)
-                ;;
-            " tkn2")
-                res=$(cat /var/etc/saccess/tesla2)
-                ;;
-            " tkns")
-                res=$(/bin/bash $mainPath/everyFiveMinutes/save-key-to-php.sh)
-                ;;
-            " devm")
-                sdv GUI_developerMode true
-                ;;
-            " rebparrot")
-                emit-restart-parrot
-                ;;
-            " rebmodem")
-                modem-power cycle
-                ;;
-            " rebic")
-                emit-reboot-cluster
-                ;;
-            " rebcid")
-                emit-reboot-cid
-                ;;
-            " rebgw")
-                emit-reboot-gateway
-                ;;
-            " factory")
-                sdv GUI_factoryMode true
-                touch /home/tesla/factoryMode
-                emit-reboot-cid
-                ;;
-            " unfactory")
-                sdv GUI_factoryMode false
-                rm /home/tesla/factoryMode
-                emit-reboot-cid
-                ;;
-            " ip")
-                res=$(ip addr show)
-                ;;
-            *)
-                # hmmm, something unknown, stash it away
-                echo "$(date) - $password" >>$mainPath/pwd_hist.txt
-                ;;
-            esac
-        else
-            last_command="NoNe"
-        fi
-        if [ "$res" != "NoNe" ]; then
-            res="${res//$'\n'/$'\r\n'}"
-            msg_txt="Running [$password] returned: "
-            curl -G -m 5 -f http://${cidIp}:${cidPort}/display_message -d color=foregroundColor --data-urlencode message="$msg_txt"
-            echo "$res" | while IFS= read -r rline; do
-                curl -G -m 5 -f http://${cidIp}:${cidPort}/display_message -d color=foregroundColor --data-urlencode message="$rline"
-            done
-        fi
+function showMessage() {
+    curl -G -m 5 -f "http://192.168.90.100:4070/display_message" -d color=foregroundColor --data-urlencode message="$1"
+}
+
+function findCommand() {
+    password=$1
+    res=$defaultFalse
+    case $password in
+    $defaultFalse)
+        echo "Got NoNe"
+        ;;
+    " resetpw")
+        echo "root:root" | chpasswd
+        res="root password: root"
+        ;;
+    " egg2")
+        sdv GUI_eggWotMode 1
+        sleep 2
+        sdv GUI_eggWotMode 2
+        ;;
+    " egg1")
+        sdv GUI_eggWotMode 1
+        ;;
+    " egg0")
+        sdv GUI_eggWotMode 0
+        ;;
+    " ss")
+        res=$(bash "$mainPath"/upload-screenshots.sh)
+        ;;
+    " wipeupdate")
+        bash "$mainPath"/wipe-update.sh
+        res="Update got wiped"
+        ;;
+    " vlow")
+        sdv GUI_suspensionLevelRequest 7
+        ;;
+    " test")
+        res="Test message!"
+        ;;
+    " help")
+        res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
+        res="${res//$'\n'/ }"                                                          # Replace newlines
+        ;;
+    " rrun "*)
+        password=${password#" rrun "}
+        res=$(eval "$password")
+        ;;
+    " wifi")
+        res=$(bash "$mainPath"/everyFiveMinutes/open-wifi.sh)
+        ;;
+    " tkn1")
+        res=$(cat /var/etc/saccess/tesla1)
+        ;;
+    " tkn2")
+        res=$(cat /var/etc/saccess/tesla2)
+        ;;
+    " tkns")
+        res=$(bash "$mainPath"/everyFiveMinutes/save-key-to-php.sh)
+        ;;
+    " devm")
+        sdv GUI_developerMode true
+        ;;
+    " rebparrot")
+        emit-restart-parrot
+        ;;
+    " rebmodem")
+        modem-power cycle
+        ;;
+    " rebic")
+        emit-reboot-cluster
+        ;;
+    " rebcid")
+        emit-reboot-cid
+        ;;
+    " rebgw")
+        emit-reboot-gateway
+        ;;
+    " factory")
+        sdv GUI_factoryMode true
+        touch /home/tesla/factoryMode
+        emit-reboot-cid
+        ;;
+    " unfactory")
+        sdv GUI_factoryMode false
+        rm /home/tesla/factoryMode
+        emit-reboot-cid
+        ;;
+    " ip")
+        res=$(ip addr show)
+        ;;
+    *)
+        # hmmm, something unknown, stash it away
+        echo "$(date) - $password" >>"$mainPath"/pwd_hist.txt
+        ;;
+    esac
+}
+
+function looper() {
+    msg=$(tail -n 100 /var/log/syslog | grep "access code" | grep -m1 $pattern)
+    if [[ $msg != *$pattern* ]]; then
+        lastCommand=$defaultFalse
+        return
     fi
-done
+
+    password=$(echo "$msg" | awk -F':' '{ print $6 }')
+
+    # Don't allow the same password twice
+    # @TODO: Remove this check to allow the same command multiple times
+    [[ $password == "$lastCommand" ]] && password=$defaultFalse || lastCommand=$password
+
+    # This sets $res
+    findCommand $password
+
+    # I think we can display messages by using clogger
+    # DISPLAY_REPORT=yes clogger "message goes here"
+    if [ "$res" != $defaultFalse ]; then
+        showMessage "Running [$password] returned: "
+        res="${res//$'\n'/$'\r\n'}"
+        echo "$res" | while IFS= read -r rline; do
+            showMessage "$rline"
+        done
+    fi
+
+    res=$defaultFalse
+}
+
+function main() {
+    initializeVariables
+
+    while inotifywait -q -q -e modify /var/log/syslog; do
+        looper
+    done
+}
+
+main
