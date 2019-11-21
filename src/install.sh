@@ -44,7 +44,7 @@ else
     # Just in case this file already exists
     rm /tmp/crontab 2>/dev/null
     crontab -l >/tmp/crontab
-    echo "@reboot /bin/bash $onRebootFile > /dev/null 2>&1 &" >>/tmp/crontab
+    echo "@reboot /sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/bash $onRebootFile" >>/tmp/crontab
     cat /tmp/crontab | crontab || exit 6
     rm /tmp/crontab
     echo [OK] Lunars cron installed
