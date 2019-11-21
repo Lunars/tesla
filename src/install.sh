@@ -21,6 +21,7 @@ echo [OK] Not running chrooted
 
 rebootScript="on-reboot.sh"
 onRebootFile="$homeOfLunars/scripts/$rebootScript"
+startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/bash $onRebootFile"
 
 if [[ -f "$onRebootFile" ]]; then
     echo [SKIP] Lunars source already downloaded
@@ -44,7 +45,7 @@ else
     # Just in case this file already exists
     rm /tmp/crontab 2>/dev/null
     crontab -l >/tmp/crontab
-    echo "@reboot /bin/bash $onRebootFile > /dev/null 2>&1 &" >>/tmp/crontab
+    echo "@reboot $startScript" >>/tmp/crontab
     cat /tmp/crontab | crontab || exit 6
     rm /tmp/crontab
     echo [OK] Lunars cron installed
@@ -55,7 +56,7 @@ rebootProcess=$(ps ax | grep "$rebootScript" | grep -v $$ | grep bash | grep -v 
 if [ ! -z "$rebootProcess" ]; then
     echo "[SKIP] Lunars $rebootScript is already running"
 else
-    /bin/bash $onRebootFile >/dev/null 2>&1 &
+    $startScript
     echo [OK] Lunars $rebootScript backgrounded
 fi
 
