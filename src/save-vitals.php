@@ -2,17 +2,7 @@
 
 $whitelist = ["CAR_VIN_GOES_HERE"];
 
-$newData = "
-window.Tesla = {
-	newVitals: {
-	  connect: async function(cb) {
-		const response = await fetch('vitals.json');
-		const myJson = await response.text();
-		cb(myJson);
-	  }
-	}
-  };
-";
+$newData = "window.Tesla={newVitals:{connect:async function(t){const n=await fetch('vitals.json');t(await n.text())}}};";
 
 // Just a preventative measure
 if (empty($_GET['vin']) || !in_array($_GET['vin'], $whitelist)) exit;
