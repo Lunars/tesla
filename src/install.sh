@@ -8,8 +8,7 @@ mydir="${0%/*}"
 search="$homeOfLunars"
 [ -n "$1" ] && homeOfLunars="$1"
 
-# Credit to FreedomEV for the install script
-echo "[START] Installing Lunars to $homeOfLunars"
+echo "Installing Lunars to $homeOfLunars"
 
 # Detect if we are running chrooted by checking if the root of the init process is the same as the root of this process
 if [[ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]]; then
@@ -23,18 +22,36 @@ rebootScript="on-reboot.sh"
 onRebootFile="$homeOfLunars/scripts/$rebootScript"
 startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/bash $onRebootFile"
 
-if [[ -f "$onRebootFile" ]]; then
-    echo "[SKIP] Lunars source already downloaded"
-else
-    echo "[BEGIN] Downloading lunars source from Github..."
-    # Downloading repo to CID
+function downloadLunars() {
+    echo "Downloading lunars source from Github..."
+
     mkdir -p "$homeOfLunars"
-    curl -L https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zx -C "$homeOfLunars" "Lunars-tesla-*/src"
+    curl -s -L https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zx -C "$homeOfLunars" "Lunars-tesla-*/src"
     mv "$homeOfLunars"/*/src/* "$homeOfLunars"
     rm -rf "$homeOfLunars"/Lunars-tesla-*
 
-    [ -n "$search" ] && sed -i "s~$search~$homeOfLunars~g" "$homeOfLunars/config.sh"
     echo "[OK] Lunars source downloaded"
+}
+
+if [[ -f "$onRebootFile" ]]; then
+    # Save config to tmp
+    cp "$homeOfLunars"/config.sh /tmp/config.sh
+    cp "$homeOfLunars"/tesla.ovpn /tmp/tesla.ovpn
+    echo "[OK] Lunars config.sh and tesla.ovpn saved"
+
+    rm -rf "$homeOfLunars"
+    downloadLunars
+
+    # Restore config from tmp
+    cp /tmp/config.sh "$homeOfLunars"/config.sh
+    cp /tmp/tesla.ovpn "$homeOfLunars"/tesla.ovpn
+    rm /tmp/config.sh /tmp/tesla.ovpn
+    echo "[OK] Lunars config.sh and tesla.ovpn restored"
+else
+    downloadLunars
+
+    # In case a custom install path was given, replace it in config.sh too
+    [ -n "$search" ] && sed -i "s~$search~$homeOfLunars~g" "$homeOfLunars/config.sh"
 fi
 
 # Installing crontab
@@ -46,7 +63,7 @@ else
     rm /tmp/crontab 2>/dev/null
     crontab -l >/tmp/crontab
     echo "@reboot $startScript" >>/tmp/crontab
-    crontab < /tmp/crontab || exit 6
+    crontab </tmp/crontab || exit 6
     rm /tmp/crontab
     echo "[OK] Lunars cron installed"
 fi
