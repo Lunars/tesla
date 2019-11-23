@@ -31,6 +31,14 @@ function downloadLunars() {
     rm -rf "$homeOfLunars"/Lunars-tesla-*
 
     echo "[OK] Lunars source downloaded"
+
+    if [[ -f /tmp/config.sh ]]; then
+        # Restore config from tmp
+        cp /tmp/config.sh "$homeOfLunars"/config.sh
+        cp /tmp/tesla.ovpn "$homeOfLunars"/tesla.ovpn
+        rm /tmp/config.sh /tmp/tesla.ovpn
+        echo "[OK] Lunars config.sh and tesla.ovpn restored"
+    fi
 }
 
 if [[ -f "$onRebootFile" ]]; then
@@ -41,12 +49,6 @@ if [[ -f "$onRebootFile" ]]; then
 
     rm -rf "$homeOfLunars"
     downloadLunars
-
-    # Restore config from tmp
-    cp /tmp/config.sh "$homeOfLunars"/config.sh
-    cp /tmp/tesla.ovpn "$homeOfLunars"/tesla.ovpn
-    rm /tmp/config.sh /tmp/tesla.ovpn
-    echo "[OK] Lunars config.sh and tesla.ovpn restored"
 else
     downloadLunars
 
