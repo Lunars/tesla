@@ -7,12 +7,12 @@ OFFLINEMOUNTPOINT="/offline-usr"
 ONLINEPART=$(cat /proc/self/mounts | grep "/usr" | grep ^/dev/mmcblk0p[12] | cut -b14)
 
 if [ "$ONLINEPART" == "1" ]; then
-    OFFLINEPART=2
+  OFFLINEPART=2
 elif [ "$ONLINEPART" == "2" ]; then
-    OFFLINEPART=1
+  OFFLINEPART=1
 else
-    echo "Error figuring out which partition is which."
-    exit 0
+  echo "Error figuring out which partition is which."
+  exit 0
 fi
 
 mkdir $OFFLINEMOUNTPOINT 2>/dev/null
@@ -20,9 +20,9 @@ mkdir $OFFLINEMOUNTPOINT 2>/dev/null
 mount -o ro /dev/mmcblk0p$OFFLINEPART $OFFLINEMOUNTPOINT
 
 if [ ! -e "$OFFLINEMOUNTPOINT/deploy/platform.ver" ]; then
-    echo "Error mounting offline partition."
-    umount $OFFLINEMOUNTPOINT 2>/dev/null
-    exit 0
+  echo "Error mounting offline partition."
+  umount $OFFLINEMOUNTPOINT 2>/dev/null
+  exit 0
 fi
 
 NEWVER=$(cat "$OFFLINEMOUNTPOINT/tesla/UI/bin/version.txt" | cut -d= -f2 | cut -d\- -f1)

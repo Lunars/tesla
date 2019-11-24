@@ -1,7 +1,7 @@
 #!/bin/bash
 
 get_path_from_screenshot() {
-        echo -e $1 | sed -e "s/\"//g;s/\\\//g;s/_rval_ : //g;s/--/NaN/g;s/ //1" | sed -e 's/[{}]//g'
+  echo -e $1 | sed -e "s/\"//g;s/\\\//g;s/_rval_ : //g;s/--/NaN/g;s/ //1" | sed -e 's/[{}]//g'
 }
 
 #SMTP for sending email
@@ -17,7 +17,7 @@ bklght=$(lv GUI_backlightUserRequest)
 sdv GUI_backlightUserRequest 255 && sleep 1
 CID=$(curl -s http://cid:4070/screenshot)
 IC=$(curl -s http://ic:4130/screenshot)
-sdv GUI_backlightUserRequest ${bklght//\"}
+sdv GUI_backlightUserRequest ${bklght//\"/}
 CIDPATH=$(get_path_from_screenshot "$CID")
 ICPATH=$(get_path_from_screenshot "$IC")
 sleep 1
@@ -34,7 +34,7 @@ echo "<html>
         <img src=\"cid:png_ic.png\" width=\"150\" >
     </div>
 </body>
-</html>" > $m_file
+</html>" >$m_file
 
 mail_from="Your Tesla <$m_from>"
 mail_to="The Master <$m_to>"
@@ -42,20 +42,20 @@ mail_subject="Requested Screenshots"
 mail_reply_to="Your Tesla <$m_from>"
 mail_cc=""
 
-function add_file {
-    echo "--MULTIPART-MIXED-BOUNDARY
+function add_file() {
+  echo "--MULTIPART-MIXED-BOUNDARY
 Content-Type: $1
-Content-Transfer-Encoding: base64" >> "$m_data"
+Content-Transfer-Encoding: base64" >>"$m_data"
 
-    if [ ! -z "$2" ]; then
-        echo "Content-Disposition: inline
-Content-Id: <$2>" >> "$m_data"
-    else
-        echo "Content-Disposition: attachment; filename=$4" >> "$m_data"
-    fi
-    echo "$3
+  if [ ! -z "$2" ]; then
+    echo "Content-Disposition: inline
+Content-Id: <$2>" >>"$m_data"
+  else
+    echo "Content-Disposition: attachment; filename=$4" >>"$m_data"
+  fi
+  echo "$3
 
-" >> "$m_data"
+" >>"$m_data"
 }
 
 message_base64=$(cat $m_file | base64)
@@ -77,14 +77,14 @@ Content-Transfer-Encoding: base64
 Content-Disposition: inline
 
 $message_base64
---MULTIPART-ALTERNATIVE-BOUNDARY--" > "$m_data"
+--MULTIPART-ALTERNATIVE-BOUNDARY--" >"$m_data"
 
 image_base64=$(cat $CIDPATH | base64)
 add_file "image/png" "png_cid.png" "$image_base64"
 image_base64=$(cat $ICPATH | base64)
 add_file "image/png" "png_ic.png" "$image_base64"
 
-echo "--MULTIPART-MIXED-BOUNDARY--" >> "$m_data"
+echo "--MULTIPART-MIXED-BOUNDARY--" >>"$m_data"
 
 curl -u $m_usr:$m_pwd -n --ssl-reqd --mail-from "<$m_from>" --mail-rcpt "<$m_to>" --url $server -T $m_data
 

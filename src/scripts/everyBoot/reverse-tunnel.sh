@@ -11,9 +11,9 @@ if [[ "$reverseTunnelServer" =~ "yourserver.com" ]]; then
   exit 1
 fi
 
-while : ; do
-  RET=$(ps ax | grep "${nonStandardPort}:localhost:22" | grep -v "grep"|wc -l)
-  if [ "$RET" -eq 0 ];then
+while :; do
+  RET=$(ps ax | grep "${nonStandardPort}:localhost:22" | grep -v "grep" | wc -l)
+  if [ "$RET" -eq 0 ]; then
     ssh -N -T -R ${nonStandardPort}:localhost:22 -o ServerAliveInterval=3 -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes $reverseTunnelServer
   fi
   sleep 60

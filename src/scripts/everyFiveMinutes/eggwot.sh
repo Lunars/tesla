@@ -13,9 +13,9 @@ MODE=1
 echo "state is" $STATE
 echo "state wanted is" $WANTSTATE
 
-if ! [ "$STATE" = "$WANTSTATE" ] ; then
-   sdv $KEY $MODE
-   echo "Enabling $KEY $MODE"
+if ! [ "$STATE" = "$WANTSTATE" ]; then
+  sdv $KEY $MODE
+  echo "Enabling $KEY $MODE"
 else
-   echo "Already Enabled"
+  echo "Already Enabled"
 fi

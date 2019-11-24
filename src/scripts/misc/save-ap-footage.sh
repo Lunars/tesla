@@ -26,18 +26,18 @@ GIF_FORMAT="+%Y-%m-%d %H:%M:%S"
 date -r 1234 &>/dev/null && BSD=1
 
 for d in */*; do
-    mogrify -format png -flip -crop 320x207+0+0 +repage "${d}/*.PGM"
+  mogrify -format png -flip -crop 320x207+0+0 +repage "${d}/*.PGM"
 
-    stamp=$(echo "${d}" | cut -c -8)
-    stamp=$((16#${stamp}))
+  stamp=$(echo "${d}" | cut -c -8)
+  stamp=$((16#${stamp}))
 
-    if [ -z $BSD ]; then
-        convert -loop 0 -delay $DELAY ${d}/*.png "$(date -d @${stamp} "${GIF_FORMAT}")-$(echo ${d} | cut -d / -f 2).gif"
-    else
-        convert -loop 0 -delay $DELAY ${d}/*.png "$(date -r ${stamp} "${GIF_FORMAT}")-$(echo ${d} | cut -d / -f 2).gif"
-    fi
+  if [ -z $BSD ]; then
+    convert -loop 0 -delay $DELAY ${d}/*.png "$(date -d @${stamp} "${GIF_FORMAT}")-$(echo ${d} | cut -d / -f 2).gif"
+  else
+    convert -loop 0 -delay $DELAY ${d}/*.png "$(date -r ${stamp} "${GIF_FORMAT}")-$(echo ${d} | cut -d / -f 2).gif"
+  fi
 
-    rm ${d}/*.png*
+  rm ${d}/*.png*
 done
 
 find . -type f ! -iregex '.*\.\(gif\|sh\)$' -delete
