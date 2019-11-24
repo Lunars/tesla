@@ -17,7 +17,7 @@ function findCommand() {
     res=$defaultFalse
     case $password in
     $defaultFalse)
-        echo "Got NoNe"
+        echo "Got $defaultFalse"
         ;;
     " resetpw")
         echo "root:root" | chpasswd
