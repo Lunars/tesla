@@ -1,18 +1,11 @@
 # Credits to https://github.com/jnuyens/freedomev/blob/master/freedomevstart
 # This starts freedomev in case you have a USB that contains it
 
-# bootstrap version 2019070301
-# datestring needs to be at this position to verify if its the last version
-#
-# This script should be placed in /var/ and launched every minute out of cron
-#
 # checks for presence of freedomev USB stick and performs its magic
 # if stick is not present - kills thing launched and does nothing -
 # this way its easy to
 # disable the entire freedomev system and not overload Car Service
-# with strange requests. If you run into problems, reset the central
-# display and instrument cluster with the buttons on the steering wheel
-# and remove the freedomev USB stick
+# with strange requests. 
 #
 #Copyright 2018, Jasper Nuyens <jnuyens@linuxbe.com>
 #Licensed under the GNU Affero GPL license as published on https://www.gnu.org/licenses/agpl-3.0.html
@@ -44,7 +37,6 @@ function killandumount {
  umount -f ${usbmountpoint}
  rm /tmp/freedomevmountpoint
  #check if no mount points are dangling
- curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="FreedomEV Disabled."
 }
 
 #check if the USB stick is present
@@ -92,22 +84,6 @@ then
 fi
 echo freedomevstarted=${freedomevstarted}
 
-
-function checkbootstrapversion {
- #checks the first line of this file and possibly updates it
- # bootstrap version 2019012701
- runningversion=$(head -n 1 /var/freedomevstart | awk '{ print $4 }')
- usbversion=$(head -n 1 ${usbmountpoint}/freedomevstart | awk '{ print $4 }')
- if [[ "$runningversion" != "$usbversion" ]]
- then
-  cp ${usbmountpoint}/freedomevstart /var/freedomevstart
-  sync
-  curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="FreedomEV core bootstrap updated!"
-  curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="Please remove the US stick then "
-  curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message=" wait for FreedomEV to disable and reinsert"
- fi
-}
-
 #initial start
 if ! ${freedomevstarted}
 then
@@ -123,13 +99,9 @@ then
  #some more hacking powers
  mount /var -o remount,exec
  mount -o remount,exec /opt/navigoff
- checkversion
- # Disable message for silent start
- #curl -G -m 5 -f http://192.168.90.100:4070/display_message -d color=foregroundColor --data-urlencode message="FreedomEV Activated! Version: ${freedomevversion}"
  export usbmountpoint
  /bin/bash ${usbmountpoint}/freedomev/tools/activation-outside-chroot-jail
  /usr/sbin/chroot ${usbmountpoint} /bin/bash /freedomev/tools/activation
- checkbootstrapversion
 fi
 
 #launch the checks for freedomev core such as periodic check for version and periodic checks for certain apps
