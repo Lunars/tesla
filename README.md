@@ -25,11 +25,13 @@ bash <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/insta
 
 ## Updating
 
-Simply run the install steps. The script will automatically know to update your installation.
+Lunars will automatically check for updates when your car boots up. So hold the two scroll wheels to reboot and it will check on boot up.
+
+Or, you can simply run the install steps. Lunars will automatically know to update your current installation.
 
 During update, only the following will be preserved. Any changes to the lunars directory otherwise will be wiped and updated to the latest Github copy.
 
-1. config.sh
+1. config.sh # New scripts will automatically be added and commented out by default
 2. tesla.ovpn
 3. overwrite-files
 
