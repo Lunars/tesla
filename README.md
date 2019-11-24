@@ -23,6 +23,16 @@ sudo su
 bash <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh")
 ```
 
+## Updating
+
+Simply run the install steps. The script will automatically know to update your installation.
+
+During update, only the following will be preserved. Any changes to the lunars directory otherwise will be wiped and updated to the latest Github copy.
+
+1. config.sh
+2. tesla.ovpn
+3. overwrite-files
+
 ## Usage
 
 Fill in the variables on [/var/lunars/config.sh](https://github.com/Lunars/tesla/blob/master/src/config.sh) and uncomment the scripts you want to run. Some scripts are already enabled by default.
