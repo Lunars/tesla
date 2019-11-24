@@ -23,13 +23,13 @@ onRebootFile="$homeOfLunars/scripts/$rebootScript"
 startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/bash $onRebootFile"
 
 function checkConfigScripts() {
-  cd "$1" || exit
+  cd "$homeOfLunars/$1" || exit
   for f in *.sh; do
     if grep -q "$f" "$homeOfLunars/config.sh"; then
       echo "The script [$f] already exists in config.sh."
     else
       echo "Adding [$f] to config.sh, and leaving commented out"
-      sed -i "/scheduledScripts=/a #$1/$f" "$homeOfLunars/config.sh"
+      sed -i "/$2=/a #    \"\$homeOfLunars/$1/$f\"" "$homeOfLunars/config.sh"
     fi
   done
 }
@@ -52,8 +52,8 @@ function downloadLunars() {
     echo "[OK] Lunars config.sh, tesla.ovpn, and overwrite-files restored"
 
     echo "Checking for new scripts that are missing in config.sh..."
-    checkConfigScripts "$homeOfLunars"/scripts/everyBoot
-    checkConfigScripts "$homeOfLunars"/scripts/everyFiveMinutes
+    checkConfigScripts scripts/everyBoot scheduledScripts
+    checkConfigScripts scripts/everyFiveMinutes everyFiveMinuteScripts
   fi
 }
 
