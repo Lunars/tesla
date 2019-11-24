@@ -1,8 +1,8 @@
 currentVersion="2019.11.24"
-latestScript=$(curl -s -L "https://raw.githubusercontent.com/Lunars/tesla/master/src/scripts/everyBoot/check-for-updates.sh" || exit 1)
-echo ${currentVersion} | grep --quiet "${latestScript}"
+latestScript=$(curl --max-time 5 --connect-timeout 0 -s -L "https://raw.githubusercontent.com/Lunars/tesla/master/src/scripts/everyBoot/check-for-updates.sh" || exit 1)
+latestVersion=$(echo "${latestScript}" | cut -d '"' -f2 | head -1)
 
-if [ $? = 1 ]; then
+if [ -n "$latestScript" ] && [ "$currentVersion" != "$latestVersion" ]; then
   echo "New version detected. Running update script"
 
   # Using script from source, to make sure it's the newest copy since there's an update
