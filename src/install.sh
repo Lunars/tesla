@@ -34,18 +34,19 @@ function downloadLunars() {
 
     if [[ -f /tmp/config.sh ]]; then
         # Restore config from tmp
-        cp /tmp/config.sh "$homeOfLunars"/config.sh
-        cp /tmp/tesla.ovpn "$homeOfLunars"/tesla.ovpn
-        rm /tmp/config.sh /tmp/tesla.ovpn
-        echo "[OK] Lunars config.sh and tesla.ovpn restored"
+        mv /tmp/overwrite-files "$homeOfLunars"
+        mv /tmp/config.sh "$homeOfLunars"
+        mv /tmp/tesla.ovpn "$homeOfLunars"
+        echo "[OK] Lunars config.sh, tesla.ovpn, and overwrite-files restored"
     fi
 }
 
 if [[ -f "$onRebootFile" ]]; then
     # Save config to tmp
-    cp "$homeOfLunars"/config.sh /tmp/config.sh
-    cp "$homeOfLunars"/tesla.ovpn /tmp/tesla.ovpn
-    echo "[OK] Lunars config.sh and tesla.ovpn saved"
+    mv "$homeOfLunars"/overwrite-files /tmp
+    mv "$homeOfLunars"/config.sh /tmp
+    mv "$homeOfLunars"/tesla.ovpn /tmp
+    echo "[OK] Lunars config.sh, tesla.ovpn, and overwrite-files saved"
 
     rm -rf "$homeOfLunars"
     downloadLunars
