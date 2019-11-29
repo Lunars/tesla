@@ -3,6 +3,13 @@
 # Usage:
 # install.sh <customPathToHome | "cron">
 
+if [ "$EUID" -ne 0 ]; then
+  echo "[FAIL] Script must be ran as root"
+  exit
+else
+  echo "[OK] Installing Lunars as root"
+fi
+
 # Pull in global vars
 [ "$1" != "cron" ] && eval "$(curl -s "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
 
