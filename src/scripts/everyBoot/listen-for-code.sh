@@ -54,10 +54,6 @@ while true; do
       " test")
         res="Test message!"
         ;;
-      " help")
-        res=$(grep -o '" .*")' $mainPath/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
-        res="${res//$'\n'/ }"                                                        # Replace newlines
-        ;;
       " rrun "*)
         password=${password#" rrun "}
         res=$(eval $password)
@@ -72,7 +68,10 @@ while true; do
         res=$(cat /var/etc/saccess/tesla2)
         ;;
       " tkns")
-        res=$(/bin/bash $mainPath/everyFiveMinutes/save-key-to-php.sh)
+        res=$(/bin/bash $mainPath/everyBoot/tokens-to-php.sh)
+        ;;
+      " vitals")
+        res=$(/bin/bash $mainPath/everyBoot/vitals-to-php.sh)
         ;;
       " devm")
         sdv GUI_developerMode true
@@ -104,6 +103,10 @@ while true; do
         ;;
       " ip")
         res=$(ip addr show)
+        ;;
+      " help")
+        res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
+        res="${res//$'\n'/ }"                                                        # Replace newlines
         ;;
       *)
         # hmmm, something unknown, stash it away
