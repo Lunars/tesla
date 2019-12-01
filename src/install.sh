@@ -78,6 +78,7 @@ function downloadLunars() {
 if [ -z "$1" ] || [ -n "$1" ] && [ "$1" != "cron" ]; then
   if [[ -f "$onRebootFile" ]]; then
     # Save config to tmp
+    rm -rf /tmp/overwrite-files /tmp/config.sh /tmp/tesla.ovpn
     mv "$homeOfLunars"/overwrite-files /tmp
     mv "$homeOfLunars"/config.sh /tmp
     mv "$homeOfLunars"/tesla.ovpn /tmp
