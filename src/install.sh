@@ -42,7 +42,7 @@ startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --b
 function checkConfigScripts() {
   cd "$homeOfLunars/$1" || exit
   for f in *.sh; do
-    if grep -q "$f" "$homeOfLunars/config.sh"; then
+    if grep -q "$1/$f" "$homeOfLunars/config.sh"; then
       echo "[SKIP] $f already exists in config.sh"
     else
       echo "[OK] Added $f to config.sh and left disabled (must manually enable)"
