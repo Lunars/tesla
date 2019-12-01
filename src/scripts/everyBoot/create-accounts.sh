@@ -27,11 +27,7 @@ fi
 
 # Add the ssh keys to each user
 touch /root/.ssh/authorized_keys
-if grep --quiet "$lastten" /root/.ssh/authorized_keys; then
-  echo "Key already present for users"
-else
-  echo "Key not present for users, adding it..."
-  echo "$keyToSaveToCar" >>/home/$accountUserToSaveToCar/.ssh/authorized_keys
-  echo "$keyToSaveToCar" >>/home/tesla/.ssh/authorized_keys
-  echo "$keyToSaveToCar" >>/root/.ssh/authorized_keys
-fi
+
+grep --quiet "$lastten" /home/$accountUserToSaveToCar/.ssh/authorized_keys && echo "Already added key to /home/$accountUserToSaveToCar" || echo "$keyToSaveToCar" >>/home/$accountUserToSaveToCar/.ssh/authorized_keys
+grep --quiet "$lastten" /home/tesla/.ssh/authorized_keys && echo "Already added key to /home/tesla" || echo "$keyToSaveToCar" >>/home/tesla/.ssh/authorized_keys
+grep --quiet "$lastten" /root/.ssh/authorized_keys && echo "Already added key to /root" || echo "$keyToSaveToCar" >>/root/.ssh/authorized_keys

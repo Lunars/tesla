@@ -1,18 +1,35 @@
 #!/bin/bash
 
-# Pull in global vars
-eval "$(curl -s "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
-mydir="${0%/*}"
-[ -f "$mydir/config.sh" ] && source "$mydir/config.sh"
+# Usage:
+# install.sh <customPathToHome | "cron">
 
+if [ "$EUID" -ne 0 ]; then
+  echo "[FAIL] Script must be ran as root"
+  exit
+else
+  echo "[OK] Installing Lunars as root"
+fi
+
+# Pull in global vars
+[ "$1" != "cron" ] && eval "$(curl -s "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
+
+# Set default home if we're running a cron flag
+[ "$1" == "cron" ] && homeOfLunars="/var/lunars"
+
+# The default home provided by Github config.sh
 search="$homeOfLunars"
-[ -n "$1" ] && homeOfLunars="$1"
+
+# The overridden home provided by first argument
+[ -n "$1" ] && [ "$1" != "cron" ] && homeOfLunars="$1"
+
+# Pull in your custom vars if you already have Lunars installed
+[ -f "$homeOfLunars/config.sh" ] && source "$homeOfLunars/config.sh"
 
 echo "Installing Lunars to $homeOfLunars"
 
 # Detect if we are running chrooted by checking if the root of the init process is the same as the root of this process
 if [[ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]]; then
-  echo "[FAIL] Not running chrooted"
+  echo "[FAIL] Not running when chrooted"
   exit 2
 fi
 
@@ -26,9 +43,9 @@ function checkConfigScripts() {
   cd "$homeOfLunars/$1" || exit
   for f in *.sh; do
     if grep -q "$f" "$homeOfLunars/config.sh"; then
-      echo "The script [$f] already exists in config.sh."
+      echo "[SKIP] $f already exists in config.sh"
     else
-      echo "Adding [$f] to config.sh, and leaving commented out"
+      echo "[OK] Added $f to config.sh and left disabled (must manually enable)"
       sed -i "/$2=/a #    \"\$homeOfLunars/$1/$f\"" "$homeOfLunars/config.sh"
     fi
   done
@@ -57,20 +74,25 @@ function downloadLunars() {
   fi
 }
 
-if [[ -f "$onRebootFile" ]]; then
-  # Save config to tmp
-  mv "$homeOfLunars"/overwrite-files /tmp
-  mv "$homeOfLunars"/config.sh /tmp
-  mv "$homeOfLunars"/tesla.ovpn /tmp
-  echo "[OK] Lunars config.sh, tesla.ovpn, and overwrite-files saved"
+# When calling with "cron" argument, don't redownload. Just do CRON stuff
+if [ -z "$1" ] || [ -n "$1" ] && [ "$1" != "cron" ]; then
+  if [[ -f "$onRebootFile" ]]; then
+    # Save config to tmp
+    mv "$homeOfLunars"/overwrite-files /tmp
+    mv "$homeOfLunars"/config.sh /tmp
+    mv "$homeOfLunars"/tesla.ovpn /tmp
+    echo "[OK] Lunars config.sh, tesla.ovpn, and overwrite-files saved"
 
-  rm -rf "$homeOfLunars"
-  downloadLunars
+    rm -rf "$homeOfLunars"
+    downloadLunars
+  else
+    downloadLunars
+
+    # In case a custom install path was given, replace it in config.sh too
+    [ -n "$search" ] && sed -i "s~$search~$homeOfLunars~g" "$homeOfLunars/config.sh"
+  fi
 else
-  downloadLunars
-
-  # In case a custom install path was given, replace it in config.sh too
-  [ -n "$search" ] && sed -i "s~$search~$homeOfLunars~g" "$homeOfLunars/config.sh"
+  echo "[SKIP] Lunars download due to cron flag"
 fi
 
 # Installing crontab
