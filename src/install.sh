@@ -112,12 +112,13 @@ fi
 
 # Check if already running
 rebootProcess=$(pgrep -f "$rebootScript")
-if [ -n "$rebootProcess" ]; then
+if [ "$1" != "cron" ] && [ -n "$rebootProcess" ]; then
   echo "[SKIP] Lunars $rebootScript is already running, restarting process"
   kill "$rebootProcess"
 fi
 
-$startScript
+[ "$1" != "cron" ] && $startScript
+[ "$1" == "cron" ] && echo "[SKIP] Not killing and starting on-reboot, as this is a CRON check"
 echo "[OK] Lunars $rebootScript backgrounded"
 
 echo "[DONE] Lunars is now installed, have fun!"
