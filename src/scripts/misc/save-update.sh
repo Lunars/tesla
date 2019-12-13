@@ -41,10 +41,10 @@ function validateIC() {
 }
 
 function getFirmwareInfo() {
+  OFFLINEMOUNTPOINT="/offline-usr"
   PARTITIONPREFIX=$([ "$HOST" = ic ] && echo "mmcblk3p" || echo "mmcblk0p")
   STATUS=$([ "$HOST" = ic ] && curl http://ic:21576/status || curl http://cid:20564/status)
   NEWSIZE=$(echo "$STATUS" | grep 'Offline dot-model-s size:' | awk -F'size: ' '{print $2}' | awk '{print $1/64}')
-  NEWVER=$(echo "$STATUS" | awk -F'built for package version: ' '{print $2}' | sed 's/\s.*$//')
 
   # Ty kalud for finding offline part number
   ONLINEPART=$(cat /proc/self/mounts | grep "/usr" | grep ^/dev/$PARTITIONPREFIX[12] | cut -b14)
@@ -55,6 +55,18 @@ function getFirmwareInfo() {
   else
     die "Could not determine offline partition"
   fi
+  
+  mkdir $OFFLINEMOUNTPOINT 2>/dev/null
+  mount -o ro /dev/mmcblk0p$OFFLINEPART $OFFLINEMOUNTPOINT
+  if [ ! -e "$OFFLINEMOUNTPOINT/deploy/platform.ver" ]; then
+    echo "Error mounting offline partition."
+    umount $OFFLINEMOUNTPOINT 2>/dev/null
+    exit 0
+  fi
+
+  NEWVER=$(cat "$OFFLINEMOUNTPOINT/tesla/UI/bin/version.txt" | cut -d= -f2 | cut -d\- -f1)
+  umount $OFFLINEMOUNTPOINT
+  rmdir $OFFLINEMOUNTPOINT
 }
 
 function saveAPE() {
