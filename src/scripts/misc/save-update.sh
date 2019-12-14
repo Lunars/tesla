@@ -26,7 +26,7 @@ esac
 
 function initializeVariables() {
   SSHSERVER="-p 22 tesla@yourserver.com"
-  FTPSERVER="username:password@ftp.example.com:21"
+  FTPSERVER="username:password@ftp.example.com:21/directory-goes-here"
 }
 
 function cleanFTPUsername() {
@@ -126,7 +126,7 @@ function saveAPE() {
   elif [ "$MODE" = ssh ]; then
     scp $APELOCATION $SSHSERVER:~/$NEWVER.$APE
   elif [ "$MODE" = ftp ]; then
-    curl -T $APELOCATION ftp://$FTPSERVER/~/$NEWVER.$APE
+    curl -T $APELOCATION ftp://$FTPSERVER/$NEWVER.$APE
   fi
 }
 
@@ -145,7 +145,7 @@ function saveUpdate() {
     dd if=/dev/$PARTITIONPREFIX$DESIREDPARTCALCULATED bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
   elif [ "$MODE" = ftp ]; then
     echo "Saving to ~/$NEWVER.image on remote server via FTP"
-    dd if=/dev/$PARTITIONPREFIX$DESIREDPARTCALCULATED bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/~/$NEWVER.image
+    dd if=/dev/$PARTITIONPREFIX$DESIREDPARTCALCULATED bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/$NEWVER.image
   else
     die "MODE must be one of usb | internal | ssh | ftp"
   fi
