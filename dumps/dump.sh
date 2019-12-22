@@ -75,10 +75,8 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^#/ d' ${internalDatFileName}
 fi
 
-internalDatURL=$(cat ${internalDatFileName} | socat - tcp:termbin.com:9999)
-sleep 1
-dataValuesURL=$(cat ${dataValuesFileName} | socat - tcp:termbin.com:9999)
-sleep 1
+internalDatURL=$(curl -s --upload-file ${internalDatFileName} https://transfer.sh/internaldat.txt)
+dataValuesURL=$(curl -s --upload-file ${dataValuesFileName} https://transfer.sh/export.csv)
 
 echo "internal.dat $internalDatURL"
 echo "export.csv $dataValuesURL"
