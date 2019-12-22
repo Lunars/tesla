@@ -75,8 +75,8 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^#/ d' ${internalDatFileName}
 fi
 
-internalDatURL=$(curl -s --upload-file ${internalDatFileName} https://transfer.sh/internaldat.txt)
-dataValuesURL=$(curl -s --upload-file ${dataValuesFileName} https://transfer.sh/export.csv)
+internalDatURL=$(curl --upload-file ${internalDatFileName} https://transfer.sh/internaldat.txt)
+dataValuesURL=$(curl --upload-file ${dataValuesFileName} https://transfer.sh/export.csv)
 
 echo "internal.dat $internalDatURL"
 echo "export.csv $dataValuesURL"
