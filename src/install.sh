@@ -55,8 +55,13 @@ function downloadLunars() {
   echo "Downloading lunars source from Github..."
 
   mkdir -p "$homeOfLunars"
-  curl -s -L https://github.com/Lunars/tesla/tarball/master | tar --wildcards -zx -C "$homeOfLunars" "Lunars-tesla-*/src"
-  mv "$homeOfLunars"/*/src/* "$homeOfLunars"
+  curl https://codeload.github.com/Lunars/tesla/legacy.tar.gz/master | tar --wildcards -zx -C "$homeOfLunars" "Lunars-tesla-*/src"
+
+  if ! mv "$homeOfLunars"/*/src/* "$homeOfLunars"; then
+    echo "[FAIL] Lunars could not be downloaded from Github"
+    exit 1
+  fi
+
   rm -rf "$homeOfLunars"/Lunars-tesla-*
 
   echo "[OK] Lunars source downloaded"
