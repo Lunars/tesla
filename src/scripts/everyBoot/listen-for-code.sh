@@ -42,10 +42,10 @@ while true; do
         sdv GUI_eggWotMode 0
         ;;
       " ss")
-        res=$(/bin/bash $mainPath/upload-screenshots.sh)
+        res=$(/bin/bash $mainPath/misc/upload-screenshots.sh)
         ;;
       " wipeupdate")
-        /bin/bash $mainPath/wipe-update.sh
+        /bin/bash $mainPath/misc/wipe-update.sh
         res="Update got wiped"
         ;;
       " vlow")
