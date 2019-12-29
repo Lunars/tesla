@@ -38,6 +38,7 @@ scheduledScripts=(
   "$homeOfLunars/scripts/everyBoot/check-for-updates.sh"
   "$homeOfLunars/scripts/everyBoot/speed-sensitive-volume.sh"
   "$homeOfLunars/scripts/everyBoot/tokens-to-php.sh"
+  "$homeOfLunars/scripts/everyBoot/autopilot-autosteer.sh"
   #    "$homeOfLunars/scripts/everyBoot/save-key-over-ssh.sh"
   #    "$homeOfLunars/scripts/everyBoot/copy-tokens-to-ic.sh"
   #    "$homeOfLunars/scripts/everyBoot/block-tesla-ssh.sh"
