@@ -68,6 +68,7 @@ function downloadLunars() {
 
   if [[ -f /tmp/config.sh ]]; then
     # Restore config from tmp
+    rm -rf "$homeOfLunars/overwrite-files"
     mv /tmp/overwrite-files "$homeOfLunars"
     mv /tmp/config.sh "$homeOfLunars"
     mv /tmp/tesla.ovpn "$homeOfLunars"
