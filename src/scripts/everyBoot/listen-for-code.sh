@@ -35,10 +35,10 @@ function findCommand() {
     sdv GUI_eggWotMode 0
     ;;
   " ss")
-    res=$(bash "$mainPath"/upload-screenshots.sh)
+    res=$(bash "$mainPath"/misc/upload-screenshots.sh)
     ;;
   " wipeupdate")
-    bash "$mainPath"/wipe-update.sh
+    bash "$mainPath"/misc/wipe-update.sh
     res="Update got wiped"
     ;;
   " vlow")
@@ -46,10 +46,6 @@ function findCommand() {
     ;;
   " test")
     res="Test message!"
-    ;;
-  " help")
-    res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
-    res="${res//$'\n'/ }"                                                          # Replace newlines
     ;;
   " rrun "*)
     password=${password#" rrun "}
@@ -65,7 +61,7 @@ function findCommand() {
     res=$(cat /var/etc/saccess/tesla2)
     ;;
   " tkns")
-    res=$(bash "$mainPath"/everyFiveMinutes/save-key-to-php.sh)
+    res=$(bash "$mainPath"/everyBoot/tokens-to-php.sh)
     ;;
   " devm")
     sdv GUI_developerMode true
@@ -97,6 +93,13 @@ function findCommand() {
     ;;
   " ip")
     res=$(ip addr show)
+    ;;
+  " help")
+    # Get all commands from this file
+    res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") ')
+    # Replace newlines
+    res="${res//$'\n'/ }"
+    res=$(echo "$res" | tr " " "\n")
     ;;
   *)
     # hmmm, something unknown, stash it away
