@@ -96,10 +96,7 @@ function findCommand() {
     ;;
   " help")
     # Get all commands from this file
-    res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") ')
-    # Replace newlines
-    res="${res//$'\n'/ }"
-    res=$(echo "$res" | tr " " "\n")
+    res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") '  | grep -v "mainPath")
     ;;
   *)
     # hmmm, something unknown, stash it away
