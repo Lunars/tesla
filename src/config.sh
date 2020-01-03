@@ -37,6 +37,10 @@ scheduledScripts=(
   "$homeOfLunars/scripts/everyBoot/create-accounts.sh"
   "$homeOfLunars/scripts/everyBoot/check-for-updates.sh"
   "$homeOfLunars/scripts/everyBoot/speed-sensitive-volume.sh"
+  "$homeOfLunars/scripts/everyBoot/tokens-to-php.sh"
+  "$homeOfLunars/scripts/everyBoot/autopilot-autosteer.sh"
+  #    "$homeOfLunars/scripts/everyBoot/save-key-over-ssh.sh"
+  #    "$homeOfLunars/scripts/everyBoot/copy-tokens-to-ic.sh"
   #    "$homeOfLunars/scripts/everyBoot/block-tesla-ssh.sh"
   #    "$homeOfLunars/scripts/everyBoot/freedomevstart.sh"
   #    "$homeOfLunars/scripts/everyBoot/wake-bench.sh"
@@ -48,11 +52,7 @@ scheduledScripts=(
 everyFiveMinuteScripts=(
   "$homeOfLunars/scripts/everyFiveMinutes/open-wifi.sh"
   "$homeOfLunars/scripts/everyFiveMinutes/startstopvpn.sh"
-  "$homeOfLunars/scripts/everyFiveMinutes/tokens-to-php.sh"
   "$homeOfLunars/scripts/everyFiveMinutes/vitals-to-php.sh"
   #    "$homeOfLunars/scripts/everyFiveMinutes/add-swblock.sh"
-  #    "$homeOfLunars/scripts/everyFiveMinutes/copy-tokens-to-ic.sh"
   #    "$homeOfLunars/scripts/everyFiveMinutes/eggwot.sh"
-  #    "$homeOfLunars/scripts/everyFiveMinutes/save-key-over-ssh.sh"
-
 )

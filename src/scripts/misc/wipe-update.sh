@@ -8,4 +8,5 @@ ssh root@ic "initctl stop ic-updater && rm -rf /var/spool/*-updater/* && initctl
 sdv GUI_softwareUpdateSecondaryDownload Idle
 sdv GUI_softwareUpdatePrimaryDownload Idle
 sdv GUI_softwareUpdatePackageDownloadProgress 0
+sdv GUI_softwareUpdateProgress 0
 sdv GUI_softwareUpdateStatus idle

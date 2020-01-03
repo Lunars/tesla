@@ -10,20 +10,23 @@ function die() {
   exit 1
 }
 
-[[ $# < 2 ]] && die "Must have arguments of bash save-update.sh ic|cid usb|internal|ssh|ftp"
+bash ./get-versions.sh
+
+[[ $# < 3 ]] && die "Must have arguments of bash save-update.sh ic|cid usb|internal|ssh|ftp offline|online"
 
 HOST="$1"
 MODE="$2"
+DESIREDPART="$3"
 
 me="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 case $(ps -o stat= -p $$) in
-*+*) die "Run this script in the background dummy: bash $me $1 $2 &> output.log &" ;;
+*+*) die "Run this script in the background dummy: bash $me $1 $2 $3 &> output.log &" ;;
 *) echo "OK: Running in background" ;;
 esac
 
 function initializeVariables() {
   SSHSERVER="-p 22 tesla@yourserver.com"
-  FTPSERVER="username:password@ftp.example.com:21"
+  FTPSERVER="username:password@ftp.example.com:21/directory-goes-here"
 }
 
 function cleanFTPUsername() {
@@ -43,7 +46,11 @@ function validateIC() {
 function getFirmwareInfo() {
   PARTITIONPREFIX=$([ "$HOST" = ic ] && echo "mmcblk3p" || echo "mmcblk0p")
   STATUS=$([ "$HOST" = ic ] && curl http://ic:21576/status || curl http://cid:20564/status)
-  NEWSIZE=$(echo "$STATUS" | grep 'Offline dot-model-s size:' | awk -F'size: ' '{print $2}' | awk '{print $1/64}')
+
+  # Online size
+  NEWSIZE=$(echo "$STATUS" | grep 'Online dot-model-s size:' | awk -F'size: ' '{print $2}' | awk '{print $1/64}')
+
+  # Online version
   NEWVER=$(echo "$STATUS" | awk -F'built for package version: ' '{print $2}' | sed 's/\s.*$//')
 
   # Ty kalud for finding offline part number
@@ -54,6 +61,28 @@ function getFirmwareInfo() {
     OFFLINEPART=1
   else
     die "Could not determine offline partition"
+  fi
+
+  [ "$DESIREDPART" == "offline" ] && DESIREDPARTCALCULATED=$OFFLINEPART
+  [ "$DESIREDPART" == "online" ] && DESIREDPARTCALCULATED=$ONLINEPART
+
+  if [ "$DESIREDPART" == "offline" ]; then
+    # Offline size
+    NEWSIZE=$(echo "$STATUS" | grep 'Offline dot-model-s size:' | awk -F'size: ' '{print $2}' | awk '{print $1/64}')
+
+    # All this to get the offline version number
+    OFFLINEMOUNTPOINT="/offline-usr"
+    mkdir $OFFLINEMOUNTPOINT 2>/dev/null
+    mount -o ro /dev/mmcblk0p$OFFLINEPART $OFFLINEMOUNTPOINT
+    if [ ! -e "$OFFLINEMOUNTPOINT/deploy/platform.ver" ]; then
+      echo "Error mounting offline partition."
+      umount $OFFLINEMOUNTPOINT 2>/dev/null
+      exit 0
+    fi
+
+    NEWVER=$(cat "$OFFLINEMOUNTPOINT/tesla/UI/bin/version.txt" | cut -d= -f2 | cut -d\- -f1)
+    umount $OFFLINEMOUNTPOINT
+    rmdir $OFFLINEMOUNTPOINT
   fi
 }
 
@@ -97,26 +126,26 @@ function saveAPE() {
   elif [ "$MODE" = ssh ]; then
     scp $APELOCATION $SSHSERVER:~/$NEWVER.$APE
   elif [ "$MODE" = ftp ]; then
-    curl -T $APELOCATION ftp://$FTPSERVER/~/$NEWVER.$APE
+    curl -T $APELOCATION ftp://$FTPSERVER/$NEWVER.$APE
   fi
 }
 
 function saveUpdate() {
   if [ "$MODE" = internal ]; then
     echo "Saving to /tmp/$NEWVER.image"
-    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 of=/tmp/$NEWVER.image count=$NEWSIZE
+    dd if=/dev/$PARTITIONPREFIX$DESIREDPARTCALCULATED bs=64 of=/tmp/$NEWVER.image count=$NEWSIZE
   elif [ "$MODE" = usb ]; then
     echo "Saving to /$NEWVER.image on usb"
     sudo mount -o rw,noexec,nodev,noatime,utf8 /dev/sda1 /disk/usb.*/
-    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 of=/disk/usb.*/$NEWVER.image count=$NEWSIZE
+    dd if=/dev/$PARTITIONPREFIX$DESIREDPARTCALCULATED bs=64 of=/disk/usb.*/$NEWVER.image count=$NEWSIZE
     sync
     umount /disk/usb.*/
   elif [ "$MODE" = ssh ]; then
     echo "Saving to /tmp/$NEWVER.image on remote server via SSH"
-    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
+    dd if=/dev/$PARTITIONPREFIX$DESIREDPARTCALCULATED bs=64 count=$NEWSIZE | ssh $SSHSERVER "dd of=/tmp/$NEWVER.image"
   elif [ "$MODE" = ftp ]; then
     echo "Saving to ~/$NEWVER.image on remote server via FTP"
-    dd if=/dev/$PARTITIONPREFIX$OFFLINEPART bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/~/$NEWVER.image
+    dd if=/dev/$PARTITIONPREFIX$DESIREDPARTCALCULATED bs=64 count=$NEWSIZE | curl -T - ftp://$FTPSERVER/$NEWVER.image
   else
     die "MODE must be one of usb | internal | ssh | ftp"
   fi

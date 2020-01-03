@@ -7,7 +7,7 @@
 
 # ssh -p $WIFIPORT tesla1@192.168.1.154
 
-WIFIPORT=229
+WIFIPORT="$nonStandardPort"
 PARROTIP=192.168.20.2
 
 iptables -D INPUT -i parrot -p tcp -m tcp --dport 22 -j ACCEPT
