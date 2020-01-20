@@ -104,6 +104,15 @@ while true; do
       " ip")
         res=$(ip addr show)
         ;;
+      " offline")
+        mv /home/tesla/.Tesla/car/cell_apn /home/tesla/.Tesla/car/cell_apn.bak
+        touch /home/tesla/.Tesla/car/cell_apn
+        emit-reboot-gateway
+        ;;
+      " online")
+        mv /home/tesla/.Tesla/car/cell_apn.bak /home/tesla/.Tesla/car/cell_apn
+        emit-reboot-gateway
+        ;;
       " help")
         res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
         res="${res//$'\n'/ }"                                                        # Replace newlines
