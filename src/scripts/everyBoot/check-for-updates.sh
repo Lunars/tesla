@@ -1,4 +1,4 @@
-currentVersion="2019.12.29.1"
+currentVersion="2020.01.20"
 latestScript=$(curl --max-time 5 --connect-timeout 0 -s -L "https://raw.githubusercontent.com/Lunars/tesla/master/src/scripts/everyBoot/check-for-updates.sh" || exit 1)
 latestVersion=$(echo "${latestScript}" | cut -d '"' -f2 | head -1)
 
