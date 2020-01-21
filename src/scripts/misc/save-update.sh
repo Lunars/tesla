@@ -73,7 +73,7 @@ function getFirmwareInfo() {
     # All this to get the offline version number
     OFFLINEMOUNTPOINT="/offline-usr"
     mkdir $OFFLINEMOUNTPOINT 2>/dev/null
-    mount -o ro /dev/mmcblk0p$OFFLINEPART $OFFLINEMOUNTPOINT
+    mount -o ro /dev/$PARTITIONPREFIX$OFFLINEPART $OFFLINEMOUNTPOINT
     if [ ! -e "$OFFLINEMOUNTPOINT/deploy/platform.ver" ]; then
       echo "Error mounting offline partition."
       umount $OFFLINEMOUNTPOINT 2>/dev/null
