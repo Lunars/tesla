@@ -51,7 +51,7 @@ function getFirmwareInfo() {
   NEWSIZE=$(echo "$STATUS" | grep 'Online dot-model-s size:' | awk -F'size: ' '{print $2}' | awk '{print $1/64}')
 
   # Online version
-  NEWVER=$(echo "$STATUS" | awk -F'built for package version: ' '{print $2}' | sed 's/\s.*$//')
+  NEWVER=$(cat "/usr/tesla/UI/bin/version.txt" | cut -d= -f2 | cut -d\- -f1)
 
   # Ty kalud for finding offline part number
   ONLINEPART=$(cat /proc/self/mounts | grep "/usr" | grep ^/dev/$PARTITIONPREFIX[12] | cut -b14)
