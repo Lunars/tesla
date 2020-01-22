@@ -12,10 +12,10 @@ if [ "$ISTMPFS" == 0 ]; then
   chown ntp:ntp /var/log/ntpstats/
   service ntp restart
   pkill -HUP valhalla_server
-  restart rsyslog
+  initctl restart rsyslog
 
   ssh ic "mount -t tmpfs -o size=100M tmpfs /var/log"
   ssh ic "mkdir /var/log/ntpstats /var/log/mgetty"
   ssh ic "service ntp restart"
-  ssh ic "restart rsyslog"
+  ssh ic "initctl restart rsyslog"
 fi
