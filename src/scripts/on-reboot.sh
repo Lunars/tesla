@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Pull in global vars
-mydir="${0%/*}"
-source "$mydir"/../config.sh
+bashexec=`which bash`
+source `pwd`/../config.sh
 
 function isRunning() {
   process=$(ps ax | grep "$1" | grep -v $$ | grep bash | grep -v grep)
@@ -10,7 +10,7 @@ function isRunning() {
 }
 
 function scriptBackground() {
-  bash "$1" >/dev/null 2>&1 &
+  $bashexec "$1" >/dev/null 2>&1 &
 }
 
 function beginScript() {

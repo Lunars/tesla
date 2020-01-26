@@ -6,6 +6,8 @@ cidPort="4070"
 mainPath="$homeOfLunars/scripts"
 pattern=AccessPopup
 last_command="NoNe"
+bashexec=`which bash`
+
 if ps ax | grep $0 | grep -v $$ | grep bash | grep -v grep; then
   echo "The script is already running."
   exit 1
@@ -42,10 +44,10 @@ while true; do
         sdv GUI_eggWotMode 0
         ;;
       " ss")
-        res=$(/bin/bash $mainPath/misc/upload-screenshots.sh)
+        res=$($bashexec $mainPath/misc/upload-screenshots.sh)
         ;;
       " wipeupdate")
-        /bin/bash $mainPath/misc/wipe-update.sh
+        $bashexec $mainPath/misc/wipe-update.sh
         res="Update got wiped"
         ;;
       " vlow")
@@ -59,7 +61,7 @@ while true; do
         res=$(eval $password)
         ;;
       " wifi")
-        res=$(/bin/bash $mainPath/everyFiveMinutes/open-wifi.sh)
+        res=$($bashexec $mainPath/everyFiveMinutes/open-wifi.sh)
         ;;
       " tkn1")
         res=$(cat /var/etc/saccess/tesla1)
@@ -68,13 +70,16 @@ while true; do
         res=$(cat /var/etc/saccess/tesla2)
         ;;
       " tkns")
-        res=$(/bin/bash $mainPath/everyBoot/tokens-to-php.sh)
+        res=$($bashexec $mainPath/everyBoot/tokens-to-php.sh)
         ;;
       " vitals")
-        res=$(/bin/bash $mainPath/everyBoot/vitals-to-php.sh)
+        res=$($bashexec $mainPath/everyBoot/vitals-to-php.sh)
         ;;
-      " devm")
+      " devmon")
         sdv GUI_developerMode true
+        ;;
+      " devmoff")
+        sdv GUI_developerMode false
         ;;
       " rebparrot")
         emit-restart-parrot
@@ -105,14 +110,10 @@ while true; do
         res=$(ip addr show)
         ;;
       " offline")
-        mv /home/tesla/.Tesla/car/cell_apn /home/tesla/.Tesla/car/cell_apn.bak
-        touch /home/tesla/.Tesla/car/cell_apn
-        echo "junk" >> /home/tesla/.Tesla/car/cell_apn
-        emit-reboot-gateway
+        $bashexec $mainPath/misc/offline.sh
         ;;
       " online")
-        mv /home/tesla/.Tesla/car/cell_apn.bak /home/tesla/.Tesla/car/cell_apn
-        emit-reboot-gateway
+        $bashexec $mainPath/misc/online.sh
         ;;
       " help")
         res=$(grep -o '" .*")' "$mainPath"/everyBoot/listen-for-code.sh | tr -d '") ') # Get all commands from this file
