@@ -2,8 +2,6 @@
 
 # Usage:
 # install.sh <customPathToHome | "cron">
-bashexec=`which bash`
-daemonexec=`which start-stop-daemon`
 
 if [ "$EUID" -ne 0 ]; then
   echo "[FAIL] Script must be ran as root"
@@ -39,7 +37,7 @@ echo "[OK] Not running chrooted"
 
 rebootScript="on-reboot.sh"
 onRebootFile="$homeOfLunars/scripts/$rebootScript"
-startScript="$daemonexec --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec $bashexec $onRebootFile"
+startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/bash $onRebootFile"
 
 function checkConfigScripts() {
   cd "$homeOfLunars/$1" || exit
@@ -104,15 +102,14 @@ else
   echo "[SKIP] Lunars download due to cron flag"
 fi
 
-# Installing crontab; hide error msg if root crontab does not exist
-alreadyInstalled=$(crontab -l 2>/dev/null | grep "$rebootScript")
+# Installing crontab
+alreadyInstalled=$(crontab -l | grep "$rebootScript")
 if [[ "$alreadyInstalled" != "" ]]; then
   echo "[SKIP] Lunars cron already installed"
 else
   # Just in case this file already exists
   rm /tmp/crontab 2>/dev/null
-  # If root crontab does not exist; suppress error msg
-  crontab -l >/tmp/crontab 2>/dev/null 
+  crontab -l >/tmp/crontab
   echo "@reboot $startScript" >>/tmp/crontab
   crontab </tmp/crontab || exit 6
   rm /tmp/crontab
