@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # When on a wifi network, this script will allow you to ssh to the local ip
 # You have to be on the same wifi network as the car

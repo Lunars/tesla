@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # mount /var/log on tmpfs to not wear down the eMMC flash chip
 ISTMPFS=$(/bin/mount | /bin/grep -c "/var/log type tmpfs")

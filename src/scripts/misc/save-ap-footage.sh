@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # You can retrieve the footage AP auto generates when it thinks there's a crash imminent
 

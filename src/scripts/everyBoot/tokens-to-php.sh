@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [[ "$urlToTokensPHP" =~ "yourserver" ]]; then
   echo "Script not yet setup, quitting"

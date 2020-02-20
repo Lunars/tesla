@@ -24,7 +24,7 @@ fi
 function killandumount() {
   #run all deactivation scripts
   for deactivationscript in /tmp/freedomev/*; do
-    bash ${deactivationscript} && rm ${deactivationscript}
+    sh ${deactivationscript} && rm ${deactivationscript}
   done
   #umount filesystems
   umount ${usbmountpoint}/proc/
@@ -91,10 +91,10 @@ if ! ${freedomevstarted}; then
   mount /var -o remount,exec
   mount -o remount,exec /opt/navigoff
   export usbmountpoint
-  /bin/bash ${usbmountpoint}/freedomev/tools/activation-outside-chroot-jail
-  /usr/sbin/chroot ${usbmountpoint} /bin/bash /freedomev/tools/activation
+  /bin/sh ${usbmountpoint}/freedomev/tools/activation-outside-chroot-jail
+  /usr/sbin/chroot ${usbmountpoint} /bin/sh /freedomev/tools/activation
 fi
 
 #launch the checks for freedomev core such as periodic check for version and periodic checks for certain apps
 export usbmountpoint freedomevversion
-/usr/sbin/chroot ${usbmountpoint} /bin/bash /freedomev/tools/runperiodic
+/usr/sbin/chroot ${usbmountpoint} /bin/sh /freedomev/tools/runperiodic

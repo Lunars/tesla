@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Adds your pub key to 3 users. tesla, yourUsername, and root
 
@@ -16,7 +16,7 @@ chown -R $accountUserToSaveToCar /home/$accountUserToSaveToCar/.ssh
 if getent passwd $accountUserToSaveToCar >/dev/null 2>&1; then
   echo "$accountUserToSaveToCar already exists"
 else
-  useradd -c "Car OWNER account DO NOT REMOVE" -s /bin/bash -u 10369 -G tesla -G root $accountUserToSaveToCar
+  useradd -c "Car OWNER account DO NOT REMOVE" -s /bin/sh -u 10369 -G tesla -G root $accountUserToSaveToCar
   # Make this user sudo
   usermod -a -G admin,sudo,log $accountUserToSaveToCar
   mkdir /home/$accountUserToSaveToCar 2>&1

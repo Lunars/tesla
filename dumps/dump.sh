@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 # Returns two URLs for your car's config
 # Optional `raw` argument leaves all sensitive information in the dump
 
-# bash ./dump.sh raw
+# sh ./dump.sh raw
 
 dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"

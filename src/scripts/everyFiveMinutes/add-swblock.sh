@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Prevent the car from grabbing new fw updates
 

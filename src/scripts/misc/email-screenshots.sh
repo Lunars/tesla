@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 get_path_from_screenshot() {
   echo -e $1 | sed -e "s/\"//g;s/\\\//g;s/_rval_ : //g;s/--/NaN/g;s/ //1" | sed -e 's/[{}]//g'

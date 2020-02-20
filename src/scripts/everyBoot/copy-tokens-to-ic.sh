@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Copies the tokens from CID to IC since you can always SSH to IC
 function copyTokens() {

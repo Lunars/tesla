@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if [ ! -f /etc/tegraline-release ]; then
   touch /etc/tegraline-release
 fi

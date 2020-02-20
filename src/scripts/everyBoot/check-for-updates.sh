@@ -6,5 +6,5 @@ if [ -n "$latestScript" ] && [ "$currentVersion" != "$latestVersion" ]; then
   echo "New version detected. Running update script"
 
   # Using script from source, to make sure it's the newest copy since there's an update
-  bash <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh")
+  sh <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh")
 fi

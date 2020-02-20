@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Run this if you have an update you want to kill
 

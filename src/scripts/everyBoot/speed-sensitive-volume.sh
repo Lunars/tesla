@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 # minimum miles/h at which volume will start to auto adjust
 MIN_SPEED=10
 # step size in miles/h at which volume adjusts by $VOLUME_INCREMENT (8 for example will cause volume to adjust up/down every 8 mph)
 VOLUME_SPEED_STEP=8
-# amount of volume that will increase or decrease per $VOLUME_SPEED_STEP - integer value (x10000) since bash doesn't support floating point calculations
+# amount of volume that will increase or decrease per $VOLUME_SPEED_STEP - integer value (x10000) since sh doesn't support floating point calculations
 # tesla default is 0.333 per scroll (GUI_audioVolumeIncrement). we use half that (x10000) to make auto volume adjustments smooth
 VOLUME_INCREMENT=1665
 

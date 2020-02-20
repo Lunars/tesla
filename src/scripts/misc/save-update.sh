@@ -1,18 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
 # Hosts: ic, cid
 # Modes: usb, internal, ssh, ftp
 
-# Usage: bash save-update.sh HOST MODE &> output.log &
+# Usage: sh save-update.sh HOST MODE &> output.log &
 
 function die() {
   echo "ERROR: $1" >&2
   exit 1
 }
 
-bash ./get-versions.sh
+sh ./get-versions.sh
 
-[[ $# < 3 ]] && die "Must have arguments of bash save-update.sh ic|cid usb|internal|ssh|ftp offline|online"
+[[ $# < 3 ]] && die "Must have arguments of sh save-update.sh ic|cid usb|internal|ssh|ftp offline|online"
 
 HOST="$1"
 MODE="$2"
@@ -20,7 +20,7 @@ DESIREDPART="$3"
 
 me="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 case $(ps -o stat= -p $$) in
-*+*) die "Run this script in the background dummy: bash $me $1 $2 $3 &> output.log &" ;;
+*+*) die "Run this script in the background dummy: sh $me $1 $2 $3 &> output.log &" ;;
 *) echo "OK: Running in background" ;;
 esac
 
@@ -103,7 +103,7 @@ function saveAPE() {
 
   # Download gateway config in case it doesn't exist
   echo "Attempting to download gateway config..."
-  [ -x "$(command -v get-gateway-config.sh)" ] && [ "$HOST" = cid ] && bash get-gateway-config.sh
+  [ -x "$(command -v get-gateway-config.sh)" ] && [ "$HOST" = cid ] && sh get-gateway-config.sh
 
   APE="ape0"
   MODEL=$(</var/etc/dashw)

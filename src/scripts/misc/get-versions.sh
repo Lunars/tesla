@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Retrieve the firmware versions installed, and determine which partition they are on
 

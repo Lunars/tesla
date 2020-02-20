@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # grumi
 # Upload an image, video or album to Imgur.

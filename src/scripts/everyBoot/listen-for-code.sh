@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 cidIp="192.168.90.100"
 cidPort="4070"
@@ -6,7 +6,7 @@ cidPort="4070"
 mainPath="$homeOfLunars/scripts"
 pattern=AccessPopup
 last_command="NoNe"
-if ps ax | grep $0 | grep -v $$ | grep bash | grep -v grep; then
+if ps ax | grep $0 | grep -v $$ | grep sh | grep -v grep; then
   echo "The script is already running."
   exit 1
 fi
@@ -42,10 +42,10 @@ while true; do
         sdv GUI_eggWotMode 0
         ;;
       " ss")
-        res=$(/bin/bash $mainPath/misc/upload-screenshots.sh)
+        res=$(/bin/sh $mainPath/misc/upload-screenshots.sh)
         ;;
       " wipeupdate")
-        /bin/bash $mainPath/misc/wipe-update.sh
+        /bin/sh $mainPath/misc/wipe-update.sh
         res="Update got wiped"
         ;;
       " vlow")
@@ -59,7 +59,7 @@ while true; do
         res=$(eval $password)
         ;;
       " wifi")
-        res=$(/bin/bash $mainPath/everyFiveMinutes/open-wifi.sh)
+        res=$(/bin/sh $mainPath/everyFiveMinutes/open-wifi.sh)
         ;;
       " tkn1")
         res=$(cat /var/etc/saccess/tesla1)
@@ -68,10 +68,10 @@ while true; do
         res=$(cat /var/etc/saccess/tesla2)
         ;;
       " tkns")
-        res=$(/bin/bash $mainPath/everyBoot/tokens-to-php.sh)
+        res=$(/bin/sh $mainPath/everyBoot/tokens-to-php.sh)
         ;;
       " vitals")
-        res=$(/bin/bash $mainPath/everyBoot/vitals-to-php.sh)
+        res=$(/bin/sh $mainPath/everyBoot/vitals-to-php.sh)
         ;;
       " devm")
         sdv GUI_developerMode true

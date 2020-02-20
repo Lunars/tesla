@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 imgurAPI="$homeOfLunars/scripts/misc/imgur.sh"
 if [ ! -f "$imgurAPI" ]; then
@@ -22,7 +22,7 @@ if [ "$IC" != "" ]; then # ic may be sleeping (energy savings mode)
   sleep 1
   scp -q -rp root@ic:"$ICPATH" /home/tesla/.Tesla/data/screenshots/
 fi
-bash $imgurAPI $CIDPATH $ICPATH
+sh $imgurAPI $CIDPATH $ICPATH
 rm $CIDPATH $ICPATH
 ssh ic "rm $ICPATH"
 printf "\n"

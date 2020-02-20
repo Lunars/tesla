@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 file="$homeOfLunars/tesla.ovpn"
 vpn=$(awk '/^dev /' "$file" | awk '{print $2}')

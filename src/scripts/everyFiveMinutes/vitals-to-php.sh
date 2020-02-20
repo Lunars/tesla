@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [[ "$urlToVitalsPHP" =~ "yourserver.com" ]]; then
   echo "Script not yet setup, quitting"

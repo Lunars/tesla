@@ -1,16 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
 # Pull in global vars
 mydir="${0%/*}"
 source "$mydir"/../config.sh
 
 function isRunning() {
-  process=$(ps ax | grep "$1" | grep -v $$ | grep bash | grep -v grep)
+  process=$(ps ax | grep "$1" | grep -v $$ | grep sh | grep -v grep)
   [ -n "$process" ]
 }
 
 function scriptBackground() {
-  bash "$1" >/dev/null 2>&1 &
+  sh "$1" >/dev/null 2>&1 &
 }
 
 function beginScript() {

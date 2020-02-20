@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Allows autosteer at all speeds
 # Does not disable autopilot nag

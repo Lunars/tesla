@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Set up a reverse SSH tunnel to a remote server
 # Make sure the user tesla (default) can log in without a password

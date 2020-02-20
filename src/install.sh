@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Usage:
 # install.sh <customPathToHome | "cron">
@@ -37,7 +37,7 @@ echo "[OK] Not running chrooted"
 
 rebootScript="on-reboot.sh"
 onRebootFile="$homeOfLunars/scripts/$rebootScript"
-startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/bash $onRebootFile"
+startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/sh $onRebootFile"
 
 function checkConfigScripts() {
   cd "$homeOfLunars/$1" || exit
