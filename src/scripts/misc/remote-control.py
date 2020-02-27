@@ -1,3 +1,5 @@
+import sys
+import random
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 from requests import get
@@ -19,7 +21,8 @@ class GetHandler(BaseHTTPRequestHandler):
         # Get click X,Y
         params = dict(parse.parse_qsl(parse.urlsplit(self.path).query))
         if params.get("x", None):
-            system('python click.py ' + params["x"] + ' ' + params["y"])
+            get("http://192.168.90.100:4070/injectMouseEvent?action=%s&x=%s&y=%s&id=%s" % ("down",params["x"],params["y"],0))
+            get("http://192.168.90.100:4070/injectMouseEvent?action=%s&x=%s&y=%s&id=%s" % ("release",params["x"],params["y"],0))
             time.sleep(10)
 
         # Get screenshot to data uri
