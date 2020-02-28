@@ -6,6 +6,8 @@
 # Use a vnc client to connect
 # I use reverse shell to forward port 5900, then connect localhost:5900
 
+# eg https://i.imgur.com/WRb8MFv.png
+
 # Don't run me inside chroot
 [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ] && exit
 
