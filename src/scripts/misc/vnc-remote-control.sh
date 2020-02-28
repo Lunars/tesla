@@ -31,11 +31,7 @@ if [ ! -d "$CHROOT" ]; then
     tar -zxvf $(basename ${ALPINE_URI}) -C ${CHROOT}
     mountStuff
     cat <<EOF | chroot ${CHROOT} /bin/sh
-        apk add x11vnc
-        apk add xauth
-        apk add bash
-        apk add curl
-        apk add jq
+        apk add x11vnc xauth bash curl jq
 EOF
 else
     mountStuff
