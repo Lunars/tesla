@@ -3,7 +3,7 @@
 # This lets you control your MCU remotely from your computer
 # Clicking inside the VNC client routes the click to your MCU
 
-# Use a vnc client to connect
+# Downloads a 2.3mb rootfs and chroots to it to install x11vnc
 # I use reverse shell to forward port 5900, then connect localhost:5900
 
 # eg https://i.imgur.com/WRb8MFv.png
