@@ -25,7 +25,7 @@ function mountStuff() {
 }
 
 if [ ! -d "$CHROOT" ]; then
-    ALPINE_URI="http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/armhf/alpine-minirootfs-3.10.3-armhf.tar.gz"
+    ALPINE_URI="http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/armhf/alpine-minirootfs-3.11.3-armhf.tar.gz"
     curl -O ${ALPINE_URI}
     mkdir -p ${CHROOT}
     tar -zxvf $(basename ${ALPINE_URI}) -C ${CHROOT}
