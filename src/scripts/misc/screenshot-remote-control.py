@@ -10,6 +10,7 @@ from urllib import parse
 
 # Visit http://<parrot>:4071/ to view your screen
 # Click anywhere on the image to send the same click to your screen
+# This is a poor man's remote control, I recommend you use vnc-remote-control.sh instead
 
 class GetHandler(BaseHTTPRequestHandler):
 
