@@ -11,7 +11,7 @@
 # Don't run me inside chroot
 [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ] && exit
 
-CHROOT="/home/tesla/alpine3.10"
+CHROOT="/home/tesla/alpine3.11"
 
 function mountStuff() {
     mount -o remount,exec /home # need this to allow execution on /home
