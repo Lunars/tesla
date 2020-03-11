@@ -31,6 +31,9 @@ if [ ! -d "$CHROOT" ]; then
     tar -zxvf $(basename ${ALPINE_URI}) -C ${CHROOT}
     mountStuff
     cat <<EOF | chroot ${CHROOT} /bin/sh
+        rm -rf /var/cache/apk
+        mkdir -p /var/cache/apk
+        apk update
         apk add x11vnc xauth bash curl jq
 EOF
 else
