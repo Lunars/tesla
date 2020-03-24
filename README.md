@@ -12,6 +12,8 @@
 
 You must already have rooted your Tesla. This is the only prerequisite.
 
+These scripts were designed for MCU1, Tegra. They are not guaranteed to work on Intel MCU2
+
 ## Install
 
 ```sh
