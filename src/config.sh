@@ -13,7 +13,7 @@ export accountPassToSaveToCar="myCarIsRooted"
 
 ## reverse-tunnel.sh
 # Could be used on other files in the future
-export nonStandardPort=$(cut -c 14-17 </var/etc/vin)
+export nonStandardPort=$(cut -c 14-17 </var/etc/vin | sed 's/^0/1/')
 
 ## vitals-to-php.sh
 # Save src/save-vitals.php to your public server
