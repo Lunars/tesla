@@ -11,9 +11,6 @@ if [[ "$reverseTunnelServer" =~ "yourserver.com" ]]; then
   exit 1
 fi
 
-# Fix for leading 0 digit making it a 3 char port
-nonStandardPort=$(echo $nonStandardPort | sed 's/^0/1/')
-
 while :; do
   RET=$(ps ax | grep "${nonStandardPort}:localhost:22" | grep -v "grep" | wc -l)
   if [ "$RET" -eq 0 ]; then
