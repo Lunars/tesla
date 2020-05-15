@@ -74,7 +74,6 @@ while true; do
         res=$(/bin/bash $mainPath/everyBoot/vitals-to-php.sh)
         ;;
       " devm")
-        sdv GUI_developerMode true
         sdv GUI_tdsMode true
         ;;
       " rebparrot")
