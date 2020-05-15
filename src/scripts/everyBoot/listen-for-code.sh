@@ -75,6 +75,7 @@ while true; do
         ;;
       " devm")
         sdv GUI_developerMode true
+        sdv GUI_tdsMode true
         ;;
       " rebparrot")
         emit-restart-parrot
