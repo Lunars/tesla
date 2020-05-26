@@ -47,6 +47,7 @@ Fill in the variables on [/var/lunars/config.sh](https://github.com/Lunars/tesla
 
 * Github: [@geczy](https://github.com/geczy)
 * Discord: coder#6681
+* Telegram: https://t.me/mattpew
 
 ## 🤝 Contributing
 
