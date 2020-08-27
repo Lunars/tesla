@@ -10,7 +10,9 @@
 
 ## Prerequisite
 
-You must already have rooted your Tesla. This is the only prerequisite. 
+You must have already rooted your Tesla. This is the only prerequisite.
+
+These scripts were designed for MCU1, Tegra. They are not guaranteed to work on Intel MCU2
 
 ## Install
 
@@ -20,14 +22,24 @@ ssh tesla1@cid
 sudo su
 
 # Run the install script which downloads this repo and creates the cron entry
-curl -sL "https://git.io/fjMvw?$(date +%s)" > install && bash install
+bash <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/src/install.sh")
 ```
+
+## Updating
+
+Lunars will automatically check for updates when your car boots up. So hold the two scroll wheels to reboot and it will check on boot up.
+
+Or, you can simply run the install steps. Lunars will automatically know to update your current installation.
+
+During update, only the following will be preserved. Any changes to the lunars directory otherwise will be wiped and updated to the latest Github copy.
+
+1. config.sh # New scripts will automatically be added and commented out by default
+2. tesla.ovpn
+3. overwrite-files
 
 ## Usage
 
-Read the scripts in the [src/scripts](https://github.com/Lunars/tesla/tree/master/src/scripts) folder to determine which ones you want to enable. 
-
-Modify the relevant script in `/var/root/lunars/src/scripts/*` to enable the script or update variables. Some scripts are already enabled by default.
+Fill in the variables on [/var/lunars/config.sh](https://github.com/Lunars/tesla/blob/master/src/config.sh) and uncomment the scripts you want to run. Some scripts are already enabled by default.
 
 ## Author
 
@@ -35,6 +47,7 @@ Modify the relevant script in `/var/root/lunars/src/scripts/*` to enable the scr
 
 * Github: [@geczy](https://github.com/geczy)
 * Discord: coder#6681
+* Telegram: https://t.me/mattpew
 
 ## 🤝 Contributing
 
@@ -42,6 +55,7 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 ## Show your support
 
+[Consider sponsoring](https://github.com/sponsors/Lunars) to help future updates. 
 Give a ⭐️ if this project helped you!
 
 ## 📝 License

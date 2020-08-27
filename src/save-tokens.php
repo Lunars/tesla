@@ -1,11 +1,11 @@
 <?php
 
 // Usage: file.php?s1=FirstToken&s2=SecondToken&car=YourCarName
-
 class TeslaKeys
 
 {
     var $filename = '.tesla_tokens.json';
+
     function __construct()
     {
         if (!file_exists($this->filename)) {
@@ -14,8 +14,7 @@ class TeslaKeys
 
         if (empty($_GET['s1']) || empty($_GET['s2'])) {
             $this->showLastKey();
-        }
-        else {
+        } else {
             $this->saveKeys();
         }
     }
@@ -25,9 +24,7 @@ class TeslaKeys
         $str_data = file_get_contents($this->filename);
         $decoded = json_decode($str_data);
         if (!empty($_GET['car'])) {
-            $decoded->tokens = array_filter((array) $decoded->tokens,
-            function ($v)
-            {
+            $decoded->tokens = array_filter((array)$decoded->tokens, function ($v) {
                 return $v->car === $_GET['car'];
             });
         }
@@ -52,13 +49,10 @@ class TeslaKeys
         if (empty($decoded['tokens'])) $decoded['tokens'] = [];
 
         // Remove duplicate tokens, in case the cron runs often
-
-        $decoded['tokens'] = array_filter($decoded['tokens'],
-        function ($v)
-        {
+        $decoded['tokens'] = array_filter($decoded['tokens'], function ($v) {
             return $v['tesla1'] != $_GET['s1'] && $v['tesla2'] != $_GET['s2'];
         });
-        $newTokens = ['tesla1' => $_GET['s1'], 'tesla2' => $_GET['s2'], 'saved_date' => strtotime('now') ];
+        $newTokens = ['tesla1' => $_GET['s1'], 'tesla2' => $_GET['s2'], 'saved_date' => strtotime('now')];
         if (!empty($_GET['car'])) {
             $newTokens['car'] = $_GET['car'];
         }
@@ -69,22 +63,18 @@ class TeslaKeys
         array_push($decoded['tokens'], $newTokens);
 
         // format the data
-
         $formattedData = json_encode($decoded);
 
         // open or create the file
-
         $handle = fopen($this->filename, 'w+');
 
         // write the data into the file
-
         fwrite($handle, $formattedData);
 
         // close the file
-
         fclose($handle);
 
- 	   	echo strlen($str_data) !== strlen($formattedData) ? 'New keys saved.' : 'These keys already exist. No changes made.';
+        echo strlen($str_data) !== strlen($formattedData) ? 'New keys saved.' : 'These keys already exist. No changes made.';
     }
 }
 

@@ -27,7 +27,7 @@ seatheaters 1
 performance 2
 badging 0
 fastcharge 1
-fastchargeinstalled 1
+fastChargeInstalled 2
 spoilerinstalled 1
 wheeltype 10
 fasciatype 1
@@ -37,8 +37,8 @@ nokeylessentry 0
 nopushtounlock 0
 simulatedS1 0
 ambientlightsinstalled 1
-wiperheatinstalled 0
-rearseatheatersinstalled 0
+wiperheatinstalled 1
+rearseatheatersinstalled 1
 rearseattype 1
 parkassistinstalled 2
 headlightlevelerinstalled 0
@@ -57,7 +57,7 @@ hvjb16aperphaseok 1
 tpmstype 3
 espinterface 2
 steeringwheel 3
-steeringheat 0
+steeringheat 1
 steeringcolumntype 1
 dashw 1
 forwardradarhw 1
@@ -87,3 +87,5 @@ efficiencypackage 1
 tractioncontroltype 0
 curvelightingtype 1
 packconfig 75
+disableSupportForKeepAwakes 1
+mcufpgaversion 1

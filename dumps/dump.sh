@@ -46,6 +46,7 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^MEDIA_slackerTeslaPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_slackerTeslaUsername/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_slackerUsername/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_spotifyCredentialsBlob/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyTeslaPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_spotifyTeslaUsername/ d' ${dataValuesFileName}
@@ -74,8 +75,8 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^#/ d' ${internalDatFileName}
 fi
 
-internalDatURL=$(cat ${internalDatFileName} | socat - tcp:termbin.com:9999)
-dataValuesURL=$(cat ${dataValuesFileName} | socat - tcp:termbin.com:9999)
+internalDatURL=$(curl --upload-file ${internalDatFileName} https://transfer.sh/internaldat.txt)
+dataValuesURL=$(curl --upload-file ${dataValuesFileName} https://transfer.sh/export.csv)
 
 echo "internal.dat $internalDatURL"
 echo "export.csv $dataValuesURL"

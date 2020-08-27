@@ -1,52 +1,134 @@
 #!/bin/bash
 
-# Credit to FreedomEV for the install script
-echo [START] Install Lunars
+# Usage:
+# install.sh <customPathToHome | "cron">
+
+if [ "$EUID" -ne 0 ]; then
+  echo "[FAIL] Script must be ran as root"
+  exit
+else
+  echo "[OK] Installing Lunars as root"
+fi
+
+# Pull in global vars
+[ "$1" != "cron" ] && eval "$(curl -s "https://raw.githubusercontent.com/Lunars/tesla/master/src/config.sh")"
+
+# Set default home if we're running a cron flag
+[ "$1" == "cron" ] && homeOfLunars="/var/lunars"
+
+# The default home provided by Github config.sh
+search="$homeOfLunars"
+
+# The overridden home provided by first argument
+[ -n "$1" ] && [ "$1" != "cron" ] && homeOfLunars="$1"
+
+# Pull in your custom vars if you already have Lunars installed
+[ -f "$homeOfLunars/config.sh" ] && source "$homeOfLunars/config.sh"
+
+echo "Installing Lunars to $homeOfLunars"
 
 # Detect if we are running chrooted by checking if the root of the init process is the same as the root of this process
 if [[ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]]; then
-    echo [FAIL] Not running chrooted
-    exit 2
+  echo "[FAIL] Not running when chrooted"
+  exit 2
 fi
 
-echo [OK] Not running chrooted
+echo "[OK] Not running chrooted"
 
-onRebootFile="/var/root/lunars/src/scripts/on-reboot.sh"
-if [[ -f "$onRebootFile" ]]; then
-    echo [SKIP] Lunars source already downloaded
+rebootScript="on-reboot.sh"
+onRebootFile="$homeOfLunars/scripts/$rebootScript"
+startScript="/sbin/start-stop-daemon --start --quiet --make-pidfile --oknodo --background --pidfile /var/run/lunars-main.pid --exec /bin/bash $onRebootFile"
+
+function checkConfigScripts() {
+  cd "$homeOfLunars/$1" || exit
+  for f in *.sh; do
+    if grep -q "$1/$f" "$homeOfLunars/config.sh"; then
+      echo "[SKIP] $f already exists in config.sh"
+    else
+      echo "[OK] Added $f to config.sh and left disabled (must manually enable)"
+      sed -i "/$2=/a #    \"\$homeOfLunars/$1/$f\"" "$homeOfLunars/config.sh"
+    fi
+  done
+}
+
+function downloadLunars() {
+  echo "Downloading lunars source from Github..."
+
+  mkdir -p "$homeOfLunars"
+  curl https://codeload.github.com/Lunars/tesla/legacy.tar.gz/master | tar --wildcards -zx -C "$homeOfLunars" "Lunars-tesla-*/src"
+
+  if ! mv "$homeOfLunars"/*/src/* "$homeOfLunars"; then
+    echo "[FAIL] Lunars could not be downloaded from Github"
+    exit 1
+  fi
+
+  rm -rf "$homeOfLunars"/Lunars-tesla-*
+
+  echo "[OK] Lunars source downloaded"
+
+  if [[ -f /tmp/config.sh ]]; then
+    # Restore config from tmp
+    rm -rf "$homeOfLunars/overwrite-files"
+    mv /tmp/overwrite-files "$homeOfLunars"
+    mv /tmp/config.sh "$homeOfLunars"
+    mv /tmp/tesla.ovpn "$homeOfLunars"
+    echo "[OK] Lunars config.sh, tesla.ovpn, and overwrite-files restored"
+
+    echo "Checking for new scripts that are missing in config.sh..."
+    checkConfigScripts scripts/everyBoot scheduledScripts
+    checkConfigScripts scripts/everyFiveMinutes everyFiveMinuteScripts
+  fi
+}
+
+# When calling with "cron" argument, don't redownload. Just do CRON stuff
+if [ -z "$1" ] || [ -n "$1" ] && [ "$1" != "cron" ]; then
+  if [[ -f "$onRebootFile" ]]; then
+    # Save config to tmp
+    rm -rf /tmp/overwrite-files /tmp/config.sh /tmp/tesla.ovpn
+    mv "$homeOfLunars"/overwrite-files /tmp
+    mv "$homeOfLunars"/config.sh /tmp
+    mv "$homeOfLunars"/tesla.ovpn /tmp
+    echo "[OK] Lunars config.sh, tesla.ovpn, and overwrite-files saved"
+
+    rm -rf "$homeOfLunars"
+    downloadLunars
+  else
+    downloadLunars
+
+    # In case a custom install path was given, replace it in config.sh too
+    [ -n "$search" ] && sed -i "s~$search~$homeOfLunars~g" "$homeOfLunars/config.sh"
+  fi
 else
-    # Downloading repo to CID
-    mkdir -p /var/root/lunars
-    curl -sL https://github.com/Lunars/tesla/tarball/master -o ./lunars.zip || exit 5
-    tar xf ./lunars.zip -C /var/root/lunars/
-    rm ./lunars.zip
-
-    # Only syncs over new files, does not overwrite newer files
-    rsync -raz --update --remove-source-files /var/root/lunars/Lunars-tesla*/ /var/root/lunars/
-    rm -rf /var/root/lunars/Lunars-tesla*
-    echo [OK] Lunars source downloaded
+  echo "[SKIP] Lunars download due to cron flag"
 fi
 
 # Installing crontab
-alreadyinstalled=$(crontab -l | grep /var/root/lunars)
-if [[ "$alreadyinstalled" != "" ]]; then
-    echo [SKIP] Lunars cron already installed
+alreadyInstalled=$(crontab -l | grep "$rebootScript")
+if [[ "$alreadyInstalled" != "" ]]; then
+  echo "[SKIP] Lunars cron already installed"
 else
-    # Just in case this file already exists
-    rm /tmp/crontab 2>/dev/null
-    crontab -l >/tmp/crontab
-    echo "@reboot /bin/bash $onRebootFile > /dev/null 2>&1 &" >>/tmp/crontab
-    cat /tmp/crontab | crontab || exit 6
-    rm /tmp/crontab
-    echo [OK] Lunars cron installed
+  # Just in case this file already exists
+  rm /tmp/crontab 2>/dev/null
+  crontab -l >/tmp/crontab
+  echo "@reboot $startScript" >>/tmp/crontab
+  crontab </tmp/crontab || exit 6
+  rm /tmp/crontab
+  echo "[OK] Lunars cron installed"
 fi
 
-# check if already running
-if ps ax | grep $onRebootFile | grep -v $$ | grep bash | grep -v grep; then
-    echo "[SKIP] Lunars on-reboot.sh is already running"
-else
-    /bin/bash $onRebootFile >/dev/null 2>&1 &
-    echo [OK] Lunars on-reboot.sh backgrounded
+# Check if already running
+rebootProcess=$(pgrep -f "$rebootScript")
+if [ "$1" != "cron" ] && [ -n "$rebootProcess" ]; then
+  echo "[SKIP] Lunars $rebootScript is already running, restarting process"
+  kill "$rebootProcess"
+  $startScript
 fi
 
-echo [DONE] Lunars is now installed, have fun!
+if [ -z "$rebootProcess" ]; then
+  echo "[OK] Starting $rebootScript as it wasn't found to be running"
+  $startScript
+fi
+
+echo "[OK] Lunars $rebootScript backgrounded"
+
+echo "[DONE] Lunars is now installed, have fun!"

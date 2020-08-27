@@ -1,49 +1,64 @@
 #!/bin/bash
 
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+# Pull in global vars
+mydir="${0%/*}"
+source "$mydir"/../config.sh
 
-mainPath="/var/root/lunars/src/scripts"
+function isRunning() {
+  process=$(ps ax | grep "$1" | grep -v $$ | grep bash | grep -v grep)
+  [ -n "$process" ]
+}
 
-echo "Starting reboot once scripts"
-cd $mainPath/once || exit
-for f in *.sh; do
-    echo "Found $f"
-    # check if already running
-    if ps ax | grep "$f" | grep -v $$ | grep bash | grep -v grep; then
-        echo "The script [$f] is already running."
-        break
-    else
-        echo "Running $f..."
-        /bin/bash "$f" >/dev/null 2>&1
+function scriptBackground() {
+  bash "$1" >/dev/null 2>&1 &
+}
+
+function beginScript() {
+  echo "Found $1... "
+  if ! isRunning "$1"; then
+    echo "Starting"
+    scriptBackground "$1"
+  else
+    echo "Already running"
+  fi
+}
+
+function main() {
+  echo "Starting Lunars"
+
+  # Some of our scripts need CRON to work, such as the auto updater or token updater
+  echo "Waiting for internet before continuing..."
+  i=0
+  while [ $i -lt 5 ]; do
+    if check-internet parrot || check-internet wwan0 || check-internet ppp0; then
+      echo "Found internet"
+      break
+    fi;
+
+    ((i++));
+    if [[ "$i" == '5' ]]; then
+      echo "Cancelling internet check as no connection was found within 5 minutes"
+      break
     fi
-done
 
-echo "Starting reboot forever scripts"
-cd $mainPath/forever || exit
-for f in *.sh; do
-    echo "Found $f"
-    # check if already running
-    if ps ax | grep "$f" | grep -v $$ | grep bash | grep -v grep; then
-        echo "The script [$f] is already running."
-    else
-        echo "Starting $f..."
-        /bin/bash "$f" >/dev/null 2>&1 &
-    fi
-done
+    echo "Sleeping for 1m waiting for internet"
+    sleep 60
+  done
 
-echo "Starting 5 minute scripts"
-cd $mainPath/every5 || exit
-while true; do
-    for f in *.sh; do
-        echo "Found $f"
-        # check if already running
-        if ps ax | grep "$f" | grep -v $$ | grep bash | grep -v grep; then
-            echo "The script [$f] is already running."
-        else
-            echo "Starting $f..."
-            /bin/bash "$f" >/dev/null 2>&1
-        fi
+  echo "Continuing with Lunars startup"
+
+  for scriptPath in "${scheduledScripts[@]}"; do
+    beginScript "$scriptPath"
+  done
+
+  # Five minutes
+  while true; do
+    for scriptPath in "${everyFiveMinuteScripts[@]}"; do
+      beginScript "$scriptPath"
     done
-    echo "Waiting 5 minutes"
+    echo "Waiting 5 minutes..."
     sleep 300
-done
+  done
+}
+
+main

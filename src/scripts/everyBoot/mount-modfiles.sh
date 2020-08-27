@@ -5,14 +5,7 @@
 
 # if an argument is provided multiple directories are allowed
 
-saveLocation="/var/root/lunars/src/overwrite-files"
-
-ENABLE=true
-
-if [ "$ENABLE" == "false" ]; then
-  echo "Script not enabled, quitting"
-  exit 1
-fi
+saveLocation="$homeOfLunars/overwrite-files"
 
 mkdir -p "$saveLocation/usr/local/bin/"
 for bindmount in $(mount | grep -e bind -e lunars | awk '{ print $1 }'); do
