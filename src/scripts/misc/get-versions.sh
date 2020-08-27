@@ -2,9 +2,12 @@
 
 # Retrieve the firmware versions installed, and determine which partition they are on
 
+
+PARTITIONPREFIX=$([ $(hostname) = ic ] && echo "mmcblk3p" || echo "mmcblk0p")
+
 OFFLINEMOUNTPOINT="/offline-usr"
 
-ONLINEPART=$(cat /proc/self/mounts | grep "/usr" | grep ^/dev/mmcblk0p[12] | cut -b14)
+ONLINEPART=$(cat /proc/self/mounts | grep "/usr" | grep ^/dev/$PARTITIONPREFIX[12] | cut -b14)
 
 if [ "$ONLINEPART" == "1" ]; then
   OFFLINEPART=2
@@ -17,7 +20,7 @@ fi
 
 mkdir $OFFLINEMOUNTPOINT 2>/dev/null
 
-mount -o ro /dev/mmcblk0p$OFFLINEPART $OFFLINEMOUNTPOINT
+mount -o ro /dev/$PARTITIONPREFIX$OFFLINEPART $OFFLINEMOUNTPOINT
 
 if [ ! -e "$OFFLINEMOUNTPOINT/deploy/platform.ver" ]; then
   echo "Error mounting offline partition."
@@ -29,8 +32,8 @@ NEWVER=$(cat "$OFFLINEMOUNTPOINT/tesla/UI/bin/version.txt" | cut -d= -f2 | cut -
 NEWCUSTVER=$(cat "$OFFLINEMOUNTPOINT/tesla/UI/bin/customerVersion.txt" | cut -d= -f2 | cut -d\- -f1)
 OLDVER=$(cat /usr/tesla/UI/bin/version.txt | cut -d= -f2 | cut -d\- -f1)
 
-echo "Online version:  $OLDVER (/usr) /dev/mmcblk0p$ONLINEPART"
-echo "Offline version: $NEWVER ($OFFLINEMOUNTPOINT) /dev/mmcblk0p$OFFLINEPART"
+echo "Online version:  $OLDVER (/usr) /dev/$PARTITIONPREFIX$ONLINEPART"
+echo "Offline version: $NEWVER ($OFFLINEMOUNTPOINT) /dev/$PARTITIONPREFIX$OFFLINEPART"
 echo "Offline customer version: $NEWCUSTVER"
 echo
 
