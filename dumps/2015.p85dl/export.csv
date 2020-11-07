@@ -112,7 +112,7 @@ CAPI_remoteAutopark,Off
 CAPI_remoteClosureRequest,None
 CAPI_remoteHeartbeat,0
 CAPI_remotePreconditionCabinRequest,Off
-CARSERVER_netStats,-=158.625,-=2475.218,-=32.323,-=117.023,-=27.363,-=19.646,-=161.858,-=50.670,-=0.000,-=0.000
+CARSERVER_netStats,"-=158.625,-=2475.218,-=32.323,-=117.023,-=27.363,-=19.646,-=161.858,-=50.670,-=0.000,-=0.000"
 CD_displayState,0
 CHADA_currentRequest,@invalid
 CHADA_evseConnectorTemp,@invalid
@@ -546,7 +546,7 @@ FEATURE_superchargingEnabled,true
 FEATURE_trafficMapTilesEnabled,true
 FEATURE_tvoiceDisabled,true
 FEATURE_vectorMapTilesEnabled,true
-FILESYNC_status,{"nav_us":{"state":"idle","pct":0,"rsync_exit_code":-2,"current_version":"NA-180906-1605","target_version":"NA-180906-1605"}}
+FILESYNC_status,"{""nav_us"":{""state"":""idle"",""pct"":0,""rsync_exit_code"":-2,""current_version"":""NA-180906-1605"",""target_version"":""NA-180906-1605""}}"
 FILESYNC_toolboxTrigger,""
 GMAP_cachedLoadCounter,0
 GMAP_networkLoadCounter,0
@@ -667,7 +667,7 @@ GUI_chargeLimitRequest,71
 GUI_chargePortDoorRequest,false
 GUI_chargePortUnlockRequest,false
 GUI_chargeSessionActive,true
-GUI_chargeSessionAlerts,GTW_d001_versionMismatch,THC_d0018_activeAero,THC_w0123_sanityCondLeftShutr,DAS_w057_mcuMia,+THC_w0122_condLeftShutrNoFeedbk
+GUI_chargeSessionAlerts,"GTW_d001_versionMismatch,THC_d0018_activeAero,THC_w0123_sanityCondLeftShutr,DAS_w057_mcuMia,+THC_w0122_condLeftShutrNoFeedbk"
 GUI_chargeSessionChargerType,AC
 GUI_chargeSessionIdealEnergyAdded,6.214
 GUI_chargeSessionIdealStartEnergy,48.450
@@ -790,7 +790,7 @@ GUI_falconQuickOpenDefaultRequest,false
 GUI_falseTouchCounter,1
 GUI_fartOnSteeringButton,false
 GUI_fastChargeTrialExpiration,@invalid
-GUI_featureConfig,{delivered:true,rob_actuation_enabled:true,selfpark:{countries:{chn:{easy-summon:true},hkg:{allowed:false},kor:{easy-summon:true},mex:{easy-summon:true},usa:{easy-summon:true}}},supercharger:{credits_remaining:0},telemetry:{records:{A:{send:true},AUT0:{send:true},AUT1:{send:true},C:{send:true},C1:{send:true},C2:{send:true},C3:{send:true},D:{send:true},D1:{send:true},D10:{send:false},D11:{send:true},D12:{send:true},D13:{send:true},D14:{send:true},D15:{send:true},D16:{send:true},D2:{send:true},D3:{send:true},D4:{send:true},D5:{send:true},D6:{send:true},D7:{send:true},D8:{send:true},D9:{send:true},DC:{send:true},F1:{send:true},G:{send:true},M:{send:false},R1:{send:true},RM:{send:true},SE0:{send:true},T:{send:true},TP:{send:true},TP1:{send:true},TP2:{send:true},TP3:{send:true},UI:{send:true},UI1:{send:true},UI2:{send:false},UI3:{send:true},Y:{send:true}}},tesla_owned:false,ulc_without_confirm:false}
+GUI_featureConfig,"{delivered:true,rob_actuation_enabled:true,selfpark:{countries:{chn:{easy-summon:true},hkg:{allowed:false},kor:{easy-summon:true},mex:{easy-summon:true},usa:{easy-summon:true}}},supercharger:{credits_remaining:0},telemetry:{records:{A:{send:true},AUT0:{send:true},AUT1:{send:true},C:{send:true},C1:{send:true},C2:{send:true},C3:{send:true},D:{send:true},D1:{send:true},D10:{send:false},D11:{send:true},D12:{send:true},D13:{send:true},D14:{send:true},D15:{send:true},D16:{send:true},D2:{send:true},D3:{send:true},D4:{send:true},D5:{send:true},D6:{send:true},D7:{send:true},D8:{send:true},D9:{send:true},DC:{send:true},F1:{send:true},G:{send:true},M:{send:false},R1:{send:true},RM:{send:true},SE0:{send:true},T:{send:true},TP:{send:true},TP1:{send:true},TP2:{send:true},TP3:{send:true},UI:{send:true},UI1:{send:true},UI2:{send:false},UI3:{send:true},Y:{send:true}}},tesla_owned:false,ulc_without_confirm:false}"
 GUI_followNavRouteEnable,false
 GUI_forceDeepSleep,false
 GUI_forksEnable,false
@@ -806,7 +806,7 @@ GUI_frontTrunkRequest,false
 GUI_fuseHPPDisable,false
 GUI_fuseLanesDisable,false
 GUI_fuseVehiclesDisable,false
-GUI_gameStats,{asteroid:{count:1},missile:{count:19}}
+GUI_gameStats,"{asteroid:{count:1},missile:{count:19}}"
 GUI_gamesFound,@invalid
 GUI_globalUnlockOnRequest,true
 GUI_gloveboxRequest,false
@@ -1318,7 +1318,7 @@ IC_mapScreenWidth,0
 IC_mapStartupTime,-863161826
 IC_mapVisible,false
 IC_mcuHardwareIssue,false
-IC_netStats,-=12.796,-=0.026
+IC_netStats,"-=12.796,-=0.026"
 IC_readyForDrive,true
 IC_readyToRestart,false
 IC_selectedLeftSideWindow,DevReadouts
@@ -1504,7 +1504,7 @@ MEDIA2_downloadedBytes,@invalid
 MEDIA2_elapsedTime,@invalid
 MEDIA2_nowPlayingTitle,@invalid
 MEDIA2_playingCustomMedia,false
-MEDIA2_serverState,NoMedia, NoError
+MEDIA2_serverState,"NoMedia, NoError"
 MEDIA2_streamBitRate,@invalid
 MEDIA2_streamCached,false
 MEDIA2_totalBytes,@invalid
@@ -1731,7 +1731,7 @@ PARROT_playerState,Connected
 PARROT_powerState,Ready
 PARROT_reflashed,@invalid
 PARROT_selectedAudioSource,LineIn
-PARROT_version,'03.71.00 Tesla',0,'Mar 07 2016','15:24:35',6299bdad
+PARROT_version,"'03.71.00 Tesla',0,'Mar 07 2016','15:24:35',6299bdad"
 PHONEDATA_callsChanged,0
 PHONEDATA_callsCount,0
 PHONEDATA_contactImagesAvailable,0
@@ -1915,7 +1915,7 @@ SYS_CDDummy,false
 SYS_CD_CPU_Pct,9
 SYS_CD_Memory,766377984
 SYS_CD_MemoryString,730m
-SYS_CD_QtCarProcesses,QtCar=28%,367m; Vehicle=14%,38m; EVLogServi=5%,23m; NetManager=5%,22m; GpsManager=5%,39m; TMServer=5%,31m; Parrot=5%,31m; Server=0%,56m; SpeechReco=0%,28m; Audiod=0%,22m;
+SYS_CD_QtCarProcesses,"QtCar=28%,367m; Vehicle=14%,38m; EVLogServi=5%,23m; NetManager=5%,22m; GpsManager=5%,39m; TMServer=5%,31m; Parrot=5%,31m; Server=0%,56m; SpeechReco=0%,28m; Audiod=0%,22m;"
 SYS_CD_VideoCarveOutMB,0
 SYS_CD_VideoCarveOutPct,0
 SYS_CD_VideoLargestCarveOutFB,0
@@ -1924,7 +1924,7 @@ SYS_ICDummy,true
 SYS_IC_CPU_Pct,7
 SYS_IC_Memory,143888384
 SYS_IC_MemoryString,137m
-SYS_IC_QtCarProcesses,Cluster=9%,87m; Startup=0%,9.2m;
+SYS_IC_QtCarProcesses,"Cluster=9%,87m; Startup=0%,9.2m;"
 SYS_IC_VideoCarveOutMB,39
 SYS_IC_VideoCarveOutPct,16
 SYS_IC_VideoLargestCarveOutFB,213975040
@@ -1956,7 +1956,7 @@ TMHZN_localizerResponse,552546767594
 TMHZN_speedLimit,0
 TMHZN_speedLimitUnits,Miles
 TM_invalidMapDataOverride,false
-TM_mapOverrideFileInfo,{data_format_version:1.0,datetime:UTC 2019-01-15 20:21:57.981751,jobid:,map_version:NA-180906-1605,prod_signed:false,transform_valhalla_version:develop/2019.4-0-gc454a71f}
+TM_mapOverrideFileInfo,"{data_format_version:1.0,datetime:UTC 2019-01-15 20:21:57.981751,jobid:,map_version:NA-180906-1605,prod_signed:false,transform_valhalla_version:develop/2019.4-0-gc454a71f}"
 TM_mapOverrideStatus,Ok
 TM_mapRelease,NA-180906-1605
 TM_mapTags,
@@ -2622,7 +2622,7 @@ WIFI_signalQuality,20
 WIFI_signalStrength,122
 WIFI_smState,WCConnected
 car_server/low_soe_notification_sent,false
-carserver/recentAlerts,DAS_w057_mcuMia@2019-02-07T17:48:40@hidden@2019-02-07T17:51:19,DI_w094_canData@2019-02-07T17:44:35@hidden@2019-02-07T17:44:40,PM_w012_canData@2019-02-07T17:44:34@hidden@2019-02-07T17:44:39,DAS_w057_mcuMia@2019-02-07T17:42:26@hidden@2019-02-07T17:43:58,DAS_w057_mcuMia@2019-02-07T17:35:11@hidden@2019-02-07T17:35:20,DAS_w057_mcuMia@2019-02-07T10:04:25@hidden@2019-02-07T10:06:58,DI_w094_canData@2019-02-07T10:04:09@hidden@2019-02-07T10:04:14,PM_w012_canData@2019-02-07T10:04:05@hidden@2019-02-07T10:04:14,DI_w094_canData@2019-02-07T10:03:16@hidden@2019-02-07T10:03:21,PM_w012_canData@2019-02-07T10:03:16@hidden@2019-02-07T10:03:21,DAS_w057_mcuMia@2019-02-07T09:55:11@hidden@2019-02-07T09:59:26,GTW_w216_assert@2019-02-07T09:52:09@hidden@2019-02-07T09:54:04,DAS_w057_mcuMia@2019-02-06T18:15:53@hidden@2019-02-06T18:18:39,MCU_u006_DriverDoorOpen@2019-02-06T18:08:36@Driver's door open/Proceed with caution@2019-02-06T18:08:37,DAS_w057_mcuMia@2019-02-06T09:34:48@hidden@2019-02-06T09:40:27,DI_w094_canData@2019-02-06T09:33:36@hidden@2019-02-06T09:33:41,DAS_w069_apcSpaceMasked@2019-02-06T09:32:48@hidden@2019-02-06T09:40:27,DAS_w057_mcuMia@2019-02-06T09:27:24@hidden@2019-02-06T09:28:13,GTW_w184_drHndMia@2019-02-06T09:13:15@hidden@2019-02-06T09:13:45,GTW_w183_dfHndMia@2019-02-06T09:13:15@hidden@2019-02-06T09:13:45,DAS_w057_mcuMia@2019-02-05T17:37:21@hidden@2019-02-05T17:40:35,DI_w094_canData@2019-02-05T17:35:49@hidden@2019-02-05T17:35:54,DI_u004_brakeOverride@2019-02-05T17:35:31@Both pedals pressed/Removing motor power@2019-02-05T17:35:33,DAS_w057_mcuMia@2019-02-05T17:27:48@hidden@2019-02-05T17:30:38,DI_w094_canData@2019-02-05T17:27:41@hidden@2019-02-05T17:27:46,PM_w012_canData@2019-02-05T17:27:41@hidden@2019-02-05T17:27:46,DAS_w057_mcuMia@2019-02-05T17:16:50@hidden@2019-02-05T17:18:45,DI_w094_canData@2019-02-05T17:14:30@hidden@2019-02-05T17:14:35,DAS_w069_apcSpaceMasked@2019-02-05T17:14:10@hidden@2019-02-05T17:16:40,DI_w094_canData@2019-02-05T17:13:52@hidden@2019-02-05T17:13:57,DAS_w057_mcuMia@2019-02-05T12:44:16@hidden@2019-02-05T12:46:54,DAS_w057_mcuMia@2019-02-05T12:24:16@hidden@2019-02-05T12:26:54,DAS_w057_mcuMia@2019-02-05T09:54:53@hidden@2019-02-05T09:57:44,DAS_w057_mcuMia@2019-02-05T09:39:53@hidden@2019-02-05T09:42:07,DI_w094_canData@2019-02-05T09:39:44@hidden@2019-02-05T09:39:49,PM_w012_canData@2019-02-05T09:39:44@hidden@2019-02-05T09:39:49,GTW_w216_assert@2019-02-05T00:57:39@hidden@2019-02-05T00:59:39,GTW_w216_assert@2019-02-05T00:46:51@hidden@2019-02-05T00:48:51,MCU_w007_MapsMissing@2019-02-05T00:43:47@Navigation system needs service/Maps are not loaded@2019-02-05T00:43:49,DAS_w057_mcuMia@2019-02-04T18:41:59@hidden@2019-02-04T18:44:43,DI_w094_canData@2019-02-04T18:39:13@hidden@2019-02-04T18:39:20,PM_w012_canData@2019-02-04T18:39:13@hidden@2019-02-04T18:39:21,DAS_w057_mcuMia@2019-02-04T18:29:41@hidden@2019-02-04T18:34:10,DI_w094_canData@2019-02-04T12:50:23@hidden@2019-02-04T12:50:28,PM_w012_canData@2019-02-04T12:50:23@hidden@2019-02-04T12:50:28,DAS_w057_mcuMia@2019-02-04T12:50:02@hidden@2019-02-04T12:53:32,DAS_w069_apcSpaceMasked@2019-02-04T12:48:17@hidden@2019-02-04T12:53:32,DAS_w057_mcuMia@2019-02-04T12:39:07@hidden@2019-02-04T12:41:01,GTW_w186_prHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,GTW_w185_pfHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,GTW_w184_drHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,GTW_w183_dfHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,DAS_w057_mcuMia@2019-02-04T11:45:49@hidden@2019-02-04T11:50:52,DI_w094_canData@2019-02-04T11:42:22@hidden@2019-02-04T11:42:27,DI_w094_canData@2019-02-04T11:41:52@hidden@2019-02-04T11:41:57,PM_w012_canData@2019-02-04T11:41:52@hidden@2019-02-04T11:41:57,DAS_w013_Cam_Watchdog@2019-02-04T10:56:08@hidden@2019-02-04T10:56:52,DAS_w012_Cam_BootFailure@2019-02-04T10:56:08@hidden@2019-02-04T10:56:52,DAS_w057_mcuMia@2019-02-04T10:03:28@hidden@2019-02-04T10:06:11,DI_u002_shiftDenied@2019-02-04T10:03:19@/@2019-02-04T10:03:20,DAS_w057_mcuMia@2019-02-04T09:36:40@hidden@2019-02-04T09:57:21,DI_u006_driverLeft@2019-02-04T09:36:39@hidden@2019-02-04T09:36:46,DI_w094_canData@2019-02-04T09:33:46@hidden@2019-02-04T09:33:51,PM_w012_canData@2019-02-04T09:33:45@hidden@2019-02-04T09:33:50,DAS_w057_mcuMia@2019-02-04T09:32:39@hidden@2019-02-04T09:32:43,DAS_w057_mcuMia@2019-02-04T09:32:10@hidden@2019-02-04T09:32:32,DAS_w072_selfparkComplete@2019-02-04T09:32:09@hidden@2019-02-04T09:32:12,DI_u025_autoparkAborted@2019-02-04T09:32:09@Autopark canceled/@2019-02-04T09:32:14,DAS_w071_selfparkStarted@2019-02-04T09:31:59@hidden@2019-02-04T09:32:12,DAS_w057_mcuMia@2019-02-04T09:24:36@hidden@2019-02-04T09:27:21,DAS_w057_mcuMia@2019-02-04T09:23:14@hidden@2019-02-04T09:23:18,DAS_w069_apcSpaceMasked@2019-02-04T09:19:22@hidden@2019-02-04T09:27:21,DAS_w069_apcSpaceMasked@2019-02-04T09:18:49@hidden@2019-02-04T09:19:20,PM_w012_canData@2019-02-04T09:12:37@hidden@2019-02-04T09:12:42,DI_w094_canData@2019-02-04T09:12:37@hidden@2019-02-04T09:12:42,GTW_w186_prHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,GTW_w185_pfHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,GTW_w184_drHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,GTW_w183_dfHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,DI_w094_canData@2019-02-04T09:12:04@hidden@2019-02-04T09:12:09,PM_w012_canData@2019-02-04T09:12:03@hidden@2019-02-04T09:12:08,DI_w094_canData@2019-02-04T09:11:54@hidden@2019-02-04T09:11:59,DAS_w057_mcuMia@2019-02-04T09:08:32@hidden@2019-02-04T09:08:52,DI_w094_canData@2019-02-04T09:05:56@hidden@2019-02-04T09:06:01,PM_w012_canData@2019-02-04T09:05:55@hidden@2019-02-04T09:06:00,DAS_w057_mcuMia@2019-02-04T09:05:46@hidden@2019-02-04T09:08:31,PM_w012_canData@2019-02-04T09:05:42@hidden@2019-02-04T09:05:47,DI_w094_canData@2019-02-04T09:05:42@hidden@2019-02-04T09:05:47,DI_u026_brakeStand@2019-02-04T09:04:27@Launch Mode enabled/@2019-02-04T09:04:29,DAS_w041_autopilotRateSaturated@2019-02-04T09:01:02@hidden@2019-02-04T09:01:05,DI_w094_canData@2019-02-04T09:00:54@hidden@2019-02-04T09:00:59,DI_w094_canData@2019-02-04T09:00:02@hidden@2019-02-04T09:00:07,DI_w094_canData@2019-02-04T08:57:47@hidden@2019-02-04T08:57:52,DAS_w057_mcuMia@2019-02-04T08:57:03@hidden@2019-02-04T08:57:11,DAS_w057_mcuMia@2019-02-04T08:56:33@hidden@2019-02-04T08:56:56,DAS_w072_selfparkComplete@2019-02-04T08:56:32@hidden@2019-02-04T08:56:35,DI_u025_autoparkAborted@2019-02-04T08:56:30@Autopark canceled/@2019-02-04T08:56:36,DAS_w071_selfparkStarted@2019-02-04T08:56:22@hidden@2019-02-04T08:56:35,DAS_w057_mcuMia@2019-02-03T17:49:27@hidden@2019-02-03T17:52:29,DI_w094_canData@2019-02-03T17:49:23@hidden@2019-02-03T17:49:31
+carserver/recentAlerts,"DAS_w057_mcuMia@2019-02-07T17:48:40@hidden@2019-02-07T17:51:19,DI_w094_canData@2019-02-07T17:44:35@hidden@2019-02-07T17:44:40,PM_w012_canData@2019-02-07T17:44:34@hidden@2019-02-07T17:44:39,DAS_w057_mcuMia@2019-02-07T17:42:26@hidden@2019-02-07T17:43:58,DAS_w057_mcuMia@2019-02-07T17:35:11@hidden@2019-02-07T17:35:20,DAS_w057_mcuMia@2019-02-07T10:04:25@hidden@2019-02-07T10:06:58,DI_w094_canData@2019-02-07T10:04:09@hidden@2019-02-07T10:04:14,PM_w012_canData@2019-02-07T10:04:05@hidden@2019-02-07T10:04:14,DI_w094_canData@2019-02-07T10:03:16@hidden@2019-02-07T10:03:21,PM_w012_canData@2019-02-07T10:03:16@hidden@2019-02-07T10:03:21,DAS_w057_mcuMia@2019-02-07T09:55:11@hidden@2019-02-07T09:59:26,GTW_w216_assert@2019-02-07T09:52:09@hidden@2019-02-07T09:54:04,DAS_w057_mcuMia@2019-02-06T18:15:53@hidden@2019-02-06T18:18:39,MCU_u006_DriverDoorOpen@2019-02-06T18:08:36@Driver's door open/Proceed with caution@2019-02-06T18:08:37,DAS_w057_mcuMia@2019-02-06T09:34:48@hidden@2019-02-06T09:40:27,DI_w094_canData@2019-02-06T09:33:36@hidden@2019-02-06T09:33:41,DAS_w069_apcSpaceMasked@2019-02-06T09:32:48@hidden@2019-02-06T09:40:27,DAS_w057_mcuMia@2019-02-06T09:27:24@hidden@2019-02-06T09:28:13,GTW_w184_drHndMia@2019-02-06T09:13:15@hidden@2019-02-06T09:13:45,GTW_w183_dfHndMia@2019-02-06T09:13:15@hidden@2019-02-06T09:13:45,DAS_w057_mcuMia@2019-02-05T17:37:21@hidden@2019-02-05T17:40:35,DI_w094_canData@2019-02-05T17:35:49@hidden@2019-02-05T17:35:54,DI_u004_brakeOverride@2019-02-05T17:35:31@Both pedals pressed/Removing motor power@2019-02-05T17:35:33,DAS_w057_mcuMia@2019-02-05T17:27:48@hidden@2019-02-05T17:30:38,DI_w094_canData@2019-02-05T17:27:41@hidden@2019-02-05T17:27:46,PM_w012_canData@2019-02-05T17:27:41@hidden@2019-02-05T17:27:46,DAS_w057_mcuMia@2019-02-05T17:16:50@hidden@2019-02-05T17:18:45,DI_w094_canData@2019-02-05T17:14:30@hidden@2019-02-05T17:14:35,DAS_w069_apcSpaceMasked@2019-02-05T17:14:10@hidden@2019-02-05T17:16:40,DI_w094_canData@2019-02-05T17:13:52@hidden@2019-02-05T17:13:57,DAS_w057_mcuMia@2019-02-05T12:44:16@hidden@2019-02-05T12:46:54,DAS_w057_mcuMia@2019-02-05T12:24:16@hidden@2019-02-05T12:26:54,DAS_w057_mcuMia@2019-02-05T09:54:53@hidden@2019-02-05T09:57:44,DAS_w057_mcuMia@2019-02-05T09:39:53@hidden@2019-02-05T09:42:07,DI_w094_canData@2019-02-05T09:39:44@hidden@2019-02-05T09:39:49,PM_w012_canData@2019-02-05T09:39:44@hidden@2019-02-05T09:39:49,GTW_w216_assert@2019-02-05T00:57:39@hidden@2019-02-05T00:59:39,GTW_w216_assert@2019-02-05T00:46:51@hidden@2019-02-05T00:48:51,MCU_w007_MapsMissing@2019-02-05T00:43:47@Navigation system needs service/Maps are not loaded@2019-02-05T00:43:49,DAS_w057_mcuMia@2019-02-04T18:41:59@hidden@2019-02-04T18:44:43,DI_w094_canData@2019-02-04T18:39:13@hidden@2019-02-04T18:39:20,PM_w012_canData@2019-02-04T18:39:13@hidden@2019-02-04T18:39:21,DAS_w057_mcuMia@2019-02-04T18:29:41@hidden@2019-02-04T18:34:10,DI_w094_canData@2019-02-04T12:50:23@hidden@2019-02-04T12:50:28,PM_w012_canData@2019-02-04T12:50:23@hidden@2019-02-04T12:50:28,DAS_w057_mcuMia@2019-02-04T12:50:02@hidden@2019-02-04T12:53:32,DAS_w069_apcSpaceMasked@2019-02-04T12:48:17@hidden@2019-02-04T12:53:32,DAS_w057_mcuMia@2019-02-04T12:39:07@hidden@2019-02-04T12:41:01,GTW_w186_prHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,GTW_w185_pfHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,GTW_w184_drHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,GTW_w183_dfHndMia@2019-02-04T12:38:33@hidden@2019-02-04T12:39:03,DAS_w057_mcuMia@2019-02-04T11:45:49@hidden@2019-02-04T11:50:52,DI_w094_canData@2019-02-04T11:42:22@hidden@2019-02-04T11:42:27,DI_w094_canData@2019-02-04T11:41:52@hidden@2019-02-04T11:41:57,PM_w012_canData@2019-02-04T11:41:52@hidden@2019-02-04T11:41:57,DAS_w013_Cam_Watchdog@2019-02-04T10:56:08@hidden@2019-02-04T10:56:52,DAS_w012_Cam_BootFailure@2019-02-04T10:56:08@hidden@2019-02-04T10:56:52,DAS_w057_mcuMia@2019-02-04T10:03:28@hidden@2019-02-04T10:06:11,DI_u002_shiftDenied@2019-02-04T10:03:19@/@2019-02-04T10:03:20,DAS_w057_mcuMia@2019-02-04T09:36:40@hidden@2019-02-04T09:57:21,DI_u006_driverLeft@2019-02-04T09:36:39@hidden@2019-02-04T09:36:46,DI_w094_canData@2019-02-04T09:33:46@hidden@2019-02-04T09:33:51,PM_w012_canData@2019-02-04T09:33:45@hidden@2019-02-04T09:33:50,DAS_w057_mcuMia@2019-02-04T09:32:39@hidden@2019-02-04T09:32:43,DAS_w057_mcuMia@2019-02-04T09:32:10@hidden@2019-02-04T09:32:32,DAS_w072_selfparkComplete@2019-02-04T09:32:09@hidden@2019-02-04T09:32:12,DI_u025_autoparkAborted@2019-02-04T09:32:09@Autopark canceled/@2019-02-04T09:32:14,DAS_w071_selfparkStarted@2019-02-04T09:31:59@hidden@2019-02-04T09:32:12,DAS_w057_mcuMia@2019-02-04T09:24:36@hidden@2019-02-04T09:27:21,DAS_w057_mcuMia@2019-02-04T09:23:14@hidden@2019-02-04T09:23:18,DAS_w069_apcSpaceMasked@2019-02-04T09:19:22@hidden@2019-02-04T09:27:21,DAS_w069_apcSpaceMasked@2019-02-04T09:18:49@hidden@2019-02-04T09:19:20,PM_w012_canData@2019-02-04T09:12:37@hidden@2019-02-04T09:12:42,DI_w094_canData@2019-02-04T09:12:37@hidden@2019-02-04T09:12:42,GTW_w186_prHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,GTW_w185_pfHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,GTW_w184_drHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,GTW_w183_dfHndMia@2019-02-04T09:12:21@hidden@2019-02-04T09:12:52,DI_w094_canData@2019-02-04T09:12:04@hidden@2019-02-04T09:12:09,PM_w012_canData@2019-02-04T09:12:03@hidden@2019-02-04T09:12:08,DI_w094_canData@2019-02-04T09:11:54@hidden@2019-02-04T09:11:59,DAS_w057_mcuMia@2019-02-04T09:08:32@hidden@2019-02-04T09:08:52,DI_w094_canData@2019-02-04T09:05:56@hidden@2019-02-04T09:06:01,PM_w012_canData@2019-02-04T09:05:55@hidden@2019-02-04T09:06:00,DAS_w057_mcuMia@2019-02-04T09:05:46@hidden@2019-02-04T09:08:31,PM_w012_canData@2019-02-04T09:05:42@hidden@2019-02-04T09:05:47,DI_w094_canData@2019-02-04T09:05:42@hidden@2019-02-04T09:05:47,DI_u026_brakeStand@2019-02-04T09:04:27@Launch Mode enabled/@2019-02-04T09:04:29,DAS_w041_autopilotRateSaturated@2019-02-04T09:01:02@hidden@2019-02-04T09:01:05,DI_w094_canData@2019-02-04T09:00:54@hidden@2019-02-04T09:00:59,DI_w094_canData@2019-02-04T09:00:02@hidden@2019-02-04T09:00:07,DI_w094_canData@2019-02-04T08:57:47@hidden@2019-02-04T08:57:52,DAS_w057_mcuMia@2019-02-04T08:57:03@hidden@2019-02-04T08:57:11,DAS_w057_mcuMia@2019-02-04T08:56:33@hidden@2019-02-04T08:56:56,DAS_w072_selfparkComplete@2019-02-04T08:56:32@hidden@2019-02-04T08:56:35,DI_u025_autoparkAborted@2019-02-04T08:56:30@Autopark canceled/@2019-02-04T08:56:36,DAS_w071_selfparkStarted@2019-02-04T08:56:22@hidden@2019-02-04T08:56:35,DAS_w057_mcuMia@2019-02-03T17:49:27@hidden@2019-02-03T17:52:29,DI_w094_canData@2019-02-03T17:49:23@hidden@2019-02-03T17:49:31"
 emptystreamdv,@invalid
 gui/hvac_climate_keeper_settings,@invalid
 gui/hvac_settings,@invalid
