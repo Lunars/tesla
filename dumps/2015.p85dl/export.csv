@@ -1504,7 +1504,7 @@ MEDIA2_downloadedBytes,@invalid
 MEDIA2_elapsedTime,@invalid
 MEDIA2_nowPlayingTitle,@invalid
 MEDIA2_playingCustomMedia,false
-MEDIA2_serverState,NoMedia, NoError
+MEDIA2_serverState,"NoMedia, NoError"
 MEDIA2_streamBitRate,@invalid
 MEDIA2_streamCached,false
 MEDIA2_totalBytes,@invalid
