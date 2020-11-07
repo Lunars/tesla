@@ -112,7 +112,7 @@ CAPI_remoteAutopark,Off
 CAPI_remoteClosureRequest,None
 CAPI_remoteHeartbeat,0
 CAPI_remotePreconditionCabinRequest,Off
-CARSERVER_netStats,-=158.625,-=2475.218,-=32.323,-=117.023,-=27.363,-=19.646,-=161.858,-=50.670,-=0.000,-=0.000
+CARSERVER_netStats,"-=158.625,-=2475.218,-=32.323,-=117.023,-=27.363,-=19.646,-=161.858,-=50.670,-=0.000,-=0.000"
 CD_displayState,0
 CHADA_currentRequest,@invalid
 CHADA_evseConnectorTemp,@invalid
