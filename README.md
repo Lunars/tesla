@@ -41,14 +41,6 @@ During update, only the following will be preserved. Any changes to the lunars d
 
 Fill in the variables on [/var/lunars/config.sh](https://github.com/Lunars/tesla/blob/master/src/config.sh) and uncomment the scripts you want to run. Some scripts are already enabled by default.
 
-## Author
-
-👤 **Matt**
-
-* Github: [@geczy](https://github.com/geczy)
-* Discord: coder#6681
-* Telegram: https://t.me/mattpew
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Lunars/tesla/issues).
