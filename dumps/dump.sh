@@ -8,7 +8,12 @@
 dataValuesFileName="./export.dump"
 internalDatFileName="./internaldat.dump"
 
-lvs >> ${dataValuesFileName}
+if command -v ldvs &> /dev/null
+then
+    ldvs >> ${dataValuesFileName}
+else
+    lvs >> ${dataValuesFileName}
+fi
 access-internal-dat.pl --get ${internalDatFileName}
 
 if [[ "$*" != "raw" ]]; then
