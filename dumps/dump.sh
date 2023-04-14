@@ -20,6 +20,7 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^BLUETOOTH_address/ d' ${dataValuesFileName}
 	sed -i '/^BLUETOOTH_pairedDeviceInfo/ d' ${dataValuesFileName}
 	sed -i '/^BLUETOOTH_pairedDeviceInfoString/ d' ${dataValuesFileName}
+	sed -i '/^CONN_cellEid/ d' ${dataValuesFileName}
 	sed -i '/^CONN_cellIMEI/ d' ${dataValuesFileName}
 	sed -i '/^CONN_cellInterfaceIP/ d' ${dataValuesFileName}
 	sed -i '/^CONN_cellModemIP/ d' ${dataValuesFileName}
@@ -47,6 +48,12 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^LOC_geoLat/ d' ${dataValuesFileName}
 	sed -i '/^LOC_geoLocation/ d' ${dataValuesFileName}
 	sed -i '/^LOC_geoLon/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_authToken/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_rdioPassword/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_rdioTeslaPassword/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_rdioTeslaUsername/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_rdioTeslaUsername/ d' ${dataValuesFileName}
+	sed -i '/^MEDIA_rdioUsername/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_slackerPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_slackerTeslaPassword/ d' ${dataValuesFileName}
 	sed -i '/^MEDIA_slackerTeslaUsername/ d' ${dataValuesFileName}
@@ -66,9 +73,11 @@ if [[ "$*" != "raw" ]]; then
 	sed -i '/^NAV_vehicleLongitude/ d' ${dataValuesFileName}
 	sed -i '/^NAV_vehicleState/ d' ${dataValuesFileName}
 	sed -i '/^RADIO_TextXMRadioIDCode/ d' ${dataValuesFileName}
+	sed -i '/^SPOTIFY_loggedInUsername/ d' ${dataValuesFileName}
 	sed -i '/^TEL_deviceId/ d' ${dataValuesFileName}
 	sed -i '/^TEL_tripId/ d' ${dataValuesFileName}
 	sed -i '/^VAPI_hiResOdometer/ d' ${dataValuesFileName}
+	sed -i '/^VAPI_keys/ d' ${dataValuesFileName}
 	sed -i '/^VAPI_odometer/ d' ${dataValuesFileName}
 	sed -i '/^WIFI_macAddress/ d' ${dataValuesFileName}
 	sed -i '/^WIFI_network/ d' ${dataValuesFileName}
