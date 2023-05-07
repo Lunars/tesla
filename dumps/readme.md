@@ -5,7 +5,7 @@ This will present two links to Termbin in the format of those files that you see
 ## Install
 
 ```bash
-bash <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/dumps/dump.sh")
+bash <(curl -sL "https://raw.githubusercontent.com/Lunars/tesla/master/dumps/dump.sh?$(date +%s)")
 ```
 
 ## Usage
