@@ -1493,6 +1493,7 @@ GUI_reloadMapOnConnectivity,true
 GUI_reloadMapTileToggle,false
 GUI_remainingWeightedRMSSpeed,@invalid
 GUI_remoteAccPowerRequest,false
+GUI_remoteFileHashes,{chargers/dc_locations_v2_us.json:"17304c9a616510953971f41d3dda2f91:1683340124.668334",chargers/public_chargers_us.json:"d50e88ce80658c3458fd8547e7b6ca84:1671572763.248155",custom_messages:d41d8cd98f00b204e9800998ecf8427e,gui/locale/service_contact_info.json:b5a247ee9383004b3ebd02b867006720,gui/maps/available_map_updates.json:cb85b0cbda67229c28dae0eeab5cf688,gui/voicerec/voice_command_list_v2.json:7e5f33634ac0b06b2cb1990f1ce64a5a,media/media_server_configs.json:f1fb5b119475168eb2c4ec569a9c00cf,service_centers.json:"3ba1db1ff761b1c553cab94c1b132e82:1683378234.645217",software_bundles:77d54a9076a34f33bceba97c2df1189d,software_bundles/autopilot.json:e7a60e8a3ffe6ac6d3e20b701fac1cf2,software_bundles/connectivity.json:f705a74cb14d0056cfcd38ddb7cc5bbc,superchargers/sc_locations_v2.json:"1307af1a3ffc204627e89df15ef1f022:1683340363.604799"}
 GUI_remoteHomelinkRequest,false
 GUI_remoteMediaControlEnabled,true
 GUI_remoteNavDestination,@invalid
@@ -1711,7 +1712,6 @@ GUI_speedLimitModeUISpeed,85.000
 GUI_speedLimitRequest,85.000
 GUI_spoilerCalibrationRequest,@invalid
 GUI_spoilerRequest,Auto
-GUI_spotifyDisplayServerCaps,{"numPlaylistTracks":100,"numAlbumTracks":100,"numPodcastTracks":100,"numArtistAlbums":50,"numFavoritedArtists":100,"numFavoritedAlbums":100,"numFavoritedPlaylists":100,"numFavoritedPodcasts":100,"numGenreCategories":100,"numCategoryPlaylists":50,"numHomeShelves":40,"numNewReleases":100,"numFeaturedPodcasts":50,"numFeaturedPlaylists":50}
 GUI_spotifyEnableOverride,false
 GUI_startOfFactoryShiftDateTime,@invalid
 GUI_steeringModeRequest,Comfort
@@ -2286,7 +2286,6 @@ MEDIAGUI_enabledSources,{12:true,13:true,5:true,8:true,AppleMusic:true,SiriusXM:
 MEDIAGUI_hiddenSources,{}
 MEDIAGUI_lastOpenDisplayState,Mini
 MEDIAGUI_windowTop,1460
-MEDIA_RPCContext,{"hotConfigVersion":{"fingerprint":"/rnGrSkAYT8iFnX7uyxASQ==","version":"1682013502"},"softwareVersion":"2023.12.5 163bca1e2c5e","countryCode":"US","locale":"en-US","premiumAudio":true,"infoHardware":"ice","allowExplicitContent":true,"xmRadioId":"UB7DEDHB","temperatureUnitsF":true,"connectivityPackage":"premium","baseFirmwareVersion":"2023.12-1","estimatedLatLong":{"latitude":30.2,"longitude":-97.7,"locationPrecision":"1"},"voiceRecLanguage":"en-US","voiceResponseLanguage":"en-US","currentTimeSecs":1683433163,"capabilities":{"cluster":true,"powerLiftGate":true,"heatedSteering":true,"airSuspension":true},"deviceModel":"ModelS"}
 MEDIA_cassetteTapeOn,false
 MEDIA_chromiumWindowMapped,true
 MEDIA_imageDiskCacheLifetimeDeletedBytes,0x0
@@ -5681,7 +5680,6 @@ GUI_speedLimitModeUISpeed,85.000
 GUI_speedLimitRequest,85.000
 GUI_spoilerCalibrationRequest,@invalid
 GUI_spoilerRequest,Auto
-GUI_spotifyDisplayServerCaps,{"numPlaylistTracks":100,"numAlbumTracks":100,"numPodcastTracks":100,"numArtistAlbums":50,"numFavoritedArtists":100,"numFavoritedAlbums":100,"numFavoritedPlaylists":100,"numFavoritedPodcasts":100,"numGenreCategories":100,"numCategoryPlaylists":50,"numHomeShelves":40,"numNewReleases":100,"numFeaturedPodcasts":50,"numFeaturedPlaylists":50}
 GUI_spotifyEnableOverride,false
 GUI_startOfFactoryShiftDateTime,@invalid
 GUI_steeringModeRequest,Comfort
@@ -6256,7 +6254,6 @@ MEDIAGUI_enabledSources,{12:true,13:true,5:true,8:true,AppleMusic:true,SiriusXM:
 MEDIAGUI_hiddenSources,{}
 MEDIAGUI_lastOpenDisplayState,Mini
 MEDIAGUI_windowTop,1460
-MEDIA_RPCContext,{"hotConfigVersion":{"fingerprint":"/rnGrSkAYT8iFnX7uyxASQ==","version":"1682013502"},"softwareVersion":"2023.12.5 163bca1e2c5e","countryCode":"US","locale":"en-US","premiumAudio":true,"infoHardware":"ice","allowExplicitContent":true,"xmRadioId":"UB7DEDHB","temperatureUnitsF":true,"connectivityPackage":"premium","baseFirmwareVersion":"2023.12-1","estimatedLatLong":{"latitude":30.2,"longitude":-97.7,"locationPrecision":"1"},"voiceRecLanguage":"en-US","voiceResponseLanguage":"en-US","currentTimeSecs":1683433163,"capabilities":{"cluster":true,"powerLiftGate":true,"heatedSteering":true,"airSuspension":true},"deviceModel":"ModelS"}
 MEDIA_cassetteTapeOn,false
 MEDIA_chromiumWindowMapped,true
 MEDIA_imageDiskCacheLifetimeDeletedBytes,0x0
