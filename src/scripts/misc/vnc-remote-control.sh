@@ -43,7 +43,7 @@ fi
 
 VERTICAL_DISPLAY=true
 ROTATION=90
-if [[ "$(< /var/etc/chassistype)" == "Model3"]]; then
+if [[ "$(< /var/etc/chassistype)" == "Model3" ]]; then
     VERTICAL_DISPLAY=false
     ROTATION=0
 fi
